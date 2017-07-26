@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/pregunta/crear', 'PreguntaController@crearPregunta');
+Route::post('/admin/pregunta/guardar', 'PreguntaController@guardarPregunta');
