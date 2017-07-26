@@ -34,3 +34,33 @@
 .btn{
 	border-radius: 0;
 }
+.input-group-addon{
+	border-radius: 0;
+}
+
+/*------------------*/
+.subtitle{
+	background-color: #f1c40f;
+    padding: 15px;
+    margin-bottom: 15px;
+    color: #000;
+}
+.aside{
+	padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    /* height: 200px; */
+    
+    vertical-align: middle;
+    color: #ddd;
+}
+
+.aside>div{
+	font-size: 5em;
+}
+.aside>span{
+	font-size: 1.5em;
+}
+.opciones>.form-group{
+	display: none;
+}

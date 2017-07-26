@@ -1,88 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-	<link rel="stylesheet" href="{{asset('css/estilos.css')}}">
-</head>
-<body>
+@extends('admin/base-admin')
+
+@section('contenedor')
 
 	<div class="row-fluid">
-		<div class="col-md-2 color-background-wet-asphalt color-white col-md-sin-relleno">
-			<nav class="navbar navbar-default">
-			  <div class="container-fluid">
-			    <!-- Brand and toggle get grouped for better mobile display -->
-			    <div class="navbar-header">
-			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			      </button>
-			      <a class="navbar-brand" href="#">Admin</a>
-			    </div>
+				<div class="row-fluid">
+					<div class="col-md-12 subtitle text-center">
+						<b>Crear Pregunta</b>
+					</div>
+				</div>
+				<div class="col-md-9">
 
-			    
-			  </div><!-- /.container-fluid -->
-			</nav>
-
-
-			<!-- contenido del menu izquierdo -->
-
-			<ul class="nav nav-pills nav-stacked">
-			  <li role="presentation"><a href="/admin/pregunta/crear">Crear Pregunta</a></li>
-			  <li role="presentation"><a href="#">Profile</a></li>
-			  <li role="presentation"><a href="#">Messages</a></li>
-			</ul>
-		</div>
-		<div class="col-md-10 col-md-sin-relleno">
-			<nav class="navbar navbar-default">
-			  <div class="container-fluid col-md-sin-relleno">
-			    
-
-			    <!-- Collect the nav links, forms, and other content for toggling -->
-			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 ">
-			      <ul class="nav navbar-nav">
-			        <li><a href="#">Link</a></li>
-			        <li><a href="#">Link</a></li>
-			        <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-			          <ul class="dropdown-menu">
-			            <li><a href="#">Action</a></li>
-			            <li><a href="#">Another action</a></li>
-			            <li><a href="#">Something else here</a></li>
-			            <li role="separator" class="divider"></li>
-			            <li><a href="#">Separated link</a></li>
-			            <li role="separator" class="divider"></li>
-			            <li><a href="#">One more separated link</a></li>
-			          </ul>
-			        </li>
-			      </ul>
-			      
-			      <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#">Link</a></li>
-			        <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-			          <ul class="dropdown-menu">
-			            <li><a href="#">Action</a></li>
-			            <li><a href="#">Another action</a></li>
-			            <li><a href="#">Something else here</a></li>
-			            <li role="separator" class="divider"></li>
-			            <li><a href="#">Separated link</a></li>
-			          </ul>
-			        </li>
-			      </ul>
-			    </div><!-- /.navbar-collapse -->
-			  </div><!-- /.container-fluid -->
-			</nav>
-
-			<div class="row-fluid">
-				<div class="col-md-12">
-					<form>
+					
 					  <div class="form-group">
 					    <label for="exampleInputEmail1">Titulo de la  pregunta</label>
-					    <input type="text" class="form-control"  placeholder="Título de la Pregunta">
+					    <input type="text" class="form-control" id="titulo" placeholder="Título de la Pregunta">
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputPassword1">Tipo de Pregunta</label>
@@ -93,17 +24,68 @@
 					    	<option value="4">Pregunta con Opciones</option>
 					    </select>
 					  </div>
+					  <div class="form-group" id="opc" style="display: none;">
+					    <label for="exampleInputPassword1">¿Cuántas Opciones?</label>
+					    <div class="input-group">
+						  <input type="number" class="form-control" placeholder="Ingresa Número de Opciones" aria-describedby="basic-addon2" id="cuantas" max="5" min="0">
+						  <span class="input-group-addon" id="basic-addon2">Opciones</span>
+						</div>
+					  </div>
+					  <div class="opciones">
+					  	<div class="form-group" id="opc1">
+						    <label for="exampleInputEmail1">Opción 1</label>
+						    <input type="text" class="form-control"  placeholder="Ingresa Opción 1">
+						  </div><div class="form-group" id="opc2">
+						    <label for="exampleInputEmail1">Opción 2</label>
+						    <input type="text" class="form-control"  placeholder="Ingresa Opción 2">
+						  </div><div class="form-group" id="opc3">
+						    <label for="exampleInputEmail1">Opción 3</label>
+						    <input type="text" class="form-control"  placeholder="Ingresa Opción 3">
+						  </div><div class="form-group" id="opc4">
+						    <label for="exampleInputEmail1">Opción 4</label>
+						    <input type="text" class="form-control"  placeholder="Ingresa Opción 4">
+						  </div><div class="form-group" id="opc5">
+						    <label for="exampleInputEmail1">Opción 5</label>
+						    <input type="text" class="form-control"  placeholder="Ingresa Opción 5">
+						  </div>
+					  </div>
 					  
-					  <button type="submit" class="btn btn-default">Guardar Pregunta</button>
-					</form>
+					  
+					 
+					  <input type="hidden" name="_token"  id="token_pregunta" value="{{ csrf_token() }}">
+					  
+					
+				</div>
+				<div class="col-md-3">
+					<div class="aside">
+						@if(count($preguntas)>0)
+							<div>{{count($preguntas)+1}}</div> <br>
+							<span>Pregunta</span>
+						@else
+							<div>{{0+1}}</div> <br>
+							<span>Pregunta</span>
+						@endif
+
+
+
+					</div>
+					<br>
+					<div class="text-center">
+						<button type="submit" class="btn btn-success" id="guardar_pregunta">Guardar Pregunta</button>
+					</div>
+					
 				</div>
 			</div>
 
-		</div>
-	</div>
-	
-	<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+		
+
+@endsection
+
+@section('scripts')
+
 	<script>
+		
+
 		$('#tipo-pregunta').change(function(){
 			var valor = $(this).val();
 
@@ -117,11 +99,54 @@
 				console.log("abierta con opciones");
 			}
 			if(valor==4){
-				console.log("pregunta con opciones");
+				$('#opc').show();
+
+				$('#cuantas').change(function(){
+					if($(this).val()=='0'){
+						$('#opc1').hide();
+					}
+					if($(this).val()=='1'){
+						$('#opc1').show();
+						$('#opc2').hide();
+					}
+					if($(this).val()=='2'){
+						$('#opc2').show();
+						$('#opc3').hide();
+					}
+					if($(this).val()=='3'){
+						$('#opc3').show();
+						$('#opc4').hide();
+					}
+					if($(this).val()=='4'){
+						$('#opc4').show();
+						$('#opc5').hide();
+					}
+					if($(this).val()=='5'){
+						$('#opc5').show();
+
+					}
+				});
+				
 			}
 		});
-	</script>
-	
 
-</body>
-</html>
+		$('#guardar_pregunta').click(function(){
+			var datos = {
+				titulo: $('#titulo').val(),
+				tipo: $('#tipo-pregunta').val()
+			};
+
+			$.ajax({
+				url:'{{ url("admin/pregunta/guardar") }}',
+				data: datos,
+				headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
+				type: 'POST',
+				success: function(data){
+					location.href = "/admin/pregunta/crear";
+				}
+			})
+		});
+	</script>
+
+@endsection
+
