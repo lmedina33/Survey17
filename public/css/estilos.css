@@ -1,0 +1,36 @@
+.color-background-wet-asphalt{
+	background-color: #34495e;
+}
+.color-white{
+	color: white;
+}
+
+.col-md-sin-relleno{
+	padding-right: 0;
+	padding-left: 0;
+}
+
+/* bootstrap customize */
+.navbar-default {
+    background-color: #34495e;
+    border-color: #34495e;
+}
+.navbar{
+	border-radius: 0;
+}
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+.nav-pills > li > a {
+    border-radius: 0px;
+    color: white;
+}
+.nav-pills > li > a:hover{
+	color: black;
+}
+.form-control{
+	border-radius: 0;
+}
+.btn{
+	border-radius: 0;
+}
