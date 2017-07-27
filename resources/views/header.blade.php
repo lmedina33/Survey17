@@ -1,94 +1,71 @@
-<!DOCTYPE html>
-<html lang="en-us">
-        <head>
-                <meta charset="utf-8">
-                <title>Encuestas -  CGR - SCI - 2017</title>
-                <meta name="description" content="Live preview for Material Style - Material Design For All at WrapBootstrap">
-                <meta name="viewport" content="width=1024">
-                <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-                <link rel="stylesheet" type="text/css" media="screen" href="//d85wutc1n854v.cloudfront.net/live/css/screen_preview_legacy.css">
-                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-                <!--<script src="//cdn.optimizely.com/js/233905874.js"></script>-->
-                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-                 <link rel="stylesheet" href="https://agmstudio.io/themes/material-style/1.5.1/assets/css/style.light-blue-500.min.css" />
-                 <link rel="stylesheet" href="https://agmstudio.io/themes/material-style/1.5.1/assets/css/plugins.min.css" />
-                 <link rel="stylesheet" href="https://agmstudio.io/themes/material-style/1.5.1/assets/css/preload.min.css" />
-                 <link rel="stylesheet" href="https://agmstudio.io/themes/material-style/1.5.1/assets/css/width-boxed.min.css" id="ms-boxed" disabled="">
-                <script src="//d85wutc1n854v.cloudfront.net/live/js/behavior_legacy.js"></script>
-                <!--[if lt IE 9]>
-        <script src="https://agmstudio.io/themes/material-style/1.5.1/assets/js/html5shiv.min.js"></script>
-        <script src="https://agmstudio.io/themes/material-style/1.5.1/assets/js/respond.min.js"></script>
-    <![endif]-->
-                
-                <link rel="shortcut icon" href="//d85wutc1n854v.cloudfront.net/live/imgs/favicon.ico">
-        </head>
-        <body>
-                <div id="main">
-                        <header class="ms-header ms-header-primary">
-                                <div class="container container-full">
-          <div class="ms-title">
-            <a href="index.html">
-              <!-- <img src="assets/img/demo/logo-header.png" alt=""> -->
-              <span class="ms-logo animated zoomInDown animation-delay-5">E</span>
-              <h1 class="animated fadeInRight animation-delay-6">Encuesta -
-                <span>CGR-SCI-Comunicaciones</span>
-              </h1>
-            </a>
-          </div>
-          <div class="header-right">
-            <div class="share-menu">
-              <ul class="share-menu-list">
-                <li class="animated fadeInRight animation-delay-3">
-                  <a href="javascript:void(0)" class="btn-circle btn-google">
-                    <i class="zmdi zmdi-google"></i>
-                  </a>
-                </li>
-                <li class="animated fadeInRight animation-delay-2">
-                  <a href="javascript:void(0)" class="btn-circle btn-facebook">
-                    <i class="zmdi zmdi-facebook"></i>
-                  </a>
-                </li>
-                <li class="animated fadeInRight animation-delay-1">
-                  <a href="javascript:void(0)" class="btn-circle btn-twitter">
-                    <i class="zmdi zmdi-twitter"></i>
-                  </a>
-                </li>
-              </ul>
-              <a href="javascript:void(0)" class="btn-circle btn-circle-primary animated zoomInDown animation-delay-7">
-                <i class="zmdi zmdi-share"></i>
-              </a>
-            </div>
-            <a href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#ms-account-modal">
-              <i class="zmdi zmdi-account"></i>
-            </a>
-            <form class="search-form animated zoomInDown animation-delay-9">
-              <input id="search-box" type="text" class="search-input" placeholder="Buscar..." name="q">
-              <label for="search-box">
-                <i class="zmdi zmdi-search"></i>
-              </label>
-            </form>
-            <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-primary sb-toggle-left animated zoomInDown animation-delay-10">
-              <i class="zmdi zmdi-menu"></i>
-            </a>
-          </div>
-        </div>
-      </header>
-
+<html>
+<head>
+<title>Encuestas - 2017</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.0.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
+</script>
+<meta name="keywords" content="We Photography Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<!--Google Fonts-->
+<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+  <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $(".scroll").click(function(event){   
+          event.preventDefault();
+          $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+        });
+      });
+  </script>
+<!-- //end-smoth-scrolling -->
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--header start here-->
+<!-- NAVBAR
+    ================================================== -->
+<div class="header">
+  <div class="fixed-header">  
+        <div class="navbar-wrapper">
+          <div class="container">
+            <nav class="navbar navbar-inverse navbar-static-top">
+                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <div class="logo wow slideInLeft" data-wow-delay="0.3s">
+                          <a class="navbar-brand" href="index.html"><img src="images/logo.png" /></a>
+                    </div>
                 </div>
-                <script>
-                        $(document).ready(function(){
-                                function fix_height(){
-                                        var h = $("#tray").height();   
-                                        $("#preview").attr("height", (($(window).height()) - h) + "px");
-                                }
-                                $(window).resize(function(){ fix_height(); }).resize();
-                                //$("#preview").contentWindow.focus();
-                        });
-                </script>
-
-                <script src="https://agmstudio.io/themes/material-style/1.5.1/assets/css/plugins.min.js"></script>
-               <script src="https://agmstudio.io/themes/material-style/1.5.1/assets/css/app.min.js"></script>
-               <script src="https://agmstudio.io/themes/material-style/1.5.1/assets/css/configurator.min.js"></script>
-              <script src="https://agmstudio.io/themes/material-style/1.5.1/assets/css/index.js"></script>
-        </body>
+                <div id="navbar" class="navbar-collapse collapse">
+               <nav class="cl-effect-1">  
+                  <ul class="nav navbar-nav">
+                   <li><a href="#" class="scroll"> <span data-hover="Home">Home</span></a></li>
+            <li><a href="#About" class="scroll"> <span data-hover="About">About</span></a></li>
+            <li><a href="#Services" class="scroll"> <span data-hover="Services">Services</span></a></li>
+            <li><a href="#Work" class="scroll"> <span data-hover="Work">Work</span></a></li>
+            <li><a href="#Pricing" class="scroll"> <span data-hover="Pricing">Pricing</span></a></li>
+            <li><a href="#Contact" class="scroll"> <span data-hover="Contact">Contact</span></a></li>         
+                  </ul>
+                </nav>
+                </div>            
+                 </nav>
+              </div>
+               <div class="clearfix"> </div>
+        </div>
+   </div>
+</div>
+</body>
 </html>
