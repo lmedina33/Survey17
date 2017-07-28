@@ -53,12 +53,12 @@
                     <div id="navbar" class="navbar-collapse collapse">
                    <nav class="cl-effect-1">    
                       <ul class="nav navbar-nav">
-                       <li><a href="#" class="scroll"> <span data-hover="Home">Datos</span></a></li>
-                        <li><a href="#About" class="scroll"> <span data-hover="About">Módulo 1</span></a></li>
-                        <li><a href="#Services" class="scroll"> <span data-hover="Services">Módulo 2</span></a></li>
-                        <li><a href="#Work" class="scroll"> <span data-hover="Work">Módulo 3</span></a></li>
-                        <li><a href="#Pricing" class="scroll"> <span data-hover="Pricing">Módulo 4</span></a></li>
-                        <li><a href="#Contact" class="scroll"> <span data-hover="Contact">Contáctenos</span></a></li>                   
+                       <li><a href="#" class="scroll"> <span data-hover="Home">Inicio</span></a></li>
+                        <li><a href="#About" class="scroll"> <span data-hover="About">Datos</span></a></li>
+                        <li><a href="#Services" class="scroll"> <span data-hover="Services">Módulo 1</span></a></li>
+                        <li><a href="#Work" class="scroll"> <span data-hover="Work">Módulo 2</span></a></li>
+                        <li><a href="#Pricing" class="scroll"> <span data-hover="Pricing">Módulo 3</span></a></li>
+                        <li><a href="#Contact" class="scroll"> <span data-hover="Contact">Módulo 4</span></a></li>                   
                       </ul>
                     </nav>
                     </div>            
@@ -74,10 +74,16 @@
   <div class="container">
      <div class="banner-main" id="home">
          <div class="bann-right">
-            <h1>Encuestas - CGR - DCI</h1>
+            <h1>Encuesta - CGR - DCI</h1>
             <h2>Comunicaciones</h2>
-            <p>We each try to keep our photo shoots loose and relaxed and geared toward you all having fun together as a family. </p>
-            <img src="images/ftr-logo.png" alt=""/>
+            <div class="price-bottom">
+                <div class="price-grid">
+                    <h3>Guía Práctica de la Encuesta</h3>
+                    <span class="price-line"> </span>
+                       
+                </div>
+                </div>
+            <img src="{{ asset('images/logotipo_2.png')}}" alt=""/>
          </div>
         <div class="clearfix"> </div>
     </div>
@@ -94,7 +100,7 @@
             <div class="col-md-9 about-right">
           <div class="about-top">
             <h3>Datos Generales</h3>
-            <h5>Completar Datos</h5>
+            <h5>Completar Datos de los encuestados</h5>
             <ul>
                 <li><p>I remember thinking, as a child, it was taking forever to grow up. I counted each milestone – teen years, learner’s permit, license and finally, adulthood.</p></li>
                 <li><p>I finally grew up. I met my husband, and we had our own children. And now, as a parent, I can’t believe how fast time is going.</p></li>
@@ -102,17 +108,17 @@
             <p>It’s too fast, and while I want to remember every minute of it, I’m often surprised when my husband reminds me of something I’ve already forgotten.</p>
          </div>
          <div class="worker">
-            <h4>THE TEAM</h4>
-            <p>It’s too fast, and while I want to remember every minute of it,</p>
+            <h4>COMPLETAR DATOS DEL EQUIPO DE TRABAJO</h4>
+            <p>Completar datos según el cargo establecido</p>
             <p> </p>
             <div class="col-md-4 team-grid">
-                <img src="images/t1.jpg" alt=""/>
+                <img src="{{ asset('images/im1.jpg')}}" alt=""/>
             </div>
             <div class="col-md-4 team-grid">
-                <img src="images/t2.jpg" alt=""/>
+                <img src="{{ asset('images/im1.jpg')}}" alt=""/>
             </div>
             <div class="col-md-4 team-grid">
-                <img src="images/t3.jpg" alt=""/>
+                <img src="{{ asset('images/im1.jpg')}}" alt=""/>
             </div>
            <div class="clearfix"> </div>
          </div>
@@ -369,10 +375,10 @@
     <div class="container">
         <div class="footer-main">
             <div class="footer-left">
-               <a href="#"><img src="{{ asset('images/ftr-logo.png')}}" alt=""/></a>
+               <a href="#"><img src="{{ asset('images/logotipo_1.png')}}" alt=""/></a>
             </div>
             <div class="footer-right">
-                <p>&copy; 2017 We Photography. All Rights Reserved | Template by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
+                <p>&copy; 2017 La Contraloría. Todos los derechos reservados | <a href="#" target="_blank">Comunicaciones</a></p>
             </div>
         </div>
         <script type="text/javascript">

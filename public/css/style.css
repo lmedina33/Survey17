@@ -43,6 +43,7 @@ body a{
     float: left;
     height:0px !important;  
     padding:0px !important;  
+   
 }
 .nav > li > a {
     margin: 0px 7px !important;
@@ -134,7 +135,7 @@ nav a:focus {
 	transform: translateX(0px);
 }
 .banner {
-  background: url(../images/encuesta.jpg)no-repeat center;
+  background: url(../images/enc.png)no-repeat center;
   min-height: 896px;
   background-size: cover;
 }
@@ -147,7 +148,7 @@ nav a:focus {
 .bann-right h1 {
 	font-size: 30px;
 	font-weight: 400;
-	color: #fff;
+	color: #000;
 	text-transform: uppercase;
 	padding: 110px 0px 0px 0px;
 	font-family: 'Roboto', sans-serif;
