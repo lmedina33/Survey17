@@ -30,8 +30,10 @@
 
 			<!-- contenido del menu izquierdo -->
 
-			<ul class="nav nav-pills nav-stacked">
+			<ul class="nav nav-pills nav-stacked nav-custo">
 			  <li role="presentation"><a href="/admin/pregunta/crear">Crear Pregunta</a></li>
+			  <li role="presentation"><a href="/admin/preguntas">Lista Preguntas</a></li>
+			  <li role="presentation"><a href="/admin/modulos">Lista Modulos</a></li>
 			  <!-- <li role="presentation"><a href="#">Profile</a></li>
 			  <li role="presentation"><a href="#">Messages</a></li> -->
 			</ul>
@@ -43,7 +45,7 @@
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 ">
-			      <ul class="nav navbar-nav">
+			      <!-- <ul class="nav navbar-nav">
 			        <li><a href="#">Link</a></li>
 			        <li><a href="#">Link</a></li>
 			        <li class="dropdown">
@@ -58,11 +60,11 @@
 			            <li><a href="#">One more separated link</a></li>
 			          </ul>
 			        </li>
-			      </ul>
+			      </ul> -->
 			      
 			      <ul class="nav navbar-nav navbar-right">
 			        <li><a href="#">Link</a></li>
-			        <li class="dropdown">
+			        <!-- <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 			          <ul class="dropdown-menu">
 			            <li><a href="#">Action</a></li>
@@ -71,7 +73,7 @@
 			            <li role="separator" class="divider"></li>
 			            <li><a href="#">Separated link</a></li>
 			          </ul>
-			        </li>
+			        </li> -->
 			      </ul>
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->

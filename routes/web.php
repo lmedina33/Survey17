@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/pregunta/crear', 'PreguntaController@crearPregunta');
 Route::post('/admin/pregunta/guardar', 'PreguntaController@guardarPregunta');
+Route::get('/admin/preguntas','PreguntaController@getListaPreguntas');
+Route::get('/admin/pregunta/{slug}/{id}','PreguntaController@verPregunta');
+Route::get('/admin/modulos','ModuloController@getListaModulos');
+
+Route::get('/encuesta','EncuestaController@index');

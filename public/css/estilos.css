@@ -64,3 +64,19 @@
 .opciones>.form-group{
 	display: none;
 }
+.btn-custo{
+	width: 100%;
+}
+.table-preguntas>tbody>tr>td{
+	font-size: 0.9em;
+	vertical-align: middle;
+}
+.table-preguntas>tbody>tr:hover{
+	background-color: #eee;
+	cursor: pointer;
+}
+
+.nav-custo>li>a:hover{
+	background-color: #f1c40f;
+	border-right: 1px solid #34495e;
+}
