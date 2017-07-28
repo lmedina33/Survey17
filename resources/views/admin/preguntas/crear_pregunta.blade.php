@@ -9,15 +9,27 @@
 					</div>
 				</div>
 				<div class="col-md-9">
-
+	
+					  <div class="form-group">
+					    <label for="exampleInputPassword1">Módulo</label>
+					    <select name="" class="form-control" id="modulo-pregunta">
+					    	<option value="" disabled >Escoger Módulo</option>
+					    	@foreach($modulos as $modulo)
+					    		<option value="{{$modulo->id}}">{{$modulo->modulo}} {{$modulo->nombre_modulo}}</option>
+					    	@endforeach
+					    	
+					    </select>
+					  </div>
 					
 					  <div class="form-group">
 					    <label for="exampleInputEmail1">Titulo de la  pregunta</label>
 					    <input type="text" class="form-control" id="titulo" placeholder="Título de la Pregunta">
 					  </div>
+					  
 					  <div class="form-group">
 					    <label for="exampleInputPassword1">Tipo de Pregunta</label>
 					    <select name="" class="form-control" id="tipo-pregunta">
+					    	<option value="" disabled>Escoger Tipo de Pregunta</option>
 					    	<option value="1">Pregunta Cerrada</option>
 					    	<option value="2">Pregunta Abierta</option>
 					    	<option value="3">Pregunta Abierta con Opciones</option>
@@ -34,19 +46,19 @@
 					  <div class="opciones">
 					  	<div class="form-group" id="opc1">
 						    <label for="exampleInputEmail1">Opción 1</label>
-						    <input type="text" class="form-control"  placeholder="Ingresa Opción 1">
+						    <input type="text" class="form-control" id="opcion1" placeholder="Ingresa Opción 1">
 						  </div><div class="form-group" id="opc2">
 						    <label for="exampleInputEmail1">Opción 2</label>
-						    <input type="text" class="form-control"  placeholder="Ingresa Opción 2">
+						    <input type="text" class="form-control" id="opcion2" placeholder="Ingresa Opción 2">
 						  </div><div class="form-group" id="opc3">
 						    <label for="exampleInputEmail1">Opción 3</label>
-						    <input type="text" class="form-control"  placeholder="Ingresa Opción 3">
+						    <input type="text" class="form-control" id="opcion3" placeholder="Ingresa Opción 3">
 						  </div><div class="form-group" id="opc4">
 						    <label for="exampleInputEmail1">Opción 4</label>
-						    <input type="text" class="form-control"  placeholder="Ingresa Opción 4">
+						    <input type="text" class="form-control" id="opcion4" placeholder="Ingresa Opción 4">
 						  </div><div class="form-group" id="opc5">
 						    <label for="exampleInputEmail1">Opción 5</label>
-						    <input type="text" class="form-control"  placeholder="Ingresa Opción 5">
+						    <input type="text" class="form-control" id="opcion5" placeholder="Ingresa Opción 5">
 						  </div>
 					  </div>
 					  
@@ -56,7 +68,7 @@
 					  
 					
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3" style="margin-top: 1.7em;">
 					<div class="aside">
 						@if(count($preguntas)>0)
 							<div>{{count($preguntas)+1}}</div> <br>
@@ -71,7 +83,7 @@
 					</div>
 					<br>
 					<div class="text-center">
-						<button type="submit" class="btn btn-success" id="guardar_pregunta">Guardar Pregunta</button>
+						<button type="submit" class="btn btn-success btn-custo" id="guardar_pregunta">Guardar Pregunta</button>
 					</div>
 					
 				</div>
@@ -90,12 +102,14 @@
 			var valor = $(this).val();
 
 			if(valor==1){
-				console.log("solo si o no");
+				$('#opc').hide();
 			}
 			if(valor==2){
+				$('#opc').hide();
 				console.log("sin opciones");
 			}
 			if(valor==3){
+				$('#opc').hide();
 				console.log("abierta con opciones");
 			}
 			if(valor==4){
@@ -131,22 +145,59 @@
 		});
 
 		$('#guardar_pregunta').click(function(){
-			var datos = {
-				titulo: $('#titulo').val(),
-				tipo: $('#tipo-pregunta').val()
-			};
 
-			$.ajax({
-				url:'{{ url("admin/pregunta/guardar") }}',
-				data: datos,
-				headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
-				type: 'POST',
-				success: function(data){
-					location.href = "/admin/pregunta/crear";
-				}
-			})
+			if($('#tipo-pregunta').val()=="1"){
+				$.ajax({
+					url:'{{ url("admin/pregunta/guardar") }}',
+					data: {
+						modulo_id: $('#modulo-pregunta').val(),
+						titulo: $('#titulo').val(),
+						tipo: $('#tipo-pregunta').val(),
+						opcion1: 'Si',
+						opcion2: 'No',
+						opcion3: 'false',
+						opcion4: 'false',
+						opcion5: 'false'
+					},
+					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
+					type: 'POST',
+					success: function(data){
+						location.href = "/admin/pregunta/crear";
+					}
+				});
+			}
+
+			if($('#tipo-pregunta').val()=="4"){
+				$.ajax({
+					url:'{{ url("admin/pregunta/guardar") }}',
+					data: {
+						modulo_id: $('#modulo-pregunta').val(),
+						titulo: $('#titulo').val(),
+						tipo: $('#tipo-pregunta').val(),
+						opcion1: $('#opcion1').val(),
+						opcion2: $('#opcion2').val(),
+						opcion3: $('#opcion3').val(),
+						opcion4: $('#opcion4').val(),
+						opcion5: $('#opcion5').val()
+					},
+					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
+					type: 'POST',
+					success: function(data){
+						location.href = "/admin/pregunta/crear";
+					}
+				});
+			}
+
+			
 		});
 	</script>
 
 @endsection
 
+	
+	
+	
+	
+
+</body>
+</html>

@@ -9,7 +9,9 @@ class PreguntaModel extends Model
     protected $table = "preguntas";
     
     protected $fillable = [
+    	'modulo_id',
     	'titulo_pregunta',
-    	'tipo_pregunta'
+    	'tipo_pregunta',
+    	'slug'
     ];
 }

@@ -15,8 +15,11 @@ class CreatePreguntaTable extends Migration
     {
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('modulo_id')->unsigned();
+            $table->foreign('modulo_id')->references('id')->on('modulos');
             $table->string('titulo_pregunta',300);
             $table->string('tipo_pregunta');
+            $table->string('slug',400);
             $table->timestamps();
         });
     }
