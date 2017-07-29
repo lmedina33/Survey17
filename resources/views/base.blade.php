@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+	<link rel="stylesheet" href="{{asset('css/estilos-publicos.css')}}">
 </head>
 <body>
 	<div class="container">
@@ -14,6 +15,8 @@
 
 	<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 	<script src="{{asset('js/bootstrap.js')}}"></script>
+
+	@yield('scripts')
 
 </body>
 </html>
