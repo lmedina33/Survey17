@@ -23,8 +23,8 @@ body a{
 /*--header start here--*/
 /*--header menu nav start--*/
 .navbar-wrapper {
-    padding: 1.5em 0em 2em 0em;
-    margin-top: 0px !important;
+    padding: 1em 0em 4em 0em;
+    margin-top: 20px !important;
     line-height: 36px;
 }
 .navbar-inverse {
@@ -136,7 +136,7 @@ nav a:focus {
 }
 .banner {
   background: url(../images/enc.png)no-repeat center;
-  min-height: 896px;
+  min-height: 696px;
   background-size: cover;
 }
 .header-main {
@@ -866,13 +866,13 @@ span.con-line {
 	font-size: 15px;
 	font-weight: 400;
 	color: #000;
-	border: 2px solid #000;
+	border: 3px solid #FE8301;
 	padding: 10px 40px;
 	background: url(../images/port-anc.png)no-repeat 10px 15px;
 }
 .portfolio-bwn a:hover{
 	text-decoration: none;
-	border:2px solid #FE8301;
+	border:3px solid #DF0101;
 	transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	-ms-transition: all 0.5s;
@@ -880,6 +880,35 @@ span.con-line {
 	-webkit-transition: all 0.5s;
 }
 span.port-line {
+	background: #999;
+	display: block;
+	width: 1170px;
+	height: 1px;
+	margin: 45px auto 0px;
+}
+
+.portfolio-bwn1 {
+	margin: 25px 0px;
+}
+.portfolio-bwn1 a {
+	font-size: 15px;
+	font-weight: 400;
+	color: #000;
+	border: 3px solid #FE8301;
+	padding: 10px 40px;
+	float: center;
+	background: url(../images/port-anc.png)no-repeat 10px 15px;
+}
+.portfolio-bwn1 a:hover{
+	text-decoration: none;
+	border:3px solid #DF0101;
+	transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+}
+span.port1-line {
 	background: #999;
 	display: block;
 	width: 1170px;

@@ -76,14 +76,12 @@
          <div class="bann-right">
             <h1>Encuesta - CGR - DCI</h1>
             <h2>Comunicaciones</h2>
-            <div class="price-bottom">
-                <div class="price-grid">
-                    <h3>Guía Práctica de la Encuesta</h3>
-                    <span class="price-line"> </span>
-                       
-                </div>
-                </div>
-            <img src="{{ asset('images/logotipo_2.png')}}" alt=""/>
+             <div class="portfolio-bwn">
+            
+            <a href="#">VER GUÍA</a>
+          </div>
+
+           
          </div>
         <div class="clearfix"> </div>
     </div>
@@ -102,10 +100,15 @@
             <h3>Datos Generales</h3>
             <h5>Completar Datos de los encuestados</h5>
             <ul>
-                <li><p>I remember thinking, as a child, it was taking forever to grow up. I counted each milestone – teen years, learner’s permit, license and finally, adulthood.</p></li>
-                <li><p>I finally grew up. I met my husband, and we had our own children. And now, as a parent, I can’t believe how fast time is going.</p></li>
+                <li><p>En esta sección se debe completar la información referente a la identificación de la institución encuestada y de los respresentantes respectivamente.</p></li>
+                <li><p>Se debe realizar a detalle cada paso en el llenado del formulario.</p></li>
+
+                 <div class="portfolio-bwn">
+            
+            <a href="#">VER GUÍA</a>
+          </div>
             </ul>
-            <p>It’s too fast, and while I want to remember every minute of it, I’m often surprised when my husband reminds me of something I’ve already forgotten.</p>
+            <p ></p>
          </div>
          <div class="worker">
             <h4>COMPLETAR DATOS DEL EQUIPO DE TRABAJO</h4>
@@ -123,9 +126,12 @@
            <div class="clearfix"> </div>
          </div>
       </div>
-   <div class="clearfix"> </div>
+  
+  
        </div>
+
     </div>
+
 </div>
 <!--about end here-->
 <!--services start here-->
