@@ -34,6 +34,7 @@
 			  <li role="presentation"><a href="/admin/pregunta/crear">Crear Pregunta</a></li>
 			  <li role="presentation"><a href="/admin/preguntas">Lista Preguntas</a></li>
 			  <li role="presentation"><a href="/admin/modulos">Lista Modulos</a></li>
+			  <li role="presentation"><a href="/admin/entidades">Entidades</a></li>
 			  <!-- <li role="presentation"><a href="#">Profile</a></li>
 			  <li role="presentation"><a href="#">Messages</a></li> -->
 			</ul>

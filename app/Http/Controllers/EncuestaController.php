@@ -9,6 +9,7 @@ class EncuestaController extends Controller
     public function index(){
     	$preguntas = \App\PreguntaModel::all();
     	$modulos = \App\ModuloModel::all();
-    	return view('encuesta.index', compact('preguntas','modulos'));
+    	$opciones = \App\OpcionModel::all();
+    	return view('encuesta.index', compact('preguntas','modulos','opciones'));
     }
 }
