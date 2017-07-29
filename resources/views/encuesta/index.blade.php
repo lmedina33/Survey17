@@ -85,191 +85,24 @@
 		  	</div>
 		  	@foreach($modulos as $modulo)
 		  		@if($modulo->id==1)
-					<div role="tabpanel" class="tab-pane" id="{{$modulo->tab}}">
-						<div class="preg">
-							@foreach($preguntas as $pregunta)
-								@if($pregunta->modulo_id==$modulo->id)
-									@if($pregunta->id==1)
-										<div class="pregunta-activa text-center">{{$pregunta->titulo_pregunta}}</div>
-										
-										<div class="row">
-											<div class="col-md-8 col-md-offset-2">
-												<table class="table table-condensed">
-													<thead>
-														<tr class="thead-q">
-															@foreach($opciones as $opcion)
-																@if($opcion->pregunta_id==$pregunta->id)
-																	@if($opcion->opcion1!="false")
-																		<th class="text-center">
-																			a)
-																		</th>
-																	@else
 
-																	@endif
-
-																	@if($opcion->opcion2!="false")
-																		<th class="text-center">
-																			b)
-																		</th>
-																	@else
-
-																	@endif
-
-																	@if($opcion->opcion3!="false")
-																		<th class="text-center">
-																			c)
-																		</th>
-																	@else
-
-																	@endif
-
-																	@if($opcion->opcion4!="false")
-																		<th class="text-center">
-																			d)
-																		</th>
-																	@else
-
-																	@endif
-
-																	@if($opcion->opcion5!="false")
-																		<th class="text-center">
-																			e)
-																		</th>
-																	@else
-
-																	@endif
-																	
-																@endif
-															@endforeach
-															
-														</tr>
-													</thead>
-													<tbody>
-														<tr class="td-q">
-															@foreach($opciones as $opcion)
-																@if($opcion->pregunta_id==$pregunta->id)
-																	@if($opcion->opcion1!="false")
-																		<td class="text-center">
-																			<div class="checkbox">
-																			    <label>
-																			      <input type="checkbox"> <b>{{$opcion->opcion1}}</b>
-																			    </label>
-																			</div>
-																		</td>
-																	@else
-
-																	@endif
-
-																	@if($opcion->opcion2!="false")
-																		<td class="text-center">
-																			<div class="checkbox">
-																			    <label>
-																			      <input type="checkbox"> <b>{{$opcion->opcion2}}</b>
-																			    </label>
-																			</div>
-																		</td>
-																	@else
-
-																	@endif
-
-																	@if($opcion->opcion3!="false")
-																		<td class="text-center">
-																			<div class="checkbox">
-																			    <label>
-																			      <input type="checkbox"> <b>{{$opcion->opcion3}}</b>
-																			    </label>
-																			</div>
-																		</td>
-																	@else
-
-																	@endif
-
-																	@if($opcion->opcion4!="false")
-																		<td class="text-center">
-																			<div class="checkbox">
-																			    <label>
-																			      <input type="checkbox"> <b>{{$opcion->opcion4}}</b>
-																			    </label>
-																			</div>
-																		</td>
-																	@else
-
-																	@endif
-																	
-																	@if($opcion->opcion5!="false")
-																		<td class="text-center">
-																			<div class="checkbox">
-																			    <label>
-																			      <input type="checkbox"> <b>{{$opcion->opcion1}}</b>
-																			    </label>
-																			</div>
-																		</td>
-																	@else
-
-																	@endif
-																@endif
-															@endforeach
-															
-															
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-										<br>
-
-										<div class="text-center">
-											<button class="btn btn-default" id="guardar_rpta">
-												Guardar Respuesta
-											</button>
-											<button type="submit" class="btn btn-warning" id="next">Siguiente Pregunta</button>
-										</div>
-										<br>
-										<br>
-										
-							    </div>
-									@else
-										<div class="text-center" style="font-size: .9em;color:#b6b6b6">			{{$pregunta->titulo_pregunta}}
-										</div>
-									@endif
-								@endif
-							@endforeach
-						
-					</div>
+					@include('encuesta.otros.encuesta_preguntas')
 
 		  		@endif
 		  		@if($modulo->id==2)
-					<div role="tabpanel" class="tab-pane" id="{{$modulo->tab}}">
-						
-							@foreach($preguntas as $pregunta)
-								@if($pregunta->modulo_id==$modulo->id)
-									{{$pregunta->titulo_pregunta}}
-								@endif
-							@endforeach
-						
-					</div>
+
+					@include('encuesta.otros.encuesta_preguntas')
+
 		  		@endif
 		  		@if($modulo->id==3)
-					<div role="tabpanel" class="tab-pane" id="{{$modulo->tab}}">
-						
-							@foreach($preguntas as $pregunta)
-								@if($pregunta->modulo_id==$modulo->id)
-									{{$pregunta->titulo_pregunta}}
-								@endif
-							@endforeach
-						
-					</div>
+
+					@include('encuesta.otros.encuesta_preguntas')
+
 		  		@endif
 		  		@if($modulo->id==4)
-					<div role="tabpanel" class="tab-pane" id="{{$modulo->tab}}">
-						
-							@foreach($preguntas as $pregunta)
-								@if($pregunta->modulo_id==$modulo->id)
-									{{$pregunta->titulo_pregunta}}
-								@endif
-							@endforeach
-						
-					</div>
+					
+					@include('encuesta.otros.encuesta_preguntas')
+
 		  		@endif
 		  	@endforeach
 		    
@@ -338,50 +171,67 @@
 			var presidente = $('#presidente').val();
 			var encuestado = $('#encuestado').val();
 
-			
+			var validate = "";
 
-			$.ajax({
-				url:'{{url("ajax/guardar/datos_generales")}}',
-				data:{
-					entidad: entidad,
-					departamento: departamento,
-					provincia: provincia,
-					distrito: distrito,
-					titular: titular,
-					presidente: presidente,
-					encuestado: encuestado
-				},
-				headers: {'X_CSRF_TOKEN': $('#token_entidad').val()},
-				type: 'POST',
-				beforeSend: function(){
-					$('.loading').css({'display':'block'});
-				},
-				success: function(data){
-					$('#entidad').val('');
-					$('#titular').val('');
-					$('#presidente').val('');
-					$('#encuestado').val('');
+			if(entidad==""||titular==""||presidente==""||encuestado==""||departamento==""||provincia==""||distrito==""){
+				validate = "false";
 
-					$('#entidad').attr('disabled','disabled');
-					$('#titular').attr('disabled','disabled');
-					$('#presidente').attr('disabled','disabled');
-					$('#encuestado').attr('disabled','disabled');
-					$('#departamento').attr('disabled','disabled');
-					$('#provincia').attr('disabled','disabled');
-					$('#distrito').attr('disabled','disabled');
+				$('.mensaje-enviado>b').html('<span class="glyphicon glyphicon-alert"></span> ¡Por Favor, Llena todos los datos del Formulario!');
+				$('.mensaje-enviado>b').css({'color':'red'});
+				setTimeout(function(){
+					$('.mensaje-enviado>b').html('');
+				}, 2000);
+
+			}
+			if(entidad!=""&&titular!=""&&presidente!=""&&encuestado!=""&&departamento!=""&&provincia!=""&&distrito!=""){
+				validate = "true";
+
+				$.ajax({
+					url:'{{url("ajax/guardar/datos_generales")}}',
+					data:{
+						entidad: entidad,
+						departamento: departamento,
+						provincia: provincia,
+						distrito: distrito,
+						titular: titular,
+						presidente: presidente,
+						encuestado: encuestado
+					},
+					headers: {'X_CSRF_TOKEN': $('#token_entidad').val()},
+					type: 'POST',
+					beforeSend: function(){
+						$('.loading').css({'display':'block'});
+					},
+					success: function(data){
+						$('#entidad').val('');
+						$('#titular').val('');
+						$('#presidente').val('');
+						$('#encuestado').val('');
+
+						$('#entidad').attr('disabled','disabled');
+						$('#titular').attr('disabled','disabled');
+						$('#presidente').attr('disabled','disabled');
+						$('#encuestado').attr('disabled','disabled');
+						$('#departamento').attr('disabled','disabled');
+						$('#provincia').attr('disabled','disabled');
+						$('#distrito').attr('disabled','disabled');
 
 
-					$('.loading').css({'display':'none'});
-					$('.mensaje-enviado>b').html('<span class="glyphicon glyphicon-thumbs-up"></span> ¡Los Datos han sido Guardados Correctamente!');
-					
-					next = data;
+						$('.loading').css({'display':'none'});
+						$('.mensaje-enviado>b').html('<span class="glyphicon glyphicon-thumbs-up"></span> ¡Los Datos han sido Guardados Correctamente!');
+						$('.mensaje-enviado>b').css({'color':'#34495e'});
 
-					
-				}
-			});
+						setTimeout(function(){
+							$('.mensaje-enviado>b').html('');
+						}, 3000);
+						
+						next = data;
 
-			
+						
+					}
+				});
 
+			}
 
 		});
 
@@ -390,17 +240,113 @@
 				$('#myTabs a[href="#modulo1"]').tab('show');
 			}
 			if(next=="0"){
-				$('.mensaje-enviado>b').html('<span class="glyphicon glyphicon-alert"></span> ¡Por Favor, antes de pasar a la Encuesta, debes llenar el Formulario!');
+				$('.mensaje-enviado>b').html('<span class="glyphicon glyphicon-alert"></span> ¡Por Favor, antes de pasar a la Encuesta, debes llenar y guardar correctamente los Datos del Formulario!');
+				$('.mensaje-enviado>b').css({'color':'red'});
 				setTimeout(function(){
 					$('.mensaje-enviado>b').html('');
-				}, 2000);
+				}, 4000);
 			}
 		});
 
-		$('#guardar_rpta').click(function(){
-			$('.preg').fadeOut();
+		
+		
+		var guardado=1;
+
+		
+
+		$('.guardar_rpta').click(function(){
+			var ide = $(this).attr('data-id');
+			var button = $(this).attr('data-id',ide);
+			var evaluador = [];
+			var j=0;
+			var sumaEvaluadora=0;
+			
+
+			
+			$('.checkbox.q'+ide).each( function(){
+				if($(this).children().children().first().is(':checked')){
+					console.log($(this).children().children().last().text());
+					evaluador[j]=1;
+				}
+				else{
+					evaluador[j]=0;
+				}
+				j=j+1;
+			});
+
+			for(var k=0; k<evaluador.length; k++){
+				sumaEvaluadora=sumaEvaluadora+evaluador[k];
+			}
+
+			if(sumaEvaluadora==0){
+				$('.msg>b').html('<span class="glyphicon glyphicon-alert"></span> ¡Por Favor, Debes Responder la Pregunta!');
+				$('.msg>b').css({'color':'red'});
+				setTimeout(function(){
+					$('.msg>b').html('');
+				},2000);
+			}
+			else{
+				guardado=1;
+			}
+
+
+			if(guardado==1){
+				button.hide(800);
+
+				$('.msg>b').html('<span class="glyphicon glyphicon-thumbs-up"></span> ¡Su Respuesta ha sido Guardada Correctamente!');
+				$('.msg>b').css({'color':'#34495e'});
+				
+				setTimeout(function(){
+					$('.msg>b').html('');
+				},3000);
+			}
+
+		});
+
+		$('.preg0').css({'display':'block'});
+
+		$('.next_pgta').click(function(){
+			if(guardado==1){
+				var id = $(this).attr('data-ide');
+				var ubi = $(this).attr('data-ubicacion');
+
+				if(ubi=="ultima"){
+					console.log(ubi);
+					$('.preg'+id).css({'opacity':'0.3'});
+					$('.preg'+id).hide(700);
+					
+					
+					$('.preg'+ubi).show(700);
+					guardado=0;
+				}
+				else{
+					$('.preg'+id).css({'opacity':'0.3'});
+					$('.preg'+id).hide(700);
+					
+					
+					$('.preg'+String(parseInt(id)+1)).show(700);
+					guardado=0;
+				}
+				
+			}
+			else{
+				$('.msg>b').html('<span class="glyphicon glyphicon-alert"></span> ¡Por Favor, Debes Responder y Guardar Correctamente para poder Seguir!');
+				$('.msg>b').css({'color':'red'});
+				
+				setTimeout(function(){
+					$('.msg>b').html('');
+				},3000);
+			}
+			
 		});
 
 
+	</script>
+
+	<script>
+		$('.next_mod').click(function(){
+			var id = $(this).attr('data-mod');
+			$('#myTabs a[href="#modulo'+String(parseInt(id)+1)+'"]').tab('show');
+		});
 	</script>
 @endsection
