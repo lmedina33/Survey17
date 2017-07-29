@@ -12,6 +12,8 @@ class PreguntaModel extends Model
     	'modulo_id',
     	'titulo_pregunta',
     	'tipo_pregunta',
-    	'slug'
+    	'slug',
+    	'orden',
+    	'ubicacion'
     ];
 }

@@ -38,6 +38,12 @@
 									@endforeach
 								</div>
 								<div>
+									<b>Órden en Módulo:</b> {{$pregunta->orden}}
+								</div>
+								<div>
+									<b>Ubicación en Módulo:</b> {{$pregunta->ubicacion}}
+								</div>
+								<div>
 									<b>Creada:</b> {{$pregunta->created_at}}
 								</div>
 								<div>

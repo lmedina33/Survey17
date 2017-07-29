@@ -6,6 +6,11 @@
     padding: 2em;
     color: #464646;
 }
+.pregunta-activa-uno{
+	font-size: 2em;
+    padding: 2em;
+    color: #95a5a6;
+}
 .thead-q{
 	background-color: #34495e;
     border-bottom: 4px solid #2c3e50;
@@ -62,6 +67,12 @@
 	margin-bottom: 1em;
 	color: #34495e;
 }
+.msg{
+	margin-bottom: 1em;
+}
 .form-control[disabled]{
 	background-color: #fbfbfb;
+}
+.pregunta-content{
+	display: none;
 }

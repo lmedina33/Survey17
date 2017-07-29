@@ -18,7 +18,9 @@ class PreguntaController extends Controller
                 'modulo_id'=>$request['modulo_id'],
 	    		'titulo_pregunta'=>$request['titulo'],
 	    		'tipo_pregunta'=>$request['tipo'],
-	    		'slug'=>str_slug($request['titulo'], "-")
+	    		'slug'=>str_slug($request['titulo'], "-"),
+                'orden'=>$request['orden'],
+                'ubicacion'=>$request['ubicacion']
 	    		]);
 
     		$user = \App\PreguntaModel::all()->last();

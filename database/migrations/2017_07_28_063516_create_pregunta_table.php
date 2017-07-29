@@ -20,6 +20,8 @@ class CreatePreguntaTable extends Migration
             $table->string('titulo_pregunta',300);
             $table->string('tipo_pregunta');
             $table->string('slug',400);
+            $table->string('orden');
+            $table->string('ubicacion');
             $table->timestamps();
         });
     }

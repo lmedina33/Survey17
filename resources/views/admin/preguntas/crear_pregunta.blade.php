@@ -9,40 +9,59 @@
 					</div>
 				</div>
 				<div class="col-md-9">
-	
-					  <div class="form-group">
-					    <label for="exampleInputPassword1">Módulo</label>
-					    <select name="" class="form-control" id="modulo-pregunta">
-					    	<option value="" disabled >Escoger Módulo</option>
-					    	@foreach($modulos as $modulo)
-					    		<option value="{{$modulo->id}}">{{$modulo->modulo}} {{$modulo->nombre_modulo}}</option>
-					    	@endforeach
-					    	
-					    </select>
-					  </div>
-					
-					  <div class="form-group">
-					    <label for="exampleInputEmail1">Titulo de la  pregunta</label>
-					    <input type="text" class="form-control" id="titulo" placeholder="Título de la Pregunta">
-					  </div>
-					  
-					  <div class="form-group">
-					    <label for="exampleInputPassword1">Tipo de Pregunta</label>
-					    <select name="" class="form-control" id="tipo-pregunta">
-					    	<option value="" disabled>Escoger Tipo de Pregunta</option>
-					    	<option value="1">Pregunta Cerrada</option>
-					    	<option value="2">Pregunta Abierta</option>
-					    	<option value="3">Pregunta Abierta con Opciones</option>
-					    	<option value="4">Pregunta con Opciones</option>
-					    </select>
-					  </div>
-					  <div class="form-group" id="opc" style="display: none;">
-					    <label for="exampleInputPassword1">¿Cuántas Opciones?</label>
-					    <div class="input-group">
-						  <input type="number" class="form-control" placeholder="Ingresa Número de Opciones" aria-describedby="basic-addon2" id="cuantas" max="5" min="0">
-						  <span class="input-group-addon" id="basic-addon2">Opciones</span>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+							    <label for="exampleInputPassword1">Módulo</label>
+							    <select name="" class="form-control" id="modulo-pregunta">
+							    	<option value="" disabled >Escoger Módulo</option>
+							    	@foreach($modulos as $modulo)
+							    		<option value="{{$modulo->id}}">{{$modulo->modulo}} {{$modulo->nombre_modulo}}</option>
+							    	@endforeach
+							    	
+							    </select>
+							  </div>
 						</div>
-					  </div>
+						<div class="col-md-6">
+							<div class="form-group">
+							    <label for="exampleInputPassword1">Tipo de Pregunta</label>
+							    <select name="" class="form-control" id="tipo-pregunta">
+							    	<option value="" disabled>Escoger Tipo de Pregunta</option>
+							    	<option value="1">Pregunta Cerrada</option>
+							    	<option value="2">Pregunta Abierta</option>
+							    	<option value="3">Pregunta Abierta con Opciones</option>
+							    	<option value="4">Pregunta con Opciones</option>
+							    </select>
+							  </div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8">
+							<div class="form-group">
+							    <label for="exampleInputEmail1">Título de la  pregunta</label>
+							    <input type="text" class="form-control" id="titulo" placeholder="Título de la Pregunta">
+							  </div>
+						</div>
+					
+						<div class="col-md-4">
+							<div class="form-group" id="opc" style="display: none;">
+							    <label for="exampleInputPassword1">¿Cuántas Opciones?</label>
+							    <div class="input-group">
+								  <input type="number" class="form-control" placeholder="Nro. de Opciones" aria-describedby="basic-addon2" id="cuantas" max="5" min="0">
+								  <span class="input-group-addon" id="basic-addon2">Opciones</span>
+								</div>
+							  </div>
+						</div>
+					</div>
+					  
+
+					  
+					
+					  
+					  
+					  
+					  
 					  <div class="opciones">
 					  	<div class="form-group" id="opc1">
 						    <label for="exampleInputEmail1">Opción 1</label>
@@ -82,6 +101,28 @@
 
 					</div>
 					<br>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group"  >
+							    <label for="exampleInputPassword1">Orden de la Pregunta en Módulo</label>
+							    <input type="text" class="form-control" id="orden">
+							  </div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group"  >
+							    <label for="exampleInputPassword1">Ubicación de la Pregunta en Módulo</label>
+							    <select name="" id="ubicacion" class="form-control">
+							    	<option value="primera">Primera</option>
+							    	<option value="intermedia">Intermedia</option>
+							    	<option value="ultima">Última</option>
+							    </select>
+							  </div>
+						</div>
+					</div>
+					
 					<div class="text-center">
 						<button type="submit" class="btn btn-success btn-custo" id="guardar_pregunta">Guardar Pregunta</button>
 					</div>
@@ -153,6 +194,8 @@
 						modulo_id: $('#modulo-pregunta').val(),
 						titulo: $('#titulo').val(),
 						tipo: $('#tipo-pregunta').val(),
+						orden: $('#orden').val(),
+						ubicacion: $('#ubicacion').val(),
 						opcion1: 'Si',
 						opcion2: 'No',
 						opcion3: 'false',
@@ -162,7 +205,7 @@
 					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
 					type: 'POST',
 					success: function(data){
-						location.href = "/admin/pregunta/crear";
+						location.href = "/admin/preguntas";
 					}
 				});
 			}
@@ -174,6 +217,8 @@
 						modulo_id: $('#modulo-pregunta').val(),
 						titulo: $('#titulo').val(),
 						tipo: $('#tipo-pregunta').val(),
+						orden: $('#orden').val(),
+						ubicacion: $('#ubicacion').val(),
 						opcion1: $('#opcion1').val(),
 						opcion2: $('#opcion2').val(),
 						opcion3: $('#opcion3').val(),
@@ -183,7 +228,7 @@
 					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
 					type: 'POST',
 					success: function(data){
-						location.href = "/admin/pregunta/crear";
+						location.href = "/admin/preguntas";
 					}
 				});
 			}
