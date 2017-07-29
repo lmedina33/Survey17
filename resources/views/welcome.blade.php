@@ -101,32 +101,36 @@
             <h5>Completar Datos de los encuestados</h5>
             <ul>
                 <li><p>En esta sección se debe completar la información referente a la identificación de la institución encuestada y de los respresentantes respectivamente.</p></li>
-                <li><p>Se debe realizar a detalle cada paso en el llenado del formulario.</p></li>
-
-                 <div class="portfolio-bwn">
-            
-            <a href="#">VER GUÍA</a>
-          </div>
+                <li><p>Se debe realizar a detalle cada paso en el llenado del formulario.
+                 </p></li>
+    
             </ul>
-            <p ></p>
+        
          </div>
          <div class="worker">
             <h4>COMPLETAR DATOS DEL EQUIPO DE TRABAJO</h4>
             <p>Completar datos según el cargo establecido</p>
             <p> </p>
+
             <div class="col-md-4 team-grid">
-                <img src="{{ asset('images/im1.jpg')}}" alt=""/>
+                <img src="{{ asset('images/IM2.jpg')}}" alt=""/>
             </div>
             <div class="col-md-4 team-grid">
-                <img src="{{ asset('images/im1.jpg')}}" alt=""/>
+                <img src="{{ asset('images/IM3.jpg')}}" alt=""/>
             </div>
             <div class="col-md-4 team-grid">
-                <img src="{{ asset('images/im1.jpg')}}" alt=""/>
+                <img src="{{ asset('images/IM4.jpg')}}" alt=""/>
             </div>
+
            <div class="clearfix"> </div>
          </div>
+         <BR>
       </div>
-  
+
+    <div align="center" class="portfolio-bwn">
+            
+            <a href="http://localhost:8000/encuesta">IR A ENCUESTA</a>
+          </div>
   
        </div>
 
@@ -139,8 +143,8 @@
     <div class="container">
         <div class="services-main">
             <div class="ser-top">
-                <h3>SERVICES</h3>
-                <h4>I want to remember every minute of it, I’m often surprised.</h4>
+                <h3>MÓDULO 1 - ASPECTOS GENERALES</h3>
+                <h4>Completar información en los formularios de preguntas de aspecto general</h4>
             </div>
             <div class="ser-bottom">
               <div class="ser-grid">
@@ -177,8 +181,13 @@
            </div>
            <div class="clearfix"> </div>
         </div>
+         <div align="center" class="portfolio-bwn">
+            
+            <a href="http://localhost:8000/encuesta">IR A ENCUESTA</a>
+          </div>
     </div>
 </div>
+
 <!--services end here-->
 <!--portfolio start here-->
 <link rel="stylesheet" href="css/swipebox.css">
@@ -192,8 +201,8 @@
 <div class="gallery" id="Work">
         <div class="portfolio-main">
             <div class="port-folio-top">
-                <h3>PORTFOLIO</h3>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>
+                <h3>MÓDULO 2</h3>
+                <h4>Se Debe responpoder las preguntas relacionadas a Sensiblización</h4>
             </div>
             <div class="port-folio-bottom">
                     <div id="portfoliolist">
@@ -240,8 +249,9 @@
                     <div class="clearfix"> </div>
             </div>
           <div class="clearfix"> </div>
-          <div class="portfolio-bwn">
-            <a href="#">VIEW ALL PORTFOLIO</a>
+           <div align="center" class="portfolio-bwn">
+            
+            <a href="http://localhost:8000/encuesta">IR A ENCUESTA</a>
           </div>
           <span class="port-line"> </span>
     </div>
@@ -263,8 +273,8 @@
     <div class="container">
         <div class="happy-main">
             <div class="happy-top">
-                <h3>HAPPY TESTIMONIALS</h3>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>
+                <h3>MÓDULO 3</h3>
+                <h4>En este módulo se debe responder lo relacionado con Comunicación</h4>
             </div>
             <div class="happy-bottom">
                  <div class="slider">
