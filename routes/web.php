@@ -23,7 +23,13 @@ Route::get('/admin/pregunta/{slug}/{id}','PreguntaController@verPregunta');
 Route::get('/admin/modulos','ModuloController@getListaModulos');
 Route::get('/admin/entidades','EntidadController@getListaEntidades');
 Route::get('/admin/entidad/{slug}/{id}','EntidadController@verEntidad');
+Route::get('/admin/modulo/crear','ModuloController@indexModulo');
+Route::post('/admin/modulo/guardar', 'ModuloController@guardarModulo');
 
 Route::get('/encuesta','EncuestaController@index');
 
+Route::get('/ajax/obtener/orden','PreguntaController@obtenerOrden');
 Route::post('/ajax/guardar/datos_generales','EntidadController@guardarEntidad');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

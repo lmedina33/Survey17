@@ -13,6 +13,8 @@
 						<div class="col-md-6">
 							<div class="form-group">
 							    <label for="exampleInputPassword1">Módulo</label>
+
+							    @if(count($modulos)>0)
 							    <select name="" class="form-control" id="modulo-pregunta">
 							    	<option value="" disabled >Escoger Módulo</option>
 							    	@foreach($modulos as $modulo)
@@ -20,18 +22,31 @@
 							    	@endforeach
 							    	
 							    </select>
+							    @else
+									<div style="padding: 7px 15px;background-color: rgba(157, 255, 0, 0.29);"> 
+										<span class="glyphicon glyphicon-hand-right"></span> Debes crear Módulos
+										<a href="{{url('admin/modulo/crear')}}">¡Click Aquí!</a>
+									</div>
+							    @endif
 							  </div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 							    <label for="exampleInputPassword1">Tipo de Pregunta</label>
+							    @if(count($modulos)>0)
 							    <select name="" class="form-control" id="tipo-pregunta">
 							    	<option value="" disabled>Escoger Tipo de Pregunta</option>
 							    	<option value="1">Pregunta Cerrada</option>
 							    	<option value="2">Pregunta Abierta</option>
-							    	<option value="3">Pregunta Abierta con Opciones</option>
+							    	<option value="3">Pregunta con Opciones/Priorización</option>
 							    	<option value="4">Pregunta con Opciones</option>
 							    </select>
+							    @else
+								<select name="" class="form-control" id="tipo-pregunta" disabled>
+							    	<option value="" disabled>Escoger Tipo de Pregunta</option>
+							    	
+							    </select>
+							    @endif
 							  </div>
 						</div>
 					</div>
@@ -40,7 +55,11 @@
 						<div class="col-md-8">
 							<div class="form-group">
 							    <label for="exampleInputEmail1">Título de la  pregunta</label>
+							    @if(count($modulos)>0)
 							    <input type="text" class="form-control" id="titulo" placeholder="Título de la Pregunta">
+							    @else
+								<input type="text" class="form-control" id="titulo" placeholder="Título de la Pregunta" disabled>
+							    @endif
 							  </div>
 						</div>
 					
@@ -88,6 +107,7 @@
 					
 				</div>
 				<div class="col-md-3" style="margin-top: 1.7em;">
+
 					<div class="aside">
 						@if(count($preguntas)>0)
 							<div>{{count($preguntas)+1}}</div> <br>
@@ -105,7 +125,11 @@
 						<div class="col-md-12">
 							<div class="form-group"  >
 							    <label for="exampleInputPassword1">Orden de la Pregunta en Módulo</label>
+							    @if(count($modulos)>0)
 							    <input type="text" class="form-control" id="orden">
+							    @else
+								<input type="text" class="form-control" id="orden" disabled>
+							    @endif
 							  </div>
 						</div>
 					</div>
@@ -114,17 +138,27 @@
 						<div class="col-md-12">
 							<div class="form-group"  >
 							    <label for="exampleInputPassword1">Ubicación de la Pregunta en Módulo</label>
+							    @if(count($modulos)>0)
 							    <select name="" id="ubicacion" class="form-control">
 							    	<option value="primera">Primera</option>
 							    	<option value="intermedia">Intermedia</option>
 							    	<option value="ultima">Última</option>
 							    </select>
+							    @else
+								<select name="" id="ubicacion" class="form-control" disabled>
+							    	
+							    </select>
+							    @endif
 							  </div>
 						</div>
 					</div>
+
+					<div class="msg-guardar text-center" style="display:none; margin-bottom: 1em;">
+						<img src="{{asset('images/loading.gif')}}" alt="" style="width: 30px">
+					</div>
 					
 					<div class="text-center">
-						<button type="submit" class="btn btn-success btn-custo" id="guardar_pregunta">Guardar Pregunta</button>
+						<button type="submit" class="btn btn-default btn-custo" id="guardar_pregunta">Guardar Pregunta</button>
 					</div>
 					
 				</div>
@@ -137,24 +171,9 @@
 @section('scripts')
 
 	<script>
-		
 
-		$('#tipo-pregunta').change(function(){
-			var valor = $(this).val();
-
-			if(valor==1){
-				$('#opc').hide();
-			}
-			if(valor==2){
-				$('#opc').hide();
-				console.log("sin opciones");
-			}
-			if(valor==3){
-				$('#opc').hide();
-				console.log("abierta con opciones");
-			}
-			if(valor==4){
-				$('#opc').show();
+		function opciones(){
+			$('#opc').show();
 
 				$('#cuantas').change(function(){
 					if($(this).val()=='0'){
@@ -181,8 +200,51 @@
 
 					}
 				});
+		}
+		
+
+		$('#tipo-pregunta').change(function(){
+			var valor = $(this).val();
+
+			if(valor==1){
+				$('#opc').hide();
+			}
+			if(valor==2){
+				$('#opc').hide();
+				console.log("sin opciones");
+			}
+			if(valor==3){
+				opciones();
+			}
+			if(valor==4){
+				opciones();
 				
 			}
+		});
+
+		
+
+		function ajaxObtenerOrden(){
+			var idModulo = $('#modulo-pregunta').val();
+			$.ajax({
+				url:'{{url("ajax/obtener/orden")}}',
+				data:{id:idModulo},
+				type:'GET',
+				success: function(data){
+					if(data.length>0){
+						$('#orden').val(String(data.length+1));
+					}
+					else{
+						$('#orden').val('1');
+					}
+				}
+			});
+		}
+
+		ajaxObtenerOrden();
+
+		$('#modulo-pregunta').change(function(){
+			ajaxObtenerOrden();
 		});
 
 		$('#guardar_pregunta').click(function(){
@@ -198,12 +260,41 @@
 						ubicacion: $('#ubicacion').val(),
 						opcion1: 'Si',
 						opcion2: 'No',
-						opcion3: 'false',
-						opcion4: 'false',
-						opcion5: 'false'
+						opcion3: '',
+						opcion4: '',
+						opcion5: ''
 					},
 					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
 					type: 'POST',
+					beforeSend: function(){
+						$('.msg-guardar').show();
+					},
+					success: function(data){
+						location.href = "/admin/preguntas";
+					}
+				});
+			}
+
+			if($('#tipo-pregunta').val()=="3"){
+				$.ajax({
+					url:'{{ url("admin/pregunta/guardar") }}',
+					data: {
+						modulo_id: $('#modulo-pregunta').val(),
+						titulo: $('#titulo').val(),
+						tipo: $('#tipo-pregunta').val(),
+						orden: $('#orden').val(),
+						ubicacion: $('#ubicacion').val(),
+						opcion1: $('#opcion1').val(),
+						opcion2: $('#opcion2').val(),
+						opcion3: $('#opcion3').val(),
+						opcion4: $('#opcion4').val(),
+						opcion5: $('#opcion5').val()
+					},
+					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
+					type: 'POST',
+					beforeSend: function(){
+						$('.msg-guardar').show();
+					},
 					success: function(data){
 						location.href = "/admin/preguntas";
 					}
@@ -227,6 +318,9 @@
 					},
 					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
 					type: 'POST',
+					beforeSend: function(){
+						$('.msg-guardar').show();
+					},
 					success: function(data){
 						location.href = "/admin/preguntas";
 					}

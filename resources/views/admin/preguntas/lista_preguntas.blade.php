@@ -10,7 +10,7 @@
 
 	<div class="col-md-12">
 		
-		<table class="table table-condensed table-preguntas">
+		<table id="lista-preguntas" class="table table-condensed table-preguntas">
 			<thead>
 				<tr>
 					<th class="text-center">Nº</th>
@@ -28,7 +28,9 @@
 				@foreach($preguntas as $pregunta)
 				<tr>
 					<td class="text-center">{{$i=$i+1}}</td>
-					<td><a href="{{url('admin/pregunta')}}/{{$pregunta->slug}}/{{$pregunta->id}}">{{$pregunta->titulo_pregunta}}</a></td>
+					<td>
+						<a href="{{url('admin/pregunta')}}/{{$pregunta->slug}}/{{$pregunta->id}}">{{$pregunta->titulo_pregunta}}</a>
+					</td>
 					<td class="text-center">
 						@foreach($modulos as $modulo)
 							@if($pregunta->modulo_id==$modulo->id)
@@ -57,4 +59,22 @@
 	</div>
 
 </div>
+@endsection
+
+@section('scripts')
+	<script>
+		$('#lista-preguntas').DataTable({
+			"language": {
+	            "info": "Mostrando _START_ de _END_ de un Total de _TOTAL_ Preguntas",
+	            "lengthMenu": "Mostrar _MENU_ Preguntas",
+	            "search": "Buscar:",
+	            "paginate": {
+			        "first": "Primera",
+			        "last": "Ultima",
+			        "next": "Siguiente",
+			        "previous": "Anterior"
+			    },
+	        }
+		});
+	</script>
 @endsection

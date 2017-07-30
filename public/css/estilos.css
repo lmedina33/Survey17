@@ -80,4 +80,63 @@
 	background-color: #f1c40f;
 	border-right: 1px solid #34495e;
 }
+.nav-sub-custo{
+	background-color: #2c3e50;
+}
 
+#sub-modulos, #sub-preguntas, #sub-entidades, #sub-configuracion{
+	display: none;
+}
+.nav>li>a:focus{
+	background-color: #f1c40f;
+	color: black;
+	border-right: 1px solid #2c3e50;
+}
+
+.btn-default{
+	border-radius: 0;
+	background-color: #f1c40f;
+	border: 1px solid #f39c12;
+}
+.btn-default:hover{
+	background-color: #f1c40f;
+	border: 1px solid #f1c40f;
+}
+.btn-default:focus{
+	background-color: #f1c40f !important;
+	border: 1px solid #f1c40f !important;
+}
+
+.btn-warning{
+	border-radius: 0;
+	background-color: #34495e;
+	border: 1px solid #2c3e50;
+}
+.btn-warning:hover{
+	background-color: #34495e;
+	border: 1px solid #34495e;
+}
+.btn-warning:focus{
+	background-color: #34495e !important;
+	border: 1px solid #34495e !important;
+}
+
+.btn-group-xs > .btn{
+	border-radius: 0;
+}
+
+.pagination > .active > a{
+	background-color: #34495e;
+}
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
+	color: white;
+}

@@ -1,0 +1,71 @@
+@extends('admin/base-admin')
+
+@section('contenedor')
+<div class="row-fluid">
+	<div class="row-fluid">
+		<div class="col-md-12 subtitle text-center">
+			<b>Crear Módulo</b>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="exampleInputPassword1">Módulo</label>
+					<input type="text" class="form-control" placeholder="Ingresar Módulo" id="modulo">	    
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="exampleInputPassword1">Nombre del Módulo</label>
+					<input type="text" class="form-control" placeholder="Ingresar Nombre del Módulo" id="nombre_modulo">	    
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="exampleInputPassword1">Módulo Tab</label>
+					<input type="text" class="form-control" placeholder="Ingresar Módulo Tab" id="tab">		    
+				</div>
+			</div>
+
+			<input type="hidden" name="_token"  id="token_modulo" value="{{ csrf_token() }}">
+			
+			<div class="col-md-4 col-md-offset-4">
+				<div class="text-center">
+						<button type="submit" class="btn btn-default btn-custo" id="guardar_modulo">Guardar Módulo</button>
+					</div>
+			</div>
+			
+		</div>
+	</div>
+
+</div>
+@endsection
+
+@section('scripts')
+	<script>
+
+		$('#guardar_modulo').click(function(){
+
+
+		var modulo = $('#modulo').val();
+		var nombre_modulo = $('#nombre_modulo').val();
+		var tab = $('#tab').val();
+
+				$.ajax({
+					url:'{{ url("admin/modulo/guardar") }}',
+					data: {
+						modulo: modulo,
+						nombre_modulo: nombre_modulo,
+						tab: tab
+						
+					},
+					headers: {'X_CSRF_TOKEN': $('#token_modulo').val()},
+					type: 'POST',
+					success: function(data){
+						location.href = "/admin/modulos";
+					}
+				});
+		});
+	</script>
+@endsection

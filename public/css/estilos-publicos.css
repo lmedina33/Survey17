@@ -28,6 +28,10 @@
 	background-color: #f1c40f;
 	border: 1px solid #f1c40f;
 }
+.btn-default:focus{
+	background-color: #f1c40f !important;
+	border: 1px solid #f1c40f !important;
+}
 .btn-warning{
 	border-radius: 0;
 	background-color: #34495e;
@@ -36,6 +40,10 @@
 .btn-warning:hover{
 	background-color: #34495e;
 	border: 1px solid #34495e;
+}
+.btn-warning:focus{
+	background-color: #34495e !important;
+	border: 1px solid #34495e !important;
 }
 .form-control{
 	border-radius: 0;

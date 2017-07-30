@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+	<link rel="stylesheet" href="{{asset('css/dataTables.bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/estilos.css')}}">
 </head>
 <body>
@@ -20,7 +21,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand" href="#">Admin</a>
+			      <a class="navbar-brand" href="#">Sistema de Encuesta</a>
 			    </div>
 
 			    
@@ -31,10 +32,41 @@
 			<!-- contenido del menu izquierdo -->
 
 			<ul class="nav nav-pills nav-stacked nav-custo">
-			  <li role="presentation"><a href="/admin/pregunta/crear">Crear Pregunta</a></li>
+				<li role="presentation"><a href="#" id="menu-modulos"> <span class="glyphicon glyphicon-th-list"></span> &nbsp;<b>Módulos</b></a>
+					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-modulos">
+						<li role="presentation"><a href="{{url('admin/modulo/crear')}}">Crear Módulo</a></li>
+						<li role="presentation"><a href="{{url('admin/modulos')}}">	Lista de Módulos</a></li>
+					</ul>
+				</li>
+				<li role="presentation"><a href="#" id="menu-preguntas"> <span class="glyphicon glyphicon-list"></span> &nbsp;<b>Preguntas</b></a>
+					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-preguntas">
+						<li role="presentation"><a href="{{url('admin/pregunta/crear')}}">Crear Pregunta</a></li>
+						<li role="presentation"><a href="{{url('admin/preguntas')}}">	Lista de Preguntas</a></li>
+					</ul>
+				</li>
+				<li role="presentation"><a href="#" id="menu-entidades"><span class="glyphicon glyphicon-home"></span> &nbsp;<b>Entidades</b></a>
+					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-entidades">
+						<li role="presentation"><a href="{{url('admin/entidades')}}">Lista de Entidades</a></li>
+						<li role="presentation"><a href="{{url('admin/titulares')}}">Titulares</a></li>
+						<li role="presentation"><a href="{{url('admin/presidentes')}}">Presidentes</a></li>
+						<li role="presentation"><a href="{{url('admin/encuestados')}}">Encuestados</a></li>
+						
+					</ul>
+				</li>
+
+				<li role="presentation"><a href="#" id="menu-configuracion"><span class="glyphicon glyphicon-cog"></span> &nbsp;<b>Configuración</b></a>
+					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-configuracion">
+						<li role="presentation"><a href="{{url('admin/temporizador')}}">Temporizador de Encuesta</a></li>
+						
+						
+					</ul>
+				</li>
+
+			  <!-- <li role="presentation"><a href="/admin/pregunta/crear">Crear Pregunta</a></li>
 			  <li role="presentation"><a href="/admin/preguntas">Lista Preguntas</a></li>
 			  <li role="presentation"><a href="/admin/modulos">Lista Modulos</a></li>
-			  <li role="presentation"><a href="/admin/entidades">Entidades</a></li>
+			  <li role="presentation"><a href="/admin/modulo/crear">Crear Módulo</a></li>
+			  <li role="presentation"><a href="/admin/entidades">Entidades</a></li> -->
 			  <!-- <li role="presentation"><a href="#">Profile</a></li>
 			  <li role="presentation"><a href="#">Messages</a></li> -->
 			</ul>
@@ -64,7 +96,7 @@
 			      </ul> -->
 			      
 			      <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#">Link</a></li>
+			        <li><a href="#">Administrador</a></li>
 			        <!-- <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 			          <ul class="dropdown-menu">
@@ -87,14 +119,32 @@
 	</div>
 
 	<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('js/dataTables.bootstrap.min.js')}}"></script>
 	<script>
 		var altura = $(window).height();
-		$('#menu').css({'height':altura+'px'})
+		$('#menu').css({'height':altura+'px'});
+
+		$('#menu-modulos').click(function(){
+			$('#sub-modulos').toggle(200);
+		});
+		$('#menu-preguntas').click(function(){
+			$('#sub-preguntas').toggle(200);
+		});
+		$('#menu-entidades').click(function(){
+			$('#sub-entidades').toggle(200);
+		});
+		$('#menu-configuracion').click(function(){
+			$('#sub-configuracion').toggle(200);
+		});
 	</script>
 
 	@yield('scripts')
 	
-	<script></script>
+	<script>
+		
+
+	</script>
 	
 	
 
