@@ -13,7 +13,7 @@ class PreguntaController extends Controller
     }
 
     public function guardarPregunta(Request $request){
-    	if($request['tipo']=='4'||$request['tipo']=='1'){
+    	if($request['tipo']=='4'||$request['tipo']=='1'||$request['tipo']=='3'){
     		\App\PreguntaModel::create([
                 'modulo_id'=>$request['modulo_id'],
 	    		'titulo_pregunta'=>$request['titulo'],
@@ -51,6 +51,11 @@ class PreguntaController extends Controller
     	$opciones = \App\OpcionModel::where('pregunta_id','=',$id)->get();
         $modulos = \App\ModuloModel::all();
     	return view('admin.preguntas.pregunta_detalle', compact('pregunta','opciones','modulos'));
+    }
+
+    public function obtenerOrden(Request $request){
+        $preguntas = \App\PreguntaModel::where('modulo_id','=',$request['id'])->get();
+        return $preguntas;
     }
 
 }

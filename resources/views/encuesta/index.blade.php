@@ -88,20 +88,18 @@
 
 					@include('encuesta.otros.encuesta_preguntas')
 
-		  		@endif
-		  		@if($modulo->id==2)
+		  		@elseif($modulo->id==2)
 
 					@include('encuesta.otros.encuesta_preguntas')
 
-		  		@endif
-		  		@if($modulo->id==3)
+		  		@elseif($modulo->id==3)
 
 					@include('encuesta.otros.encuesta_preguntas')
 
-		  		@endif
-		  		@if($modulo->id==4)
+		  		@elseif($modulo->id==4)
 					
 					@include('encuesta.otros.encuesta_preguntas')
+				@else
 
 		  		@endif
 		  	@endforeach
@@ -318,28 +316,36 @@
 
 		});
 
-		$('.preg0').css({'display':'block'});
+		$('.pregmodulo10').css({'display':'block'});
 
 		$('.next_pgta').click(function(){
 			if(guardado==1){
 				var id = $(this).attr('data-ide');
+				var tab = $(this).attr('data-tab');
 				var ubi = $(this).attr('data-ubicacion');
 
 				if(ubi=="ultima"){
-					console.log(ubi);
-					$('.preg'+id).css({'opacity':'0.3'});
-					$('.preg'+id).hide(700);
+					
+					$('.preg'+tab+id).hide(700);
 					
 					
-					$('.preg'+ubi).show(700);
+					$('.preg'+tab+ubi).show(700);
 					guardado=0;
+
+					$('.next_mod').click(function(){
+						var id = $(this).attr('data-mod');
+						$('.preg'+tab+ubi).hide();
+						$('.preg'+"modulo"+String(parseInt(id)+1)+"0").show();
+						$('#myTabs a[href="#modulo'+String(parseInt(id)+1)+'"]').tab('show');
+						guardado=1;
+					});
 				}
 				else{
-					$('.preg'+id).css({'opacity':'0.3'});
-					$('.preg'+id).hide(700);
+					
+					$('.preg'+tab+id).hide(700);
 					
 					
-					$('.preg'+String(parseInt(id)+1)).show(700);
+					$('.preg'+tab+String(parseInt(id)+1)).show(700);
 					guardado=0;
 				}
 				
@@ -359,9 +365,6 @@
 	</script>
 
 	<script>
-		$('.next_mod').click(function(){
-			var id = $(this).attr('data-mod');
-			$('#myTabs a[href="#modulo'+String(parseInt(id)+1)+'"]').tab('show');
-		});
+		
 	</script>
 @endsection

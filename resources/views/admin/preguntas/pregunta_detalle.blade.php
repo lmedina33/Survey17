@@ -13,8 +13,19 @@
 		<table class="table table-condensed">
 			<thead>
 				<tr>
-					<th style="width: 150px">Título de Pregunta/</th>
-					<th>{{$pregunta->titulo_pregunta}}</th>
+					<th style="width: 150px;vertical-align: middle;">Título de Pregunta/</th>
+					<th>
+						<div class="row">
+							<div class="col-md-6" style="padding-top: 0.4em">
+								{{$pregunta->titulo_pregunta}}
+							</div>
+							<div class="col-md-6 text-right">
+								<a href="{{url('/admin/preguntas')}}" class="btn btn-warning btn-sm">Volver</a>
+								<a href="{{url('/admin/pregunta/crear')}}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-plus"></span> Crear Nueva Pregunta</a>
+							</div>
+						</div>
+						
+					</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -70,6 +81,10 @@
 									<tbody>
 										
 										@foreach($opciones as $opcion)
+
+										@if(is_null($opcion->opcion1))
+
+										@else
 										<tr>
 											<th class="text-center">
 												a)
@@ -96,6 +111,11 @@
 											</td>
 
 										</tr>
+										@endif
+
+										@if(is_null($opcion->opcion2))
+
+										@else
 										<tr>
 											<th class="text-center">
 												b)
@@ -122,8 +142,11 @@
 											</td>
 
 										</tr>
+										@endif
 
-										@if($opcion->opcion3!="false")
+										@if(is_null($opcion->opcion3))
+
+										@else
 										<tr>
 											<th class="text-center">
 												c)
@@ -152,7 +175,9 @@
 										</tr>
 										@endif
 
-										@if($opcion->opcion4!="false")
+										@if(is_null($opcion->opcion4))
+
+										@else
 										<tr>
 											<th class="text-center">
 												d)
@@ -181,7 +206,9 @@
 										</tr>
 										@endif
 
-										@if($opcion->opcion5!="false")
+										@if(is_null($opcion->opcion5))
+
+										@else
 										<tr>
 											<th class="text-center">
 												e)

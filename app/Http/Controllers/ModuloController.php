@@ -11,4 +11,17 @@ class ModuloController extends Controller
     	$preguntas = \App\PreguntaModel::all();
     	return view('admin.modulos.lista_modulos', compact('modulos','preguntas'));
     }
+
+    public function indexModulo(){
+    	return view('admin.modulos.crear_modulo');
+    }
+
+    public function guardarModulo(Request $request){
+    	\App\ModuloModel::create([
+    		'modulo'=>$request['modulo'],
+    		'nombre_modulo'=>$request['nombre_modulo'],
+    		'tab'=>$request['tab']
+    		]);
+    	
+    }
 }
