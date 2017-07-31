@@ -43,6 +43,10 @@ class EntidadController extends Controller
 
     public function verEntidad($slug, $id){
         $entidad = \App\EntidadModel::find($id);
-        return view('admin.entidades.entidad_detalle', compact('entidad'));
+        $titular = \App\TitularModel::where('entidad_id','=',$id)->get();
+        $presidente = \App\PresidenteModel::where('entidad_id','=',$id)->get();
+        $responsable = \App\EncuestadoModel::where('entidad_id','=',$id)->get();
+        $encuesta = \App\EncuestaModel::where('entidad_id','=',$id)->get();
+        return view('admin.entidades.entidad_detalle', compact('entidad','titular','presidente','responsable','encuesta'));
     }
 }

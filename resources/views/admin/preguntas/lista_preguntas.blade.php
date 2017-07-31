@@ -34,7 +34,7 @@
 					<td class="text-center">
 						@foreach($modulos as $modulo)
 							@if($pregunta->modulo_id==$modulo->id)
-								{{$modulo->modulo}} {{$modulo->nombre_modulo}}
+								<a href="{{url('admin/modulo')}}/{{$modulo->slug}}/{{$modulo->id}}">{{$modulo->modulo}} {{$modulo->nombre_modulo}}</a>
 							@endif
 						@endforeach
 						
@@ -43,11 +43,11 @@
 					<td class="text-center">
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
 						  <!-- <button type="button" class="btn btn-default">Left</button> -->
-						  <button type="button" class="btn btn-default">
-						  	<span class="glyphicon glyphicon-edit"></span>
+						  <button type="button" class="btn btn-default btn-modificar" data-id-pmodificar="{{$pregunta->id}}" data-toggle="modal" data-target="#myModalModificar">
+						  	<span class="glyphicon glyphicon-edit" ></span>
 						  </button>
-						  <button type="button" class="btn btn-default">
-						  	<span class="glyphicon glyphicon-trash"></span>
+						  <button type="button" class="btn btn-default btn-borrar" data-id-peliminar="{{$pregunta->id}}">
+						  	<span class="glyphicon glyphicon-trash" ></span>
 						  </button>
 						</div>
 					</td>
@@ -59,6 +59,9 @@
 	</div>
 
 </div>
+
+@include('admin/otros/modal/modificar')
+
 @endsection
 
 @section('scripts')
@@ -75,6 +78,34 @@
 			        "previous": "Anterior"
 			    },
 	        }
+		});
+	</script>
+	<script>
+
+		$('.btn-modificar').click(function(){
+			var id_pregunta = $(this).attr('data-id-pmodificar');
+
+			/*Reseteando los datos en el Modal*/
+			$('#titulo-self-modal').text('');
+			$('#titulo-pregunta-modificar').val('');
+			$('#orden-pregunta-modificar').val('');
+			$('#ubicacion-pregunta-modificar').val('');
+
+			$.ajax({
+				url:'{{url("ajax/obtener/pregunta")}}/'+id_pregunta,
+				type:'GET',
+				success: function(data){
+					/*Colocando los datos en el Modal*/
+
+					$('#titulo-self-modal').text(data['titulo_pregunta']);
+					$('#titulo-pregunta-modificar').val(data['titulo_pregunta']);
+					$('#modulo-pregunta-modificar').val(data['modulo_id']);
+					$('#orden-pregunta-modificar').val(data['orden']);
+					$('#ubicacion-pregunta-modificar').val(data['ubicacion']);
+				}
+
+			})
+			
 		});
 	</script>
 @endsection

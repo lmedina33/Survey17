@@ -30,7 +30,15 @@
 								<div>
 									<b>Slug:</b>  <a href="{{url('admin/entidad')}}/{{$entidad->slug}}/{{$entidad->id}}">{{$entidad->slug}}</a>
 								</div>
-								
+								<div>
+									<b>Departamento:</b> {{$entidad->departamento}}
+								</div>
+								<div>
+									<b>Provincia:</b> {{$entidad->provincia}}
+								</div>
+								<div>
+									<b>Distrito:</b> {{$entidad->distrito}}
+								</div>
 								<div>
 									<b>Creada:</b> {{$entidad->created_at}}
 								</div>
@@ -44,6 +52,39 @@
 							</div>
 						</div>
 
+						<hr>
+
+						<div class="row">
+							<div class="col-md-12">
+								<table class="table table-condensed ">
+									<thead>
+										<tr>
+											<th class="text-center">Titular de la Entidad</th>
+											<th class="text-center">Presidente del CCI</th>
+											<th class="text-center">Responsable de Comunicación/Encuestado</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center">
+												{{$titular[0]['nombre_titular']}}
+											</td>
+											<td class="text-center">
+												{{$presidente[0]['nombre_presidente']}}
+											</td>
+											<td class="text-center">
+												{{$responsable[0]['nombre_encuestado']}}
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						
+						<div id="container"></div>
+						
+
 					</td>
 				</tr>
 			</tbody>
@@ -52,4 +93,42 @@
 
 </div>
 
+@endsection
+
+@section('scripts')
+	<script>
+		// progressbar.js@1.0.0 version is used
+		// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+
+		var bar = new ProgressBar.Line(container, {
+		  strokeWidth: 4,
+		  easing: 'easeInOut',
+		  duration: 1400,
+		  color: '#f1c40f',
+		  trailColor: '#eee',
+		  trailWidth: 1,
+		  svgStyle: {width: '100%', height: '100%'},
+		  text: {
+		    style: {
+		      // Text color.
+		      // Default: same as stroke color (options.color)
+		      color: '#999',
+		      position: 'absolute',
+		      right: '0',
+		      top: '20px',
+		      padding: 0,
+		      margin: 0,
+		      transform: null
+		    },
+		    autoStyleContainer: false
+		  },
+		  from: {color: '#FFEA82'},
+		  to: {color: '#ED6A5A'},
+		  step: (state, bar) => {
+		    bar.setText('Progreso de Encuesta&nbsp;&nbsp; <b>' + Math.round(bar.value() * 100) + ' %</b>');
+		  }
+		});
+
+		bar.animate({{$encuesta[0]['progreso']}});
+	</script>
 @endsection
