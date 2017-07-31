@@ -32,6 +32,7 @@ Route::get('/encuesta','EncuestaController@index');
 Route::get('/ajax/obtener/orden','PreguntaController@obtenerOrden');
 Route::get('/ajax/obtener/pregunta/{id}','PreguntaController@preModificar');
 Route::post('/ajax/guardar/datos_generales','EntidadController@guardarEntidad');
+Route::get('/ajax/obtener/modulos_preguntas','ModuloController@modulosPreguntas');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
