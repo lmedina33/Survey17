@@ -57,4 +57,33 @@ class ModuloController extends Controller
         $preguntas = \App\PreguntaModel::all();
         return view('admin.modulos.modulo_detalle', compact('modulo','preguntas'));
     }
+
+    public function modulosPreguntas(){
+        $modulos = \App\ModuloModel::all();
+        $preguntas = \App\PreguntaModel::all();
+        $preguntasPorModulo = [];
+        $i=0;
+        $contador = 0;
+
+        foreach ($modulos as $modulo) {
+            
+
+            foreach ($preguntas as $pregunta) {
+                if($pregunta->modulo_id==$modulo->id){
+                    $contador=$contador+1;
+                }
+            }
+
+            $preguntasPorModulo[$i] = [
+                'id_modulo'=>$modulo->id,
+                'cantidad_preguntas'=>$contador
+                ];
+
+            $i=$i+1;
+            $contador=0;
+
+        }
+
+        return $preguntasPorModulo;
+    }
 }

@@ -159,7 +159,19 @@
 		});
 	</script>
 
-	
+	<script>
+		var cantidad_modulos;
+		var arrayPreguntasModulo;
+
+		$.ajax({
+			url: '{{url('ajax/obtener/modulos_preguntas')}}',
+			type:'GET',
+			success: function(data){
+				cantidad_modulos = data.length;  //variables para usar en otro ajax
+				arrayPreguntasModulo = data; //variables para usar en otro ajax
+			}
+		})
+	</script>
 
 	<script>
 		// progressbar.js@1.0.0 version is used
@@ -205,8 +217,13 @@
 			var departamento_temp = $('#departamento').val();
 			var provincia = $('#provincia').val();
 
+<<<<<<< HEAD
 			/* ajax de busqueda - json
             $.ajax ({
+=======
+			/* ajax de busqueda - json*/
+            /*$.ajax ({
+>>>>>>> e626812d787bc94b411389d751369d9dd6844fdb
             	url:'{{asset("js/json/departamentos.json")}}',
             	type:'post';
             	dataType: 'json';
@@ -280,6 +297,7 @@
 						
 						next = data;
 
+						bar.animate(0.1);
 						
 					}
 				});
@@ -291,6 +309,7 @@
 		$('#next').click(function(){
 			if(next=="1"){
 				$('#myTabs a[href="#modulo1"]').tab('show');
+
 			}
 			if(next=="0"){
 				$('.mensaje-enviado>b').html('<span class="glyphicon glyphicon-alert"></span> ¡Por Favor, antes de pasar a la Encuesta, debes llenar y guardar correctamente los Datos del Formulario!');
@@ -304,6 +323,7 @@
 		
 		
 		var guardado=1;
+		var percentShow = 0;
 
 		
 
@@ -313,6 +333,8 @@
 			var evaluador = [];
 			var j=0;
 			var sumaEvaluadora=0;
+			var modulo = $(this).attr('data-id-mod');7
+			
 			
 
 			
@@ -339,7 +361,27 @@
 				},2000);
 			}
 			else{
+				/* ajax que guarda */
 				guardado=1;
+
+				/* porcentaje por modulo */
+				var percent = 0.9/cantidad_modulos;
+				console.log(arrayPreguntasModulo);
+				console.log(modulo);
+				for(var i=0; i<arrayPreguntasModulo.length; i++){
+					
+					if(arrayPreguntasModulo[i]['id_modulo']==modulo){
+						var percentTotal = parseFloat(percent)/parseFloat(arrayPreguntasModulo[i]['cantidad_preguntas']);
+						
+						
+					}
+				}
+
+
+				percentShow = percentShow + percentTotal;
+
+				bar.animate(0.1+percentShow);
+				
 			}
 
 

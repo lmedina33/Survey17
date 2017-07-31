@@ -158,14 +158,14 @@
 				<div class="text-center">
 												
 					@if($pregunta->ubicacion=="ultima")
-						<button class="btn btn-default guardar_rpta" data-id="{{$pregunta->orden}}">
+						<button class="btn btn-default guardar_rpta" data-id="{{$pregunta->orden}}" data-id-mod="{{$modulo->id}}">
 							Guardar Respuesta
 						</button>
 						<button type="submit" class="btn btn-warning next_pgta" data-ide="{{$pregunta->orden}}" data-ubicacion="{{$pregunta->ubicacion}}" data-tab="{{$modulo->tab}}">
 							Siguiente Pregunta
 						</button>
 					@else
-						<button class="btn btn-default guardar_rpta" data-id="{{$pregunta->orden}}">
+						<button class="btn btn-default guardar_rpta" data-id="{{$pregunta->orden}}" data-id-mod="{{$modulo->id}}">
 							Guardar Respuesta
 						</button>
 						<button type="submit" class="btn btn-warning next_pgta" data-ide="{{$pregunta->orden}}" data-ubicacion="{{$pregunta->ubicacion}}" data-tab="{{$modulo->tab}}">
