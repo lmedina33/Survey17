@@ -165,7 +165,7 @@
 			var departamento_temp = $('#departamento').val();
 			var provincia = $('#provincia').val();
 
-			/* ajax de busqueda - json*/
+			/* ajax de busqueda - json
             $.ajax ({
             	url:'{{asset("js/json/departamentos.json")}}',
             	type:'post';
@@ -176,7 +176,7 @@
 							for(var i=0; i<data[id_ubigeo].length; i++)
 
 
-            })
+            })*/
 
             var departamento = $('#departamento').val();
 			var distrito = $('#distrito').val();
