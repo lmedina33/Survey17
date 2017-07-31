@@ -2,14 +2,16 @@
 
 @section('contenedor')
 	<br>
+		<div id="container"></div>
+
 		<!-- Nav tabs -->
 		  <ul class="nav nav-tabs" role="tablist" id="myTabs">
-		  	<li role="presentation" class="active"><a href="#datos" aria-controls="datos" >Datos Generales</a></li>
+		  	<li role="presentation" class="active"><a href="#datos" aria-controls="datos" ><b>Datos Generales</b></a></li>
 		  	@foreach($modulos as $modulo)
 		  		@if($modulo->id==1)
-		    		<li role="presentation" class=""><a href="#{{$modulo->tab}}" aria-controls="{{$modulo->tab}}" >{{$modulo->modulo}}: {{$modulo->nombre_modulo}}</a></li>
+		    		<li role="presentation" class=""><a href="#{{$modulo->tab}}" aria-controls="{{$modulo->tab}}" ><b>{{$modulo->modulo}}: {{$modulo->nombre_modulo}}</b></a></li>
 				@else
-					<li role="presentation"><a href="#{{$modulo->tab}}" aria-controls="{{$modulo->tab}}" >{{$modulo->modulo}}: {{$modulo->nombre_modulo}}</a></li>
+					<li role="presentation"><a href="#{{$modulo->tab}}" aria-controls="{{$modulo->tab}}" ><b>{{$modulo->modulo}}: {{$modulo->nombre_modulo}}</b></a></li>
 		    	@endif
 		    @endforeach
 		    
@@ -157,7 +159,45 @@
 		});
 	</script>
 
+	
+
 	<script>
+		// progressbar.js@1.0.0 version is used
+		// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+
+		var bar = new ProgressBar.Line(container, {
+		  strokeWidth: 4,
+		  easing: 'easeInOut',
+		  duration: 1400,
+		  color: '#f1c40f',
+		  trailColor: '#eee',
+		  trailWidth: 1,
+		  svgStyle: {width: '100%', height: '100%'},
+		  text: {
+		    style: {
+		      // Text color.
+		      // Default: same as stroke color (options.color)
+		      color: '#999',
+		      position: 'absolute',
+		      right: '0',
+		      top: '20px',
+		      padding: 0,
+		      margin: 0,
+		      transform: null
+		    },
+		    autoStyleContainer: false
+		  },
+		  from: {color: '#FFEA82'},
+		  to: {color: '#ED6A5A'},
+		  step: (state, bar) => {
+		    bar.setText('Progreso de Encuesta&nbsp;&nbsp; <b>' + Math.round(bar.value() * 100) + ' %</b>');
+		  }
+		});
+
+		bar.animate(0.0);
+		
+
+
 		var next = "0";
 
 		$('#guardar_datos').click(function(){
@@ -319,6 +359,7 @@
 		$('.pregmodulo10').css({'display':'block'});
 
 		$('.next_pgta').click(function(){
+			$('.msg>b').html('');
 			if(guardado==1){
 				var id = $(this).attr('data-ide');
 				var tab = $(this).attr('data-tab');

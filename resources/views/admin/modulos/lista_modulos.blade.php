@@ -9,7 +9,7 @@
 	</div>
 	<div class="col-md-12">
 		
-		<table class="table table-condensed table-preguntas">
+		<table class="table table-condensed table-preguntas" id="lista-modulos">
 			<thead>
 				<tr>
 					<th class="text-center">Nº</th>
@@ -27,13 +27,22 @@
 				@foreach($modulos as $modulo)
 				<tr>
 					<td class="text-center">{{$i=$i+1}}</td>
-					<td class="text-center">{{$modulo->modulo}}</td>
 					<td class="text-center">
-						{{$modulo->nombre_modulo}}
+						<a href="{{url('admin/modulo')}}/{{$modulo->slug}}/{{$modulo->id}}">		{{$modulo->modulo}}
+						</a>
+					</td>
+					<td class="text-center">
+						<a href="{{url('admin/modulo')}}/{{$modulo->slug}}/{{$modulo->id}}">		{{$modulo->nombre_modulo}}
+						</a>
+						
 						
 					</td>
-					<td>
-						
+					<td class="text-center">
+						@foreach($preguntasPorModulo as $preguntaPorModulo)
+							@if($preguntaPorModulo['id_modulo']==$modulo->id)
+								{{$preguntaPorModulo['cantidad_preguntas']}}
+							@endif
+						@endforeach
 					</td>
 					
 					<td class="text-center">
@@ -55,4 +64,22 @@
 	</div>
 
 </div>
+@endsection
+
+@section('scripts')
+	<script>
+		$('#lista-modulos').DataTable({
+			"language": {
+	            "info": "Mostrando _START_ de _END_ de un Total de _TOTAL_ Módulos",
+	            "lengthMenu": "Mostrar _MENU_ Módulos",
+	            "search": "Buscar:",
+	            "paginate": {
+			        "first": "Primera",
+			        "last": "Ultima",
+			        "next": "Siguiente",
+			        "previous": "Anterior"
+			    },
+	        }
+		});
+	</script>
 @endsection

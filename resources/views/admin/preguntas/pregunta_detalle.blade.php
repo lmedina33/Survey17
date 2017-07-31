@@ -16,11 +16,11 @@
 					<th style="width: 150px;vertical-align: middle;">Título de Pregunta/</th>
 					<th>
 						<div class="row">
-							<div class="col-md-6" style="padding-top: 0.4em">
+							<div class="col-md-8" style="padding-top: 0.4em">
 								{{$pregunta->titulo_pregunta}}
 							</div>
-							<div class="col-md-6 text-right">
-								<a href="{{url('/admin/preguntas')}}" class="btn btn-warning btn-sm">Volver</a>
+							<div class="col-md-4 text-right">
+								<a href="{{url('/admin/preguntas')}}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-list"></span> Lista Preguntas</a>
 								<a href="{{url('/admin/pregunta/crear')}}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-plus"></span> Crear Nueva Pregunta</a>
 							</div>
 						</div>

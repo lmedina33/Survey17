@@ -27,6 +27,9 @@
 						Distrito
 					</th>
 					<th class="text-center">
+						Progreso de Encuesta
+					</th>
+					<th class="text-center">
 						Opciones
 					</th>
 					
@@ -42,6 +45,7 @@
 						<td class="text-center">{{$entidad->departamento}}</td>
 						<td class="text-center">{{$entidad->provincia}}</td>
 						<td class="text-center">{{$entidad->distrito}}</td>
+						<td></td>
 						<td class="text-center">
 							<div class="btn-group btn-group-xs" role="group" aria-label="...">
 							  <!-- <button type="button" class="btn btn-default">Left</button> -->

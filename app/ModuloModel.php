@@ -11,6 +11,7 @@ class ModuloModel extends Model
     protected $fillable = [
     	'modulo',
     	'nombre_modulo',
-    	'tab'
+    	'tab',
+    	'slug'
     ];
 }

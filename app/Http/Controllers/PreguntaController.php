@@ -40,6 +40,11 @@ class PreguntaController extends Controller
 
     }
 
+    public function preModificar($id){
+        $pregunta = \App\PreguntaModel::find($id);
+        return $pregunta;
+    }
+
     public function getListaPreguntas(){
     	$preguntas = \App\PreguntaModel::all();
         $modulos = \App\ModuloModel::all();
