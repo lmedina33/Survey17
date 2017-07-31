@@ -120,14 +120,14 @@
 			success: function(data){
 				
 				for(var i=0; i<data.length; i++){
-					$('#departamento').append('<option value="'+data[i]['id_ubigeo']+'">'+data[i]['nombre_ubigeo']+'</option>')
+					$('#departamento').append('<option value="'+data[i]['id_ubigeo']+'">'+data[i]['nombre_ubigeo']+'</option>');
 				}
 
 				$('#departamento').change(function(){
 					var id_ubigeo = $(this).val();
 					$('#provincia').html('');
 					$.ajax({
-						url:'{{url("js/json/provincias.json")}}',
+						url:'{{asset("js/json/provincias.json")}}',
 						type:'GET',
 						dataType: 'JSON',
 						success: function(data){
@@ -202,8 +202,23 @@
 
 		$('#guardar_datos').click(function(){
 			var entidad = $('#entidad').val();
-			var departamento = $('#departamento').val();
+			var departamento_temp = $('#departamento').val();
 			var provincia = $('#provincia').val();
+
+			/* ajax de busqueda - json*/
+            $.ajax ({
+            	url:'{{asset("js/json/departamentos.json")}}',
+            	type:'post';
+            	dataType: 'json';
+            	data: departamento_temp;
+            	success: function(data){
+							
+							for(var i=0; i<data[id_ubigeo].length; i++)
+
+
+            })
+
+            var departamento = $('#departamento').val();
 			var distrito = $('#distrito').val();
 			var titular = $('#titular').val();
 			var presidente = $('#presidente').val();
