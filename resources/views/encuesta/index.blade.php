@@ -217,13 +217,10 @@
 			var departamento_temp = $('#departamento').val();
 			var provincia = $('#provincia').val();
 
-<<<<<<< HEAD
-			/* ajax de busqueda - json
-            $.ajax ({
-=======
+
 			/* ajax de busqueda - json*/
             /*$.ajax ({
->>>>>>> e626812d787bc94b411389d751369d9dd6844fdb
+
             	url:'{{asset("js/json/departamentos.json")}}',
             	type:'post';
             	dataType: 'json';
