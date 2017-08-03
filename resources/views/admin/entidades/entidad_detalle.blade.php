@@ -14,7 +14,18 @@
 			<thead>
 				<tr>
 					<th style="width: 150px">Nombre de Entidad/</th>
-					<th>{{$entidad->nombre_entidad}}</th>
+					<th>
+						
+						<div class="row">
+							<div class="col-md-8" style="padding-top: 0.4em">
+								{{$entidad->nombre_entidad}}
+							</div>
+							<div class="col-md-4 text-right">
+								<a href="{{url('/admin/entidades')}}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-list"></span> Lista Entidades</a>
+								
+							</div>
+						</div>
+					</th>
 				</tr>
 			</thead>
 			<tbody>

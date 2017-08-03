@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 
 class ModuloController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function getListaModulos(){
+        $notificaciones = \App\ActividadModel::all();
+        $entidades = \App\EntidadModel::all();
     	$modulos = \App\ModuloModel::all();
     	$preguntas = \App\PreguntaModel::all();
         $preguntasPorModulo = [];
@@ -35,11 +41,13 @@ class ModuloController extends Controller
         // return $preguntasPorModulo;
         // return $preguntas;
 
-    	return view('admin.modulos.lista_modulos', compact('modulos','preguntas','preguntasPorModulo'));
+    	return view('admin.modulos.lista_modulos', compact('modulos','preguntas','preguntasPorModulo','notificaciones','entidades'));
     }
 
     public function indexModulo(){
-    	return view('admin.modulos.crear_modulo');
+        $notificaciones = \App\ActividadModel::all();
+        $entidades = \App\EntidadModel::all();
+    	return view('admin.modulos.crear_modulo', compact('notificaciones','entidades'));
     }
 
     public function guardarModulo(Request $request){
@@ -55,7 +63,9 @@ class ModuloController extends Controller
     public function verModulo($slug, $id){
         $modulo = \App\ModuloModel::find($id);
         $preguntas = \App\PreguntaModel::all();
-        return view('admin.modulos.modulo_detalle', compact('modulo','preguntas'));
+        $notificaciones = \App\ActividadModel::all();
+        $entidades = \App\EntidadModel::all();
+        return view('admin.modulos.modulo_detalle', compact('modulo','preguntas','notificaciones','entidades'));
     }
 
     public function modulosPreguntas(){

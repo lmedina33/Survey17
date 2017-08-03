@@ -41,7 +41,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-default">Guardar Cambios</button>
+        <button type="button" class="btn btn-default" id="guardar-cambios-pregunta">Guardar Cambios</button>
       </div>
     </div>
   </div>

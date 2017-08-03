@@ -48,7 +48,20 @@
 				
 				valorCantDigit = validarCantidadDigitos($('#identidad').val());
 				if(valorCantDigit==true){
-					location.href = "{{url('/encuesta')}}";
+					valorNumeroDNI = validarNumeroDNI($('#identidad').val());
+
+					if(valorNumeroDNI==true){
+						location.href = "{{url('/encuesta')}}";
+					}
+					else{
+						$('.msg-validate>b').html('<span class="glyphicon glyphicon-alert"></span> ¡Sólo se permiten Números!');
+						$('.msg-validate').css({'color':'red'});
+
+						setTimeout(function(){
+							$('.msg-validate>b').html('');
+						}, 2000)
+					}
+					
 				}
 				else{
 					$('.msg-validate>b').html('<span class="glyphicon glyphicon-alert"></span> ¡La cantidad de Dígitos no es Correcta!');
@@ -59,13 +72,38 @@
 					}, 2000)
 					
 				}
-				//var valorValidado = validarNumero($('#identificacion').val());
-				//location.href = "{{url('/encuesta')}}";
+				
 			}
 			else{
 
 			}
 		});
+
+		function validarNumeroDNI(valorcito){
+			var array = [0,1,2,3,4,5,6,7,8,9];
+			var Bol=1;
+			var valor = [valorcito];
+
+			for(var i=0; i<=valor.length; i++){
+				for(var j=0; j<=array.length; j++){
+					if(parseInt(valor[i])==array[j]){
+						Bol=Bol*1;
+					}
+					else{
+						Bol=Bol*0;
+					}
+				}	
+			}
+
+			if(Bol==1){
+				return true;
+			}
+			else{
+				return false;
+			}
+
+
+		}
 
 		function validarCantidadDigitos(valor){
 			if(valor.length == 8){

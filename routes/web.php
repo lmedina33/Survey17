@@ -26,6 +26,7 @@ Route::get('/admin/entidad/{slug}/{id}','EntidadController@verEntidad');
 Route::get('/admin/modulo/crear','ModuloController@indexModulo');
 Route::post('/admin/modulo/guardar', 'ModuloController@guardarModulo');
 Route::get('/admin/modulo/{slug}/{id}','ModuloController@verModulo');
+Route::get('/admin/encuesta_por_entidad','EncuestaController@encuestaPorEntidad');
 
 Route::get('/encuesta','EncuestaController@index');
 Route::get('/encuesta/identificacion','IdentificacionController@validar');
@@ -34,6 +35,8 @@ Route::get('/ajax/obtener/orden','PreguntaController@obtenerOrden');
 Route::get('/ajax/obtener/pregunta/{id}','PreguntaController@preModificar');
 Route::post('/ajax/guardar/datos_generales','EntidadController@guardarEntidad');
 Route::get('/ajax/obtener/modulos_preguntas','ModuloController@modulosPreguntas');
+Route::get('/ajax/obtener/entidades','EntidadController@getAjaxListaEntidades');
+Route::post('/ajax/guardar/progreso','EncuestaController@guardarProgreso');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
