@@ -21,54 +21,86 @@
 		  <div class="tab-content">
 		  	<div role="tabpanel" class="tab-pane active" id="datos">
 		  		<br>
-		  		<div class="form-group">
-				    <label class="label-form">Nombre de la Entidad *</label>
-				    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-				    <input type="text" class="form-control" id="entidad" placeholder="Ingresar Nombre de la Entidad">
-				  </div>
+		  		<div class="row">
+		  			<div class="col-md-4">
+		  				<div class="form-group">
+						    <label class="label-form">Nombre de la Entidad *</label>
+						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
+						    <input type="text" class="form-control" id="entidad" placeholder="Ingresar Nombre de la Entidad">
+						</div>
+		  			</div>
+		  			<div class="col-md-8">
+		  				<div class="form-group">
+						    <label class="label-form">Nombre de la Entidad *</label>
+						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
+						    <input type="text" class="form-control" id="entidad" placeholder="Ingresar Nombre de la Entidad">
+						</div>
+		  			</div>
+		  		</div>
+		  		
 
 
 				 <div class="row">
 				 	<div class="col-md-4">
 				 		<div class="form-group">
-						    <label for="exampleInputPassword1">Departamento *</label>
+						    <label class="label-form">Departamento *</label>
 
 						    <select name="" id="departamento" class="form-control"></select>
 						  </div>
 				 	</div>
 				 	<div class="col-md-4">
 				 		<div class="form-group">
-						    <label for="exampleInputPassword1">Provincia *</label>
+						    <label class="label-form">Provincia *</label>
 						    <select name="" id="provincia" class="form-control"></select>
 						  </div>
 				 	</div>
 				 	<div class="col-md-4">
 				 		<div class="form-group">
-						    <label for="exampleInputPassword1">Distrito *</label>
+						    <label class="label-form">Distrito *</label>
 						    <select name="" id="distrito" class="form-control"></select>
 						  </div>
 				 	</div>
 				 	
 				 </div>
 				  
-				  <div class="form-group">
+				 <div class="row">
+				 	<div class="col-md-6">
+				 		<div class="form-group">
 				    
-				    <label class="label-form">Nombre del Titular de la Entidad *</label>
-				    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-				    <input type="text" class="form-control" id="titular" placeholder="Ingresar Nombre del Titular de la Entidad">
-				  </div>
-				  <div class="form-group">
+						    <label class="label-form">Nombre del Titular de la Entidad *</label>
+						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
+						    <input type="text" class="form-control" id="titular" placeholder="Ingresar Nombre del Titular de la Entidad">
+						  </div>
+				 	</div>
+				 	<div class="col-md-6">
+				 		<div class="form-group">
 				   
-				    <label class="label-form">Nombre del Presidente del Comité de Control Interno *</label>
-				    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-				    <input type="text" class="form-control" id="presidente" placeholder="Ingresar Nombre del Presidente del Comité de Control Interno">
-				  </div>
-				  <div class="form-group">
+						    <label class="label-form">Nombre del Presidente del Comité de Control Interno *</label>
+						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
+						    <input type="text" class="form-control" id="presidente" placeholder="Ingresar Nombre del Presidente del Comité de Control Interno">
+						  </div>
+				 	</div>
+				 </div>
+				  
+				  <div class="row">
+				  	<div class="col-md-10">
+				  		<div class="form-group">
 				    
-				    <label class="label-form">Nombre del responsable de comunicación o líder de equipo (encargado de la función de comunicación u difusión) *</label>
-				    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-				    <input type="text" class="form-control" id="encuestado" placeholder="Ingresar Nombre del responsable de comunicación o líder de equipo (encargado de la función de comunicación u difusión)">
+						    <label class="label-form">Nombre del responsable de comunicación o líder de equipo (encargado de la función de comunicación u difusión) *</label>
+						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
+						    <input type="text" class="form-control" id="encuestado" placeholder="Ingresar Nombre del responsable de comunicación o líder de equipo (encargado de la función de comunicación u difusión)">
+						  </div>
+				  	</div>
+				  	<div class="col-md-2">
+				  		<div class="form-group">
+				    
+						    <label class="label-form">Rol *</label>
+						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
+						    <input type="text" class="form-control" id="encuestado" placeholder="Ingresar Rol">
+						  </div>
+				  	</div>
 				  </div>
+				  
 
 				  <input type="hidden" name="_token"  id="token_entidad" value="{{ csrf_token() }}">
 				  
@@ -218,19 +250,7 @@
 			var provincia = $('#provincia').val();
 
 
-			/* ajax de busqueda - json*/
-            /*$.ajax ({
 
-            	url:'{{asset("js/json/departamentos.json")}}',
-            	type:'post';
-            	dataType: 'json';
-            	data: departamento_temp;
-            	success: function(data){
-							
-							for(var i=0; i<data[id_ubigeo].length; i++)
-
-
-            })*/
 
             var departamento = $('#departamento').val();
 			var distrito = $('#distrito').val();
@@ -406,10 +426,10 @@
 
 				if(ubi=="ultima"){
 					
-					$('.preg'+tab+id).hide(700);
+					$('.preg'+tab+id).slideUp(700);
 					
 					
-					$('.preg'+tab+ubi).show(700);
+					$('.preg'+tab+ubi).slideDown(700);
 					guardado=0;
 
 					$('.next_mod').click(function(){
@@ -422,10 +442,10 @@
 				}
 				else{
 					
-					$('.preg'+tab+id).hide(700);
+					$('.preg'+tab+id).slideUp(700);
 					
 					
-					$('.preg'+tab+String(parseInt(id)+1)).show(700);
+					$('.preg'+tab+String(parseInt(id)+1)).slideDown(700);
 					guardado=0;
 				}
 				

@@ -28,6 +28,7 @@ Route::post('/admin/modulo/guardar', 'ModuloController@guardarModulo');
 Route::get('/admin/modulo/{slug}/{id}','ModuloController@verModulo');
 
 Route::get('/encuesta','EncuestaController@index');
+Route::get('/encuesta/identificacion','IdentificacionController@validar');
 
 Route::get('/ajax/obtener/orden','PreguntaController@obtenerOrden');
 Route::get('/ajax/obtener/pregunta/{id}','PreguntaController@preModificar');

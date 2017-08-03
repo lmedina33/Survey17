@@ -8,7 +8,7 @@
 		</div>
 	</div>
 	<div class="col-md-12">
-		<table class="table table-condensed table-preguntas">
+		<table class="table table-condensed table-preguntas" id="lista-entidades">
 			<thead>
 				<tr>
 					<th class="text-center">
@@ -64,4 +64,22 @@
 		</table>
 	</div>
 </div>
+@endsection
+
+@section('scripts')
+	<script>
+		$('#lista-entidades').DataTable({
+			"language": {
+	            "info": "Mostrando _START_ de _END_ de un Total de _TOTAL_ Entidades",
+	            "lengthMenu": "Mostrar _MENU_ Entidades",
+	            "search": "Buscar:",
+	            "paginate": {
+			        "first": "Primera",
+			        "last": "Ultima",
+			        "next": "Siguiente",
+			        "previous": "Anterior"
+			    },
+	        }
+		});
+	</script>
 @endsection

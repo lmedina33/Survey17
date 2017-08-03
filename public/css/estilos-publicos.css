@@ -3,7 +3,7 @@
 }
 .pregunta-activa{
 	font-size: 3em;
-    padding: 2em;
+    padding: 1.5em;
     color: #464646;
 }
 .pregunta-activa-uno{
@@ -89,4 +89,17 @@
   width: 100%;
   height: 8px;
   position: relative;
+}
+.identificacion{
+	padding-top: 6em;
+}
+.panel{
+	border-radius: 0px;
+}
+.text-id{
+	font-size: 1.5em;
+	
+}
+.img-logo{
+	margin-bottom: 3em;
 }
