@@ -6,6 +6,12 @@
 	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 	<link rel="stylesheet" href="{{asset('css/dataTables.bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/estilos.css')}}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<style>
+		body{
+			font-family: 'Open Sans', sans-serif;
+		}
+	</style>
 </head>
 <body>
 
@@ -53,6 +59,35 @@
 						
 					</ul>
 				</li>
+				<li role="presentation"><a href="#" id="menu-encuesta"><span class="glyphicon glyphicon-list-alt"></span> &nbsp;<b>Encuesta</b></a>
+					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-encuesta">
+						<li role="presentation"><a href="{{url('admin/encuesta_por_entidad')}}">Progreso Encuesta/Entidad</a></li>
+						
+						
+					</ul>
+				</li>
+				<li role="presentation"><a href="#" id="menu-estadistica"><span class="glyphicon glyphicon-stats"></span> &nbsp;<b>Estadística</b></a>
+					{{-- <ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-usuarios">
+						<li role="presentation"><a href="{{url('admin/usuarios')}}">Lista de Usuarios</a></li>
+						
+						
+					</ul> --}}
+				</li>
+				<li role="presentation"><a href="#" id="menu-repo"><span class="glyphicon glyphicon-folder-close"></span> &nbsp;<b>Repositorio de Archivos</b></a>
+					{{-- <ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-usuarios">
+						<li role="presentation"><a href="{{url('admin/usuarios')}}">Lista de Usuarios</a></li>
+						
+						
+					</ul> --}}
+				</li>
+
+				<li role="presentation"><a href="#" id="menu-usuarios"><span class="glyphicon glyphicon-user"></span> &nbsp;<b>Usuarios del Sistema</b></a>
+					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-usuarios">
+						<li role="presentation"><a href="{{url('admin/usuarios')}}">Lista de Usuarios</a></li>
+						
+						
+					</ul>
+				</li>
 
 				<li role="presentation"><a href="#" id="menu-configuracion"><span class="glyphicon glyphicon-cog"></span> &nbsp;<b>Configuración</b></a>
 					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-configuracion">
@@ -96,7 +131,78 @@
 			      </ul> -->
 			      
 			      <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#">Administrador</a></li>
+			      	<li class="dropdown">
+			      		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notificaciones
+			      			<?php $i=0; ?>
+							@if(count($notificaciones)>0)
+								
+								@foreach($notificaciones as $notificacion)
+									@if($notificacion->estado=="false")
+			      						<?php $i=$i+1 ?>
+			      					@endif
+			      				@endforeach
+			      				<span class="badge">{{$i}}</span>
+							@else
+
+							@endif
+			      		</a>
+			      		<ul class="dropdown-menu" role="menu">
+			      			
+			      			@if(count($notificaciones)>0)
+								
+								@foreach($notificaciones as $notificacion)
+									@if($notificacion->tipo_actividad=="Entidad")
+										@foreach($entidades as $entidad)
+											@if($entidad->id==$notificacion->id_actividad)
+											<li>
+							      				<a href="{{url('admin/entidad')}}/{{$entidad->slug}}/{{$entidad->id}}">
+							      					<div class="row">
+							      						<div class="col-md-12">	
+															<div style="font-size: 0.9em">	
+																La Entidad: <b>{{$entidad->nombre_entidad}}</b> ha llenado sus datos.
+									      					</div>
+									      					<div>
+									      						<small>	{{$notificacion->created_at}}</small>
+									      					</div>
+							      						</div>
+							      					</div>
+							      					
+							      					 	
+							      					
+							      				</a>
+							      			</li>
+							      			@endif
+					      				@endforeach
+					      			@endif
+			      				@endforeach
+			      				
+							@else
+
+							@endif
+			      		</ul>
+			      	</li>
+			        
+			        @if (Auth::guest())
+                            
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <span class="glyphicon glyphicon-off"></span> &nbsp;Cerrar Sesión
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
 			        <!-- <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 			          <ul class="dropdown-menu">
@@ -138,6 +244,12 @@
 		});
 		$('#menu-configuracion').click(function(){
 			$('#sub-configuracion').toggle(200);
+		});
+		$('#menu-encuesta').click(function(){
+			$('#sub-encuesta').toggle(200);
+		});
+		$('#menu-usuarios').click(function(){
+			$('#sub-usuarios').toggle(200);
 		});
 	</script>
 

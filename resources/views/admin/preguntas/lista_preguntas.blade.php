@@ -39,7 +39,17 @@
 						@endforeach
 						
 					</td>
-					<td class="text-center">{{$pregunta->tipo_pregunta}}</td>
+					<td class="text-center">
+					@if($pregunta->tipo_pregunta==1)
+						Pregunta Cerrada
+					@elseif($pregunta->tipo_pregunta==2)
+						Pregunta Abierta
+					@elseif($pregunta->tipo_pregunta==3)
+						Pregunta con Opciones/Prioridad
+					@else
+						Pregunta con Opciones
+					@endif
+					</td>
 					<td class="text-center">
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
 						  <!-- <button type="button" class="btn btn-default">Left</button> -->
@@ -104,7 +114,11 @@
 					$('#ubicacion-pregunta-modificar').val(data['ubicacion']);
 				}
 
-			})
+			});
+
+			$('#guardar-cambios-pregunta').click(function(){
+				$.ajax();
+			});
 			
 		});
 	</script>

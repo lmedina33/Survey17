@@ -243,9 +243,12 @@
 
 
 		var next = "0";
+		var ent;
 
 		$('#guardar_datos').click(function(){
+
 			var entidad = $('#entidad').val();
+			
 			var departamento_temp = $('#departamento').val();
 			var provincia = $('#provincia').val();
 
@@ -282,7 +285,8 @@
 						distrito: distrito,
 						titular: titular,
 						presidente: presidente,
-						encuestado: encuestado
+						encuestado: encuestado,
+						progreso:0.1
 					},
 					headers: {'X_CSRF_TOKEN': $('#token_entidad').val()},
 					type: 'POST',
@@ -312,7 +316,11 @@
 							$('.mensaje-enviado>b').html('');
 						}, 3000);
 						
-						next = data;
+						next = "1";
+
+						ent=data;
+
+
 
 						bar.animate(0.1);
 						
@@ -396,6 +404,16 @@
 
 
 				percentShow = percentShow + percentTotal;
+
+				$.ajax({
+					url:'{{url("ajax/guardar/progreso")}}',
+					type:'POST',
+					data:{progreso:0.1+percentShow,id:ent},
+					headers: {'X_CSRF_TOKEN': $('#token_entidad').val()},
+					success: function(data){
+						console.log(data);
+					}
+				});
 
 				bar.animate(0.1+percentShow);
 				

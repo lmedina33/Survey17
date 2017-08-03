@@ -6,10 +6,17 @@ use Illuminate\Http\Request;
 
 class PreguntaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function crearPregunta(){
     	$preguntas = \App\PreguntaModel::all();
         $modulos = \App\ModuloModel::all();
-    	return view('admin.preguntas.crear_pregunta', compact('preguntas','modulos'));
+        $notificaciones = \App\ActividadModel::all();
+        $entidades = \App\EntidadModel::all();
+    	return view('admin.preguntas.crear_pregunta', compact('preguntas','modulos','notificaciones','entidades'));
     }
 
     public function guardarPregunta(Request $request){
@@ -48,14 +55,18 @@ class PreguntaController extends Controller
     public function getListaPreguntas(){
     	$preguntas = \App\PreguntaModel::all();
         $modulos = \App\ModuloModel::all();
-    	return view('admin.preguntas.lista_preguntas', compact('preguntas','modulos'));
+        $notificaciones = \App\ActividadModel::all();
+        $entidades = \App\EntidadModel::all();
+    	return view('admin.preguntas.lista_preguntas', compact('preguntas','modulos','notificaciones','entidades'));
     }
 
     public function verPregunta($slug, $id){
     	$pregunta = \App\PreguntaModel::find($id);
     	$opciones = \App\OpcionModel::where('pregunta_id','=',$id)->get();
         $modulos = \App\ModuloModel::all();
-    	return view('admin.preguntas.pregunta_detalle', compact('pregunta','opciones','modulos'));
+        $notificaciones = \App\ActividadModel::all(); 
+        $entidades = \App\EntidadModel::all();   	
+        return view('admin.preguntas.pregunta_detalle', compact('pregunta','opciones','modulos','notificaciones','entidades'));
     }
 
     public function obtenerOrden(Request $request){
