@@ -174,4 +174,7 @@
 .dropdown-menu{
 	border-radius: 0;
 }
+#load-mp{
+	display: none;
+}
 

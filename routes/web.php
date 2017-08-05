@@ -27,16 +27,20 @@ Route::get('/admin/modulo/crear','ModuloController@indexModulo');
 Route::post('/admin/modulo/guardar', 'ModuloController@guardarModulo');
 Route::get('/admin/modulo/{slug}/{id}','ModuloController@verModulo');
 Route::get('/admin/encuesta_por_entidad','EncuestaController@encuestaPorEntidad');
+Route::get('/admin/usuarios', 'UsuarioController@usuarios');
 
 Route::get('/encuesta','EncuestaController@index');
 Route::get('/encuesta/identificacion','IdentificacionController@validar');
 
 Route::get('/ajax/obtener/orden','PreguntaController@obtenerOrden');
+Route::post('/ajax/modificar/pregunta/{id}', 'PreguntaController@modificarPregunta');
 Route::get('/ajax/obtener/pregunta/{id}','PreguntaController@preModificar');
 Route::post('/ajax/guardar/datos_generales','EntidadController@guardarEntidad');
 Route::get('/ajax/obtener/modulos_preguntas','ModuloController@modulosPreguntas');
 Route::get('/ajax/obtener/entidades','EntidadController@getAjaxListaEntidades');
 Route::post('/ajax/guardar/progreso','EncuestaController@guardarProgreso');
+Route::get('/ajax/obtener/notificaciones/nuevas','ActividadController@getAllNewNotificaciones');
+Route::get('/ajax/cambiar/estado/notificaciones','ActividadController@cambiarEstado');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

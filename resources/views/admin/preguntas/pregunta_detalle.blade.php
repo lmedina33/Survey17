@@ -44,7 +44,7 @@
 									<b>Módulo:</b>
 									@foreach($modulos as $modulo)
 										@if($modulo->id==$pregunta->modulo_id)
-											{{$modulo->modulo}} {{$modulo->nombre_modulo}}
+											<a href="{{url('admin/modulo')}}/{{$modulo->slug}}/{{$modulo->id}}">{{$modulo->modulo}} {{$modulo->nombre_modulo}}</a>
 										@endif
 									@endforeach
 								</div>
@@ -62,7 +62,11 @@
 								</div>
 							</div>
 							<div class="col-md-5 text-right" style="margin-top: 1em">
-								<button class="btn btn-default"> <span class="glyphicon glyphicon-edit"></span> Editar Pregunta</button>
+								<button class="btn btn-default btn-modificar" data-id-pmodificar="{{$pregunta->id}}" data-toggle="modal" data-target="#myModalModificar"> 
+									<span class="glyphicon glyphicon-edit"></span> Editar Pregunta
+								</button>
+								
+						  	
 								<button class="btn btn-default"> <span class="glyphicon glyphicon-trash"></span> Eliminar Pregunta</button>
 							</div>
 						</div>
@@ -234,6 +238,8 @@
 												</div>
 											</td>
 
+											<input type="hidden" id="hidep" value="1">
+
 										</tr>
 										@endif
 
@@ -255,4 +261,10 @@
 
 </div>
 
+@include('admin/otros/modal/modificar')
+
+@endsection
+
+@section('scripts')
+	<script src="{{asset('js/app/preguntas/modificar.js')}}"></script>
 @endsection

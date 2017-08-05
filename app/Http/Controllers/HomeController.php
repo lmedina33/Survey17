@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function usuarios(){
+        $usuarios = \App\User::all();
+        return view('admin.usuarios.lista_usuarios', compact('usuarios'));
+    }
 }

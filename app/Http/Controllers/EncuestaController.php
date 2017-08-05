@@ -6,18 +6,14 @@ use Illuminate\Http\Request;
 
 class EncuestaController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
     
     public function index(){
     	$preguntas = \App\PreguntaModel::all();
     	$modulos = \App\ModuloModel::all();
-    	$opciones = \App\OpcionModel::all();
-        $notificaciones = \App\ActividadModel::all();
+    	$opciones = \App\OpcionModel::all(); 
         $entidades = \App\EntidadModel::all();
-    	return view('encuesta.index', compact('preguntas','modulos','opciones','notificaciones','entidades'));
+    	return view('encuesta.index', compact('preguntas','modulos','opciones','entidades'));
     }
 
     public function guardarProgreso(Request $request){

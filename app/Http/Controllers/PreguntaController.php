@@ -51,6 +51,16 @@ class PreguntaController extends Controller
         $pregunta = \App\PreguntaModel::find($id);
         return $pregunta;
     }
+    public function modificarPregunta(Request $request, $id){
+        $pregunta = \App\PreguntaModel::find($id);
+        $pregunta['modulo_id']= $request['modulo'];
+        $pregunta['titulo_pregunta']= $request['titulo'];
+        $pregunta['slug']= str_slug($request['titulo'],"-");
+        $pregunta['orden']= $request['orden'];
+        $pregunta['ubicacion']= $request['ubicacion'];
+        $pregunta->save();
+
+    }
 
     public function getListaPreguntas(){
     	$preguntas = \App\PreguntaModel::all();
