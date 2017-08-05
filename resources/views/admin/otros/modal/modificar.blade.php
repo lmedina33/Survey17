@@ -37,9 +37,12 @@
             </select>
           </div>
         </div>
-        
+        <input type="hidden" name="_token"  id="token_pmodificar" value="{{ csrf_token() }}">
       </div>
       <div class="modal-footer">
+        <span style="padding-right: 20px" id="load-mp">
+          <img src="{{asset('images/loading.gif')}}" width="30px">
+        </span>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-default" id="guardar-cambios-pregunta">Guardar Cambios</button>
       </div>

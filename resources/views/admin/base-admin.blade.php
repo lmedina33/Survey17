@@ -113,26 +113,14 @@
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 ">
-			      <!-- <ul class="nav navbar-nav">
-			        <li><a href="#">Link</a></li>
-			        <li><a href="#">Link</a></li>
-			        <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-			          <ul class="dropdown-menu">
-			            <li><a href="#">Action</a></li>
-			            <li><a href="#">Another action</a></li>
-			            <li><a href="#">Something else here</a></li>
-			            <li role="separator" class="divider"></li>
-			            <li><a href="#">Separated link</a></li>
-			            <li role="separator" class="divider"></li>
-			            <li><a href="#">One more separated link</a></li>
-			          </ul>
-			        </li>
-			      </ul> -->
+			      <ul class="nav navbar-nav">
+			        <li><a href="#">Contraloría General de la República</a></li>
+			        
+			      </ul> 
 			      
 			      <ul class="nav navbar-nav navbar-right">
 			      	<li class="dropdown">
-			      		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notificaciones
+			      		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="not">Notificaciones
 			      			<?php $i=0; ?>
 							@if(count($notificaciones)>0)
 								
@@ -141,7 +129,12 @@
 			      						<?php $i=$i+1 ?>
 			      					@endif
 			      				@endforeach
-			      				<span class="badge">{{$i}}</span>
+			      				
+			      					@if($i>0)
+										<span class="badge" id="badge">{{$i}}</span>
+			      					@endif
+			      					
+			      				
 							@else
 
 							@endif
@@ -154,10 +147,10 @@
 									@if($notificacion->tipo_actividad=="Entidad")
 										@foreach($entidades as $entidad)
 											@if($entidad->id==$notificacion->id_actividad)
-											<li>
+											<li style="border-bottom: 1px solid #eee">
 							      				<a href="{{url('admin/entidad')}}/{{$entidad->slug}}/{{$entidad->id}}">
 							      					<div class="row">
-							      						<div class="col-md-12">	
+							      						<div class="col-md-12" style="color:#34495e">	
 															<div style="font-size: 0.9em">	
 																La Entidad: <b>{{$entidad->nombre_entidad}}</b> ha llenado sus datos.
 									      					</div>
@@ -256,6 +249,38 @@
 	@yield('scripts')
 	
 	<script>
+			bucle();
+			function bucle(){
+				setTimeout(function(){
+					$.ajax({
+						url:'{{url("ajax/obtener/notificaciones/nuevas")}}',
+						type:'GET',
+						success: function(data){
+							//$('#badge').show();
+							if(data.length>0){
+								$('#badge').show();
+								$('#badge').html(data.length);
+							}
+							else{
+								//$('#badge').hide();
+							}
+							
+						}
+					});
+					bucle();
+				}, 5000)
+			}
+
+			$('#not').click(function(){
+				$('#badge').hide();
+				$.ajax({
+					url:'{{url("ajax/cambiar/estado/notificaciones")}}',
+					type:'GET',
+					success: function(data){
+						$('#badge').html('');
+					}
+				})
+			});
 		
 
 	</script>

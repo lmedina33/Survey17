@@ -15,6 +15,7 @@
 					<th class="text-center">Entidad</th>
 					<th class="text-center">Progreso de Encuesta</th>
 					<th class="text-center">Faltante</th>
+					<th class="text-center">Estado</th>
 					<th class="text-center">Último Ingreso</th>
 					<th class="text-center">Opciones</th>
 				</tr>
@@ -36,6 +37,17 @@
 							@foreach($encuestas as $encuesta)
 								@if($encuesta->entidad_id==$entidad->id)
 									{{(1.0-$encuesta->progreso)*100}}%
+								@endif
+							@endforeach
+						</td>
+						<td class="text-center">
+							@foreach($encuestas as $encuesta)
+								@if($encuesta->entidad_id==$entidad->id)
+									@if($encuesta->progreso<1.0)
+										Pendiente
+									@else
+										Completado
+									@endif
 								@endif
 							@endforeach
 						</td>

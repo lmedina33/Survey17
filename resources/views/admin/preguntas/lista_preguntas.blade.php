@@ -8,6 +8,12 @@
 		</div>
 	</div>
 
+	
+		<div class="col-md-12 text-right" style="margin-bottom: 15px">
+			<a href="{{url('/admin/pregunta/crear')}}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-plus"></span> Crear Nueva Pregunta</a>
+		</div>
+	
+
 	<div class="col-md-12">
 		
 		<table id="lista-preguntas" class="table table-condensed table-preguntas">
@@ -70,6 +76,8 @@
 
 </div>
 
+<input type="hidden" id="hidep" value="0">
+
 @include('admin/otros/modal/modificar')
 
 @endsection
@@ -90,36 +98,5 @@
 	        }
 		});
 	</script>
-	<script>
-
-		$('.btn-modificar').click(function(){
-			var id_pregunta = $(this).attr('data-id-pmodificar');
-
-			/*Reseteando los datos en el Modal*/
-			$('#titulo-self-modal').text('');
-			$('#titulo-pregunta-modificar').val('');
-			$('#orden-pregunta-modificar').val('');
-			$('#ubicacion-pregunta-modificar').val('');
-
-			$.ajax({
-				url:'{{url("ajax/obtener/pregunta")}}/'+id_pregunta,
-				type:'GET',
-				success: function(data){
-					/*Colocando los datos en el Modal*/
-
-					$('#titulo-self-modal').text(data['titulo_pregunta']);
-					$('#titulo-pregunta-modificar').val(data['titulo_pregunta']);
-					$('#modulo-pregunta-modificar').val(data['modulo_id']);
-					$('#orden-pregunta-modificar').val(data['orden']);
-					$('#ubicacion-pregunta-modificar').val(data['ubicacion']);
-				}
-
-			});
-
-			$('#guardar-cambios-pregunta').click(function(){
-				$.ajax();
-			});
-			
-		});
-	</script>
+	<script src="{{asset('js/app/preguntas/modificar.js')}}"></script>
 @endsection

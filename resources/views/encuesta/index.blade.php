@@ -391,8 +391,7 @@
 
 				/* porcentaje por modulo */
 				var percent = 0.9/cantidad_modulos;
-				console.log(arrayPreguntasModulo);
-				console.log(modulo);
+				
 				for(var i=0; i<arrayPreguntasModulo.length; i++){
 					
 					if(arrayPreguntasModulo[i]['id_modulo']==modulo){
