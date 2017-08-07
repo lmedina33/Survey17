@@ -253,15 +253,6 @@
 			//var provincia = $('#provincia').children('option:selected').text();
 			var departamento = $('#departamento').val();
 			var provincia = $('#provincia').val();
-			
-
-<<<<<<< HEAD
-
-
-
-            var departamento = $('#departamento').val();
-=======
->>>>>>> eaaade08b7cbb63f9b745055d6830a96cadec6ee
 			var distrito = $('#distrito').val();
 			var titular = $('#titular').val();
 			var presidente = $('#presidente').val();
