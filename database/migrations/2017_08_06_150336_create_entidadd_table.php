@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEntidadTable extends Migration
+class CreateEntidaddTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,10 @@ class CreateEntidadTable extends Migration
     {
         Schema::create('entidades', function (Blueprint $table) {
             $table->increments('id');
-            // $table->integer('pregunta_id')->unsigned();
-            // $table->foreign('pregunta_id')->references('id')->on('preguntas');
-            $table->string('slug',300);
+            $table->string('tipo_entidad');
+            
             $table->string('nombre_entidad',200);
+            $table->string('slug',300);
             $table->string('departamento',200);
             $table->string('provincia',200);
             $table->string('distrito',200);

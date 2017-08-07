@@ -10,7 +10,7 @@ class EncuestadoModel extends Model
     
     protected $fillable = [
     	'entidad_id',
-    	'nombre_encuestado'
-    	
+    	'nombre_encuestado',
+    	'dni_encuestado'
     ];
 }

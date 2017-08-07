@@ -103,3 +103,7 @@
 .img-logo{
 	margin-bottom: 3em;
 }
+
+.uppercase{
+	text-transform: uppercase;
+}

@@ -22,20 +22,14 @@
 		  	<div role="tabpanel" class="tab-pane active" id="datos">
 		  		<br>
 		  		<div class="row">
-		  			<div class="col-md-4">
+		  			<div class="col-md-12">
 		  				<div class="form-group">
 						    <label class="label-form">Nombre de la Entidad *</label>
 						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-						    <input type="text" class="form-control" id="entidad" placeholder="Ingresar Nombre de la Entidad">
+						    <input type="text" class="form-control uppercase" id="entidad" value="{{$pdte_filtrado->nombre_entidad}}">
 						</div>
 		  			</div>
-		  			<div class="col-md-8">
-		  				<div class="form-group">
-						    <label class="label-form">Nombre de la Entidad *</label>
-						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-						    <input type="text" class="form-control" id="entidad" placeholder="Ingresar Nombre de la Entidad">
-						</div>
-		  			</div>
+		  			
 		  		</div>
 		  		
 
@@ -44,62 +38,68 @@
 				 	<div class="col-md-4">
 				 		<div class="form-group">
 						    <label class="label-form">Departamento *</label>
-
-						    <select name="" id="departamento" class="form-control"></select>
+							<input type="text" class="form-control uppercase" id="departamento" value='{{$pdte_filtrado->cdpt_dpto}}'>
+						    <!--<select name="" id="departamento" class="form-control"></select>-->
 						  </div>
 				 	</div>
 				 	<div class="col-md-4">
 				 		<div class="form-group">
 						    <label class="label-form">Provincia *</label>
-						    <select name="" id="provincia" class="form-control"></select>
+						    <input type="text" class="form-control uppercase"  id="provincia" value='{{$pdte_filtrado->cprv_prov}}'>
+						    <!--<select name="" id="provincia" class="form-control"></select>-->
 						  </div>
 				 	</div>
 				 	<div class="col-md-4">
 				 		<div class="form-group">
 						    <label class="label-form">Distrito *</label>
-						    <select name="" id="distrito" class="form-control"></select>
+						    <input type="text" class="form-control uppercase" id="distrito" value='{{$pdte_filtrado->cdst_distrit}}'>
+						    <!--<select name="" id="distrito" class="form-control"></select>-->
 						  </div>
 				 	</div>
 				 	
 				 </div>
 				  
 				 <div class="row">
-				 	<div class="col-md-6">
+				 	<div class="col-md-12">
 				 		<div class="form-group">
 				    
 						    <label class="label-form">Nombre del Titular de la Entidad *</label>
 						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-						    <input type="text" class="form-control" id="titular" placeholder="Ingresar Nombre del Titular de la Entidad">
+						    <input type="text" class="form-control uppercase" id="titular" placeholder="Ingresar Nombre del Titular de la Entidad">
 						  </div>
 				 	</div>
-				 	<div class="col-md-6">
+				</div>
+				<div class="row">
+				 	<div class="col-md-12">
 				 		<div class="form-group">
 				   
 						    <label class="label-form">Nombre del Presidente del Comité de Control Interno *</label>
 						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-						    <input type="text" class="form-control" id="presidente" placeholder="Ingresar Nombre del Presidente del Comité de Control Interno">
+						    <input type="text" class="form-control uppercase" id="presidente" value="{{$pdte_filtrado->apellidos_nombres}}">
 						  </div>
 				 	</div>
 				 </div>
 				  
 				  <div class="row">
-				  	<div class="col-md-10">
+				  	<div class="col-md-8">
 				  		<div class="form-group">
 				    
-						    <label class="label-form">Nombre del responsable de comunicación o líder de equipo (encargado de la función de comunicación u difusión) *</label>
+						    <label class="label-form">Nombre de la Persona que llena la Encuesta *</label>
 						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-						    <input type="text" class="form-control" id="encuestado" placeholder="Ingresar Nombre del responsable de comunicación o líder de equipo (encargado de la función de comunicación u difusión)">
+						    <input type="text" class="form-control uppercase" id="encuestado" placeholder="Nombre de la Persona que llena la Encuesta">
 						  </div>
 				  	</div>
-				  	<div class="col-md-2">
+				  	<div class="col-md-4">
 				  		<div class="form-group">
 				    
-						    <label class="label-form">Rol *</label>
+						    <label class="label-form">DNI *</label>
 						    <label class="label-ayuda"><span class="glyphicon glyphicon-question-sign"></span></label>
-						    <input type="text" class="form-control" id="encuestado" placeholder="Ingresar Rol">
+						    <input type="text" class="form-control uppercase" id="dni" placeholder="Ingresar DNI">
 						  </div>
 				  	</div>
 				  </div>
+
+				  <input type="hidden" class="form-control uppercase" id="cnig" value="{{$pdte_filtrado->cnig_nombre}}">
 				  
 
 				  <input type="hidden" name="_token"  id="token_entidad" value="{{ csrf_token() }}">
@@ -145,7 +145,8 @@
 
 @section('scripts')
 	<script>
-		$.ajax({
+		/* Ajax que carga automaticamente los departamentos, provincias y distritos */
+		/*$.ajax({
 			url:'{{asset("js/json/departamentos.json")}}',
 			type: 'GET',
 			dataType: 'JSON',
@@ -157,6 +158,7 @@
 
 				$('#departamento').change(function(){
 					var id_ubigeo = $(this).val();
+
 					$('#provincia').html('');
 					$.ajax({
 						url:'{{asset("js/json/provincias.json")}}',
@@ -188,7 +190,7 @@
 				})
 
 			}
-		});
+		}); */
 	</script>
 
 	<script>
@@ -239,8 +241,6 @@
 		});
 
 		bar.animate(0.0);
-		
-
 
 		var next = "0";
 		var ent;
@@ -249,21 +249,29 @@
 
 			var entidad = $('#entidad').val();
 			
-			var departamento_temp = $('#departamento').val();
+			//var departamento= $('#departamento').children('option:selected').text();
+			//var provincia = $('#provincia').children('option:selected').text();
+			var departamento = $('#departamento').val();
 			var provincia = $('#provincia').val();
+			
 
+<<<<<<< HEAD
 
 
 
             var departamento = $('#departamento').val();
+=======
+>>>>>>> eaaade08b7cbb63f9b745055d6830a96cadec6ee
 			var distrito = $('#distrito').val();
 			var titular = $('#titular').val();
 			var presidente = $('#presidente').val();
 			var encuestado = $('#encuestado').val();
+			var dni = $('#dni').val();
+			var cnig = $('#cnig').val();
 
 			var validate = "";
 
-			if(entidad==""||titular==""||presidente==""||encuestado==""||departamento==""||provincia==""||distrito==""){
+			if(entidad==""||titular==""||presidente==""||encuestado==""||departamento==""||provincia==""||distrito==""||dni==""||cnig==""){
 				validate = "false";
 
 				$('.mensaje-enviado>b').html('<span class="glyphicon glyphicon-alert"></span> ¡Por Favor, Llena todos los datos del Formulario!');
@@ -273,7 +281,7 @@
 				}, 2000);
 
 			}
-			if(entidad!=""&&titular!=""&&presidente!=""&&encuestado!=""&&departamento!=""&&provincia!=""&&distrito!=""){
+			if(entidad!=""&&titular!=""&&presidente!=""&&encuestado!=""&&departamento!=""&&provincia!=""&&distrito!=""&&dni!=""&&cnig!=""){
 				validate = "true";
 
 				$.ajax({
@@ -286,6 +294,8 @@
 						titular: titular,
 						presidente: presidente,
 						encuestado: encuestado,
+						dni:dni,
+						cnig:cnig,
 						progreso:0.1
 					},
 					headers: {'X_CSRF_TOKEN': $('#token_entidad').val()},
@@ -350,7 +360,7 @@
 		var guardado=1;
 		var percentShow = 0;
 
-		
+	
 
 		$('.guardar_rpta').click(function(){
 			var ide = $(this).attr('data-id');
@@ -358,15 +368,18 @@
 			var evaluador = [];
 			var j=0;
 			var sumaEvaluadora=0;
-			var modulo = $(this).attr('data-id-mod');7
-			
+			var modulo = $(this).attr('data-id-mod');
+			var pid= $(this).attr('data-pid');
+			var rpta=[];
+			var i=0;
 			
 
 			
-			$('.checkbox.q'+ide).each( function(){
+			$('.checkbox.q'+modulo+ide).each( function(){
 				if($(this).children().children().first().is(':checked')){
-					console.log($(this).children().children().last().text());
+					rpta[i] = $(this).children().children().last().text();
 					evaluador[j]=1;
+					i=i+1;
 				}
 				else{
 					evaluador[j]=0;
@@ -374,9 +387,13 @@
 				j=j+1;
 			});
 
+
+
 			for(var k=0; k<evaluador.length; k++){
 				sumaEvaluadora=sumaEvaluadora+evaluador[k];
 			}
+
+			
 
 			if(sumaEvaluadora==0){
 				$('.msg>b').html('<span class="glyphicon glyphicon-alert"></span> ¡Por Favor, Debes Responder la Pregunta!');
@@ -386,7 +403,22 @@
 				},2000);
 			}
 			else{
-				/* ajax que guarda */
+				/* ajax que guarda la rpta */
+				console.log(rpta);
+
+				for(var k=0; k<rpta.length; k++){
+					$.ajax({
+						url:'{{url("ajax/guardar/rpta")}}/'+pid,
+						data:{respuesta:rpta[k],entidad:ent},
+						type: 'POST',
+						headers: {'X_CSRF_TOKEN': $('#token_opc').val()},
+						success: function(data){
+							console.log(data);
+						}
+
+					});
+				}
+				
 				guardado=1;
 
 				/* porcentaje por modulo */
@@ -401,9 +433,9 @@
 					}
 				}
 
-
 				percentShow = percentShow + percentTotal;
 
+				/* busca en ajax y guarda el progreso */
 				$.ajax({
 					url:'{{url("ajax/guardar/progreso")}}',
 					type:'POST',
@@ -421,6 +453,7 @@
 
 			if(guardado==1){
 				button.hide(800);
+
 
 				$('.msg>b').html('<span class="glyphicon glyphicon-thumbs-up"></span> ¡Su Respuesta ha sido Guardada Correctamente!');
 				$('.msg>b').css({'color':'#34495e'});

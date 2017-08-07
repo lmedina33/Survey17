@@ -7,6 +7,10 @@
 			<b>Lista de Módulos</b>
 		</div>
 	</div>
+
+	<div class="col-md-12 text-right" style="margin-bottom: 15px">
+			<a href="{{url('/admin/modulo/crear')}}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-plus"></span> Crear Nuevo Módulo</a>
+		</div>
 	<div class="col-md-12">
 		
 		<table class="table table-condensed table-preguntas" id="lista-modulos">

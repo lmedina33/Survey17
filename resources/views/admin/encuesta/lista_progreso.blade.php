@@ -8,7 +8,7 @@
 		</div>
 	</div>
 	<div class="col-md-12">
-		<table class="table table-condensed table-preguntas">
+		<table class="table table-condensed table-preguntas" id="lista-progreso">
 			<thead>
 				<tr>
 					<th class="text-center">Nº</th>
@@ -77,4 +77,22 @@
 	</div>
 
 </div>
+@endsection
+
+@section('scripts')
+<script>
+		$('#lista-progreso').DataTable({
+			"language": {
+	            "info": "Mostrando _START_ de _END_ de un Total de _TOTAL_ Preguntas",
+	            "lengthMenu": "Mostrar _MENU_ Preguntas",
+	            "search": "Buscar:",
+	            "paginate": {
+			        "first": "Primera",
+			        "last": "Ultima",
+			        "next": "Siguiente",
+			        "previous": "Anterior"
+			    },
+	        }
+		});
+	</script>
 @endsection
