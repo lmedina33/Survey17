@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEncuestadoTable extends Migration
+class CreateModulosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateEncuestadoTable extends Migration
      */
     public function up()
     {
-        Schema::create('encuestados', function (Blueprint $table) {
+        Schema::create('modulos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('entidad_id')->unsigned();
-            $table->foreign('entidad_id')->references('id')->on('entidades');
-            $table->string('nombre_encuestado',200);
-            
+            $table->integer('seccion_id')->unsigned();
+            $table->foreign('seccion_id')->references('id')->on('secciones');
+            $table->string('modulo');
+            $table->string('nombre_modulo');
+            $table->string('tab');
+            $table->string('slug',200);
             
             $table->timestamps();
         });

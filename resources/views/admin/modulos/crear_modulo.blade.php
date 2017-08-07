@@ -10,10 +10,36 @@
 	<div class="col-md-12">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="form-group">
-					<label for="exampleInputPassword1">Módulo</label>
-					<input type="text" class="form-control" placeholder="Ingresar Módulo" id="modulo">	    
+				<div class="row">
+
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="exampleInputPassword1">Sección</label>
+							@if(count($secciones)>0)
+								<select name="" class="form-control" id="seccion">
+								   	<option value="" disabled >Escoger Sección</option>
+								   	@foreach($secciones as $seccion)
+								    	<option value="{{$seccion->id}}">{{$seccion->nombre_seccion}}</option>
+								    @endforeach
+								    	
+								</select>
+							@else
+								<div style="padding: 7px 15px;background-color: rgba(157, 255, 0, 0.29);"> 
+									<span class="glyphicon glyphicon-hand-right"></span> Debes crear Secciones
+									<a href="{{url('admin/seccion/crear')}}">¡Click Aquí!</a>
+								</div>
+							@endif
+						</div>
+						
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="exampleInputPassword1">Módulo</label>
+							<input type="text" class="form-control" placeholder="Ingresar Módulo" id="modulo">    
+						</div>
+					</div>
 				</div>
+				
 			</div>
 			<div class="col-md-12">
 				<div class="form-group">
@@ -51,10 +77,12 @@
 		var modulo = $('#modulo').val();
 		var nombre_modulo = $('#nombre_modulo').val();
 		var tab = $('#tab').val();
+		var seccion = $('#seccion').val();
 
 				$.ajax({
 					url:'{{ url("admin/modulo/guardar") }}',
 					data: {
+						seccion: seccion,
 						modulo: modulo,
 						nombre_modulo: nombre_modulo,
 						tab: tab

@@ -9,7 +9,7 @@ class EncuestaModel extends Model
     protected $table = "encuestas";
 
     protected $fillable = [
-    	'entidad_id',
-    	'progreso'
+    	'tipo_encuesta'
+    	
     ];
 }

@@ -83,7 +83,7 @@
 												<!-- No muestra opción-->
 											@else
 												<td class="text-center">
-													<div class="checkbox q{{$pregunta->orden}}">
+													<div class="checkbox q{{$modulo->id}}{{$pregunta->orden}}">
 														<label>
 															<input type="checkbox" data-opc="{{$pregunta->id}}1"> <b>{{$opcion->opcion1}}</b>
 														</label>
@@ -95,7 +95,7 @@
 												<!-- No muestra opción-->
 											@else
 												<td class="text-center">
-													<div class="checkbox q{{$pregunta->orden}}">
+													<div class="checkbox q{{$modulo->id}}{{$pregunta->orden}}">
 														<label>
 															<input type="checkbox" data-opc="{{$pregunta->id}}2"> <b>{{$opcion->opcion2}}</b>
 														</label>
@@ -107,7 +107,7 @@
 												<!-- No muestra opción-->
 											@else
 												<td class="text-center">
-													<div class="checkbox q{{$pregunta->orden}}">
+													<div class="checkbox q{{$modulo->id}}{{$pregunta->orden}}">
 														<label>
 															<input type="checkbox" data-opc="{{$pregunta->id}}3"> <b>{{$opcion->opcion3}}</b>
 														</label>
@@ -119,7 +119,7 @@
 
 											@else
 												<td class="text-center">
-													<div class="checkbox q{{$pregunta->orden}}">
+													<div class="checkbox q{{$modulo->id}}{{$pregunta->orden}}">
 														<label>
 															<input type="checkbox" data-opc="{{$pregunta->id}}4"> <b>{{$opcion->opcion4}}</b>
 														</label>
@@ -132,7 +132,7 @@
 
 											@else
 												<td class="text-center">
-													<div class="checkbox q{{$pregunta->orden}}">
+													<div class="checkbox q{{$modulo->id}}{{$pregunta->orden}}">
 														<label>
 															<input type="checkbox" data-opc="{{$pregunta->id}}5"> <b>{{$opcion->opcion1}}</b>
 														</label>
@@ -151,6 +151,9 @@
 				</div>
 				<br>
 
+				<input type="hidden" name="_token"  id="token_opc" value="{{ csrf_token() }}">
+				<input type="hidden" class="ok" data-pid="{{$pregunta->id}}">
+
 				<div class="msg text-center">
 					<b></b>
 				</div>
@@ -158,14 +161,14 @@
 				<div class="text-center">
 												
 					@if($pregunta->ubicacion=="ultima")
-						<button class="btn btn-default guardar_rpta" data-id="{{$pregunta->orden}}" data-id-mod="{{$modulo->id}}">
+						<button class="btn btn-default guardar_rpta" data-id="{{$pregunta->orden}}" data-id-mod="{{$modulo->id}}" data-pid="{{$pregunta->id}}">
 							Guardar Respuesta
 						</button>
 						<button type="submit" class="btn btn-warning next_pgta" data-ide="{{$pregunta->orden}}" data-ubicacion="{{$pregunta->ubicacion}}" data-tab="{{$modulo->tab}}">
 							Siguiente Pregunta
 						</button>
 					@else
-						<button class="btn btn-default guardar_rpta" data-id="{{$pregunta->orden}}" data-id-mod="{{$modulo->id}}">
+						<button class="btn btn-default guardar_rpta" data-id="{{$pregunta->orden}}" data-id-mod="{{$modulo->id}}" data-pid="{{$pregunta->id}}">
 							Guardar Respuesta
 						</button>
 						<button type="submit" class="btn btn-warning next_pgta" data-ide="{{$pregunta->orden}}" data-ubicacion="{{$pregunta->ubicacion}}" data-tab="{{$modulo->tab}}">

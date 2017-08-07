@@ -38,16 +38,30 @@
 			<!-- contenido del menu izquierdo -->
 
 			<ul class="nav nav-pills nav-stacked nav-custo">
-				<li role="presentation"><a href="#" id="menu-modulos"> <span class="glyphicon glyphicon-th-list"></span> &nbsp;<b>Módulos</b></a>
+				<li role="presentation"><a href="#" id="menu-secciones"> <span ><b>1</b></span> &nbsp;&nbsp;<b>Secciones</b></a>
+					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-secciones">
+						<li role="presentation"><a href="{{url('admin/seccion/crear')}}">Crear Sección</a></li>
+						<li role="presentation"><a href="{{url('admin/secciones')}}">	Lista de Secciones</a></li>
+					</ul>
+				</li>
+				<li role="presentation"><a href="#" id="menu-modulos"> <span><b>2</b></span> &nbsp;&nbsp;<b>Módulos</b></a>
 					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-modulos">
 						<li role="presentation"><a href="{{url('admin/modulo/crear')}}">Crear Módulo</a></li>
 						<li role="presentation"><a href="{{url('admin/modulos')}}">	Lista de Módulos</a></li>
 					</ul>
 				</li>
-				<li role="presentation"><a href="#" id="menu-preguntas"> <span class="glyphicon glyphicon-list"></span> &nbsp;<b>Preguntas</b></a>
+				<li role="presentation"><a href="#" id="menu-preguntas"> <span><b>3</b></span> &nbsp;&nbsp;<b>Preguntas</b></a>
 					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-preguntas">
 						<li role="presentation"><a href="{{url('admin/pregunta/crear')}}">Crear Pregunta</a></li>
 						<li role="presentation"><a href="{{url('admin/preguntas')}}">	Lista de Preguntas</a></li>
+					</ul>
+				</li>
+				<li role="presentation"><a href="#" id="menu-encuesta"><span class="glyphicon glyphicon-list-alt"></span> &nbsp;<b>Encuesta</b></a>
+					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-encuesta">
+						<li role="presentation"><a href="{{url('admin/encuesta_por_entidad')}}">Progreso Encuesta/Entidad</a></li>
+						<li role="presentation"><a href="{{url('admin/tipo_encuesta/crear')}}">Crear Tipo Encuesta</a></li>
+						
+						
 					</ul>
 				</li>
 				<li role="presentation"><a href="#" id="menu-entidades"><span class="glyphicon glyphicon-home"></span> &nbsp;<b>Entidades</b></a>
@@ -59,13 +73,7 @@
 						
 					</ul>
 				</li>
-				<li role="presentation"><a href="#" id="menu-encuesta"><span class="glyphicon glyphicon-list-alt"></span> &nbsp;<b>Encuesta</b></a>
-					<ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-encuesta">
-						<li role="presentation"><a href="{{url('admin/encuesta_por_entidad')}}">Progreso Encuesta/Entidad</a></li>
-						
-						
-					</ul>
-				</li>
+				
 				<li role="presentation"><a href="#" id="menu-estadistica"><span class="glyphicon glyphicon-stats"></span> &nbsp;<b>Estadística</b></a>
 					{{-- <ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-usuarios">
 						<li role="presentation"><a href="{{url('admin/usuarios')}}">Lista de Usuarios</a></li>
@@ -114,7 +122,7 @@
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 ">
 			      <ul class="nav navbar-nav">
-			        <li><a href="#">Contraloría General de la República</a></li>
+			        <li><a href="/admin"> Panel Principal</a></li>
 			        
 			      </ul> 
 			      
@@ -139,7 +147,7 @@
 
 							@endif
 			      		</a>
-			      		<ul class="dropdown-menu" role="menu">
+			      		<ul class="dropdown-menu dm" role="menu">
 			      			
 			      			@if(count($notificaciones)>0)
 								
@@ -180,7 +188,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <img src="{{asset('images/user.png')}}" alt="" width="18px"> &nbsp;{{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
@@ -243,6 +251,9 @@
 		});
 		$('#menu-usuarios').click(function(){
 			$('#sub-usuarios').toggle(200);
+		});
+		$('#menu-secciones').click(function(){
+			$('#sub-secciones').toggle(200);
 		});
 	</script>
 

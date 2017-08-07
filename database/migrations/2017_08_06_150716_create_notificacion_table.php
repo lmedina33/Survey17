@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePresidenteTable extends Migration
+class CreateNotificacionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreatePresidenteTable extends Migration
      */
     public function up()
     {
-        Schema::create('presidentes', function (Blueprint $table) {
+        Schema::create('notificaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('entidad_id')->unsigned();
-            $table->foreign('entidad_id')->references('id')->on('entidades');
-            $table->string('nombre_presidente',200);
+            $table->string('tipo_actividad');
+            $table->integer('id_actividad');
+            $table->string('estado');
             
             
             $table->timestamps();

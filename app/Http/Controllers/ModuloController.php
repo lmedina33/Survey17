@@ -47,11 +47,13 @@ class ModuloController extends Controller
     public function indexModulo(){
         $notificaciones = \App\ActividadModel::all();
         $entidades = \App\EntidadModel::all();
-    	return view('admin.modulos.crear_modulo', compact('notificaciones','entidades'));
+        $secciones = \App\SeccionModel::all();
+    	return view('admin.modulos.crear_modulo', compact('notificaciones','entidades','secciones'));
     }
 
     public function guardarModulo(Request $request){
     	\App\ModuloModel::create([
+            'seccion_id'=>$request['seccion'],
     		'modulo'=>$request['modulo'],
     		'nombre_modulo'=>$request['nombre_modulo'],
     		'tab'=>$request['tab'],
@@ -68,32 +70,5 @@ class ModuloController extends Controller
         return view('admin.modulos.modulo_detalle', compact('modulo','preguntas','notificaciones','entidades'));
     }
 
-    public function modulosPreguntas(){
-        $modulos = \App\ModuloModel::all();
-        $preguntas = \App\PreguntaModel::all();
-        $preguntasPorModulo = [];
-        $i=0;
-        $contador = 0;
-
-        foreach ($modulos as $modulo) {
-            
-
-            foreach ($preguntas as $pregunta) {
-                if($pregunta->modulo_id==$modulo->id){
-                    $contador=$contador+1;
-                }
-            }
-
-            $preguntasPorModulo[$i] = [
-                'id_modulo'=>$modulo->id,
-                'cantidad_preguntas'=>$contador
-                ];
-
-            $i=$i+1;
-            $contador=0;
-
-        }
-
-        return $preguntasPorModulo;
-    }
+    
 }
