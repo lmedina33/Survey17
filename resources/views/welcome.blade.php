@@ -1,420 +1,71 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Encuestas - 2017</title>
-<link href="{{ asset('css/bootstrapp.css')}}" rel="stylesheet" type="text/css" media="all">
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="{{ asset('js/jquery-1.11.0.min.js')}}"></script>
-<!-- Custom Theme files -->
-<link href="{{ asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all"/>
-<!-- Custom Theme files -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
-</script>
-<meta name="keywords" content="We Photography Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<!--Google Fonts-->
-<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<!-- start-smoth-scrolling -->
-<script type="text/javascript" src="{{ asset('js/move-top.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/easing.js')}}"></script>
-    <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $(".scroll").click(function(event){     
-                    event.preventDefault();
-                    $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-                });
-            });
-    </script>
-<!-- //end-smoth-scrolling -->
-<script src="{{ asset('js/bootstrapp.min.js')}}"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{{ asset('layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
 </head>
-<body>
-<!--header start here-->
-<!-- NAVBAR
-        ================================================== -->
-<div class="header">
-    <div class="fixed-header">  
-            <div class="navbar-wrapper">
-              <div class="container">
-                <nav class="navbar navbar-inverse navbar-static-top">
-                     <div class="navbar-header">
-                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                          </button>
-                          <div class="logo wow slideInLeft" data-wow-delay="0.3s">
-                                <a class="navbar-brand" href="index.html"><img src="{{ asset('images/logotipo_2.png')}}" /></a>
-                          </div>
-                      </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                   <nav class="cl-effect-1">    
-                      <ul class="nav navbar-nav">
-                       <li><a href="#" class="scroll"> <span data-hover="Home">Inicio</span></a></li>
-                        <li><a href="#About" class="scroll"> <span data-hover="About">Datos</span></a></li>
-                        <li><a href="#Services" class="scroll"> <span data-hover="Services">Módulo 1</span></a></li>
-                        <li><a href="#Work" class="scroll"> <span data-hover="Work">Módulo 2</span></a></li>
-                        <li><a href="#Pricing" class="scroll"> <span data-hover="Pricing">Módulo 3</span></a></li>
-                        <li><a href="#Contact" class="scroll"> <span data-hover="Contact">Módulo 4</span></a></li>                   
-                      </ul>
-                    </nav>
-                    </div>            
-                     </nav>
-                  </div>
-                   <div class="clearfix"> </div>
-            </div>
-     </div>
-</div>
-<!--header end here-->
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
 
-<div class="banner">
-  <div class="container">
-     <div class="banner-main" id="home">
-         <div class="bann-right">
-            <h1>Encuesta - CGR - DCI</h1>
-            <h2>Comunicaciones</h2>
-             <div class="portfolio-bwn">
-            
-            <a href="#">VER GUÍA</a>
-          </div>
-
-           
-         </div>
-        <div class="clearfix"> </div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row1">
+  <header id="header" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div id="logo" class="fl_left">
+      <h1><a class="navbar-brand" href="index.html"><img src="{{ asset('images/logotipo_2.png')}}" /></a></h1>
+      <BR>
     </div>
+    <!-- ################################################################################################ -->
+    <nav id="mainav" class="fl_right">
+      <ul class="clear">
+        <li class="active"><a href="index.html">Inicio</a></li>
+        <li><a class="drop" href="#">GUÍA DE ENCUESTA</a>
+          <ul>
+            <li><a href="pages/gallery.html">Manual Práctico</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- ################################################################################################ -->
+  </header>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/01.png');">
+  <div id="pageintro" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <article>
+      <p style="color: #000; font-size: 25px; font-style: Roboto" class="heading">ENCUESTA CGR - SCI</p>
+      <h2  style="color: #FF5733; font-size: 45px" class="heading"><span class="block">COMUNICACIONES</span></h2>
+      <a style="color: #fff; font-size: 12px; background-color: #343; padding: 10px; border-color: #000;border-left-style: solid; border-left-width: 20px; border-bottom-width: 4px; border-bottom-style: solid" href={{ asset('encuesta')}}>Encuesta para instituciones con Sistema de Control Interno >></a><br><br><br>
+      <a style="color: #fff; font-size: 12px; background-color: #683209; padding: 10px; border-color: #000;border-left-style: solid; border-left-width: 20px; border-bottom-width: 4px; border-bottom-style: solid" href="#">Encuesta para instituciones sin Sistema de Control Interno >></a>     
+    </article>
+    <!-- ################################################################################################ -->
   </div>
 </div>
-<!--header end here-->  
-<!--about start here-->
-<div class="about" id="About">
-    <div class="container">
-        <div class="about-main">
-            <div class="col-md-3 about-left">
-                
-            </div>
-            <div class="col-md-9 about-right">
-          <div class="about-top">
-            <h3>Datos Generales</h3>
-            <h5>Completar Datos de los encuestados</h5>
-            <ul>
-                <li><p>En esta sección se debe completar la información referente a la identificación de la institución encuestada y de los respresentantes respectivamente.</p></li>
-                <li><p>Se debe realizar a detalle cada paso en el llenado del formulario.
-                 </p></li>
-    
-            </ul>
-        
-         </div>
-         <div class="worker">
-            <h4>COMPLETAR DATOS DEL EQUIPO DE TRABAJO</h4>
-            <p>Completar datos según el cargo establecido</p>
-            <p> </p>
-
-            <div class="col-md-4 team-grid">
-                <img src="{{ asset('images/IM2.jpg')}}" alt=""/>
-            </div>
-            <div class="col-md-4 team-grid">
-                <img src="{{ asset('images/IM3.jpg')}}" alt=""/>
-            </div>
-            <div class="col-md-4 team-grid">
-                <img src="{{ asset('images/IM4.jpg')}}" alt=""/>
-            </div>
-
-           <div class="clearfix"> </div>
-         </div>
-         <BR>
-      </div>
-
-    <div align="center" class="portfolio-bwn">
-            
-            <a href="http://localhost:8000/encuesta">IR A ENCUESTA</a>
-          </div>
-  
-       </div>
-
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear"> 
+    <div id="copyright">
+      <p>Copyright &copy; 2017 - All Rights Reserved - <a href="#">Encuesta-CGR-SCI-Comunicaciones</a></p>
+      <p class="font-xs">Template by <a target="_blank" href="#" title="Free Website Templates">Galex Media</a></p>
     </div>
-
+    <!-- ################################################################################################ -->
+  </footer>
 </div>
-<!--about end here-->
-<!--services start here-->
-<div class="services" id="Services">
-    <div class="container">
-        <div class="services-main">
-            <div class="ser-top">
-                <h3>MÓDULO 1 - ASPECTOS GENERALES</h3>
-                <h4>Completar información en los formularios de preguntas de aspecto general</h4>
-            </div>
-            <div class="ser-bottom">
-              <div class="ser-grid">
-                  <div class="col-md-8 ser-left">
-                    <h5>Special Event Photography</h5>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                   </div>
-                   <div class="col-md-4 ser-right">
-                    <img src="images/bike.png" alt=""/>
-                   </div>
-                 <div class="clearfix"> </div>
-              </div>
-              <div class="ser-grid">
-                  <div class="col-md-4 ser-left wlta">
-                    <img src="images/dotts.png" alt=""/>
-                   </div>
-                   <div class="col-md-8 ser-right wltatext">
-                     <h5>Family Photography</h5>
-                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                   </div>
-                 <div class="clearfix"> </div>
-              </div>
-              <div class="ser-grid">
-                  <div class="col-md-8 ser-left">
-                    <h5>Wedding Photography</h5>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                   </div>
-                   <div class="col-md-4 ser-right">
-                    <img src="images/wedding.png" alt=""/>
-                   </div>
-                 <div class="clearfix"> </div>
-              </div>
-              <div class="clearfix"> </div>
-           </div>
-           <div class="clearfix"> </div>
-        </div>
-         <div align="center" class="portfolio-bwn">
-            
-            <a href="http://localhost:8000/encuesta">IR A ENCUESTA</a>
-          </div>
-    </div>
-</div>
-
-<!--services end here-->
-<!--portfolio start here-->
-<link rel="stylesheet" href="css/swipebox.css">
-    <script src="js/jquery.swipebox.min.js"> </script> 
-        <script type="text/javascript">
-            jQuery(function($) {
-                $(".swipebox").swipebox();
-            });
-</script>
-
-<div class="gallery" id="Work">
-        <div class="portfolio-main">
-            <div class="port-folio-top">
-                <h3>MÓDULO 2</h3>
-                <h4>Se Debe responpoder las preguntas relacionadas a Sensiblización</h4>
-            </div>
-            <div class="port-folio-bottom">
-                    <div id="portfoliolist">
-                        <div class="col-md-3 portfolio-wrapper">        
-                            <a href="images/b-p1.jpg" class="b-link-stripe b-animate-go  swipebox"  title="Image Title">
-                             <img src="images/p1.jpg" alt=""><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03"><img src="images/plus.png" alt=""/></h2>
-                                </div></a>
-                        </div>              
-                        <div class="col-md-3 portfolio-wrapper">        
-                            <a href="images/b-p3.jpg" class="b-link-stripe b-animate-go  swipebox"  title="Image Title">
-                             <img src="images/p3.jpg" alt=""><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03"><img src="images/plus.png" alt=""/></h2>
-                             </div></a>
-                        </div>
-                        <div class="col-md-3 portfolio-wrapper">        
-                            <a href="images/b-p2.jpg" class="b-link-stripe b-animate-go  swipebox"  title="Image Title">
-                             <img src="images/p2.jpg" alt=""><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03"><img src="images/plus.png" alt=""/></h2>
-                             </div></a>
-                        </div>              
-                        <div class="col-md-3 portfolio-wrapper">        
-                            <a href="images/b-p4.jpg" class="b-link-stripe b-animate-go  swipebox"  title="Image Title">
-                             <img src="images/p4.jpg" alt=""><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03"><img src="images/plus.png" alt=""/></h2>
-                             </div></a>
-                        </div>
-                        <div class="col-md-3 portfolio-wrapper">        
-                            <a href="images/b-p5.jpg" class="b-link-stripe b-animate-go  swipebox"  title="Image Title">
-                             <img src="images/p5.jpg" alt=""><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03"><img src="images/plus.png" alt=""/></h2>
-                             </div></a>
-                        </div>
-                        <div class="col-md-3 portfolio-wrapper">        
-                            <a href="images/b-p6.jpg" class="b-link-stripe b-animate-go  swipebox"  title="Image Title">
-                             <img src="images/p6.jpg" alt=""><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03"><img src="images/plus.png" alt=""/></h2>
-                             </div></a>
-                        </div>  
-                        <div class="col-md-3 portfolio-wrapper">        
-                            <a href="images/b-p7.jpg" class="b-link-stripe b-animate-go  swipebox"  title="Image Title">
-                             <img src="images/p7.jpg" alt=""><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03"><img src="images/plus.png" alt=""/></h2>
-                             </div></a>
-                        </div>  
-                        <div class="col-md-3 portfolio-wrapper">        
-                            <a href="images/b-p8.jpg" class="b-link-stripe b-animate-go  swipebox"  title="Image Title">
-                             <img src="images/p8.jpg" alt=""><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03"><img src="images/plus.png" alt=""/></h2>
-                             </div></a>
-                        </div>  
-                    <div class="clearfix"> </div>
-            </div>
-          <div class="clearfix"> </div>
-           <div align="center" class="portfolio-bwn">
-            
-            <a href="http://localhost:8000/encuesta">IR A ENCUESTA</a>
-          </div>
-          <span class="port-line"> </span>
-    </div>
-  </div>
-</div>
-<!--portfolio end here-->
-<!--happy start here-->
-<script src="js/responsiveslides.min.js"></script>
- <script>
-    // You can also use "$(window).load(function() {"
-    $(function () {
-      $("#slider").responsiveSlides({
-        auto: true,
-        manualControls: '#slider3-pager',
-      });
-    });
-  </script>
-<div class="happy">
-    <div class="container">
-        <div class="happy-main">
-            <div class="happy-top">
-                <h3>MÓDULO 3</h3>
-                <h4>En este módulo se debe responder lo relacionado con Comunicación</h4>
-            </div>
-            <div class="happy-bottom">
-                 <div class="slider">
-        <!-- Slideshow 3 -->
-        <ul class="rslides" id="slider">
-          <li><p>“Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim  veniam, quis nostrud exercitation ullamco.”</p></li>
-          <li><p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore  vitae dicta sunt explicabo."</p></li>
-          <li><p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire."</p></li>
-          <li><p>"These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best."</p></li>
-        </ul>
-        <!-- Slideshow 3 Pager -->
-        <ul id="slider3-pager">
-          <li><a href="#"><img src="images/sli1.png" alt=""></a></li>
-          <li><a href="#"><img src="images/sli2.png" alt=""></a></li>
-          <li><a href="#"><img src="images/sli3.png" alt=""></a></li>
-          <li><a href="#"><img src="images/sli4.png" alt=""></a></li>
-        </ul>
-    </div>
-          <div class="clearfix"> </div>
-        </div>
-    </div>
- </div>
-</div>
-<!--happy end here-->
-<!--price start here-->
-<div class="price" id="Pricing">
-    <div class="container">
-        <div class="price-main">
-            <div class="price-top">
-                <h3>PRICING</h3>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>
-            </div>
-            
-            <div class="price-bottom">
-                <div class="col-md-4 order">
-                <div class="price-grid">
-                    <h3>Starter</h3>
-                    <span class="price-line"> </span>
-                    <ul>
-                        <li><a href="#"><i> </i>Pre Consultation</a></li>
-                    </ul>
-                        <h4>10+  Photo</h4>
-                        <h5>$150</h5>
-                        <span class="pricebott-line"> </span>
-                        <h6>ORDER</h6>
-                </div>
-                </div>
-                <div class="col-md-4 order">
-                <div class="price-grid">
-                    <h3>Plus</h3>
-                    <span class="price-line"> </span>
-                    <ul>
-                        <li><a href="#"><i> </i>Pre Consultation</a></li>
-                    </ul>
-                        <h4>10+  Photo</h4>
-                        <h5>$150</h5>
-                        <span class="pricebott-line"> </span>
-                        <h6>ORDER</h6>
-                </div>
-                </div>
-                <div class="col-md-4 order no-mar">
-                <div class="price-grid">
-                    <h3>Pro</h3>
-                    <span class="price-line"> </span>
-                    <ul>
-                        <li><a href="#"><i> </i>Pre Consultation</a></li>
-                    </ul>
-                        <h4>10+  Photo</h4>
-                        <h5>$150</h5>
-                        <span class="pricebott-line"> </span>
-                        <h6>ORDER</h6>
-                </div>
-                </div>
-    
-                
-                <div class="clearfix"> </div>
-            </div>
-        
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-         
-        </div>
-    </div>
-</div>
-
-<!--price end here-->
-<!--contact start here-->
-<div class="contact" id="Contact">
-   <div class="contact-bg">
-    <div class="container">
-        <div class="contact-main">
-             <div class="contact-top">
-                <h3>GET IN TOUCH</h3>
-                <P>HAVE ANY QUESTION? DROP US A MESSAGE</P>
-             </div>
-             <div class="contact-bottom">
-                <form>
-                    <input type="text" value="Your Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name';}">
-                    <input type="text" value="Your E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your E-mail';}">
-                    <input type="text" class="no-mar" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}">
-                    <textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
-                    <div class="con-send">
-                    <input type="submit"  value="SEND"/>
-                    </div>
-                </form>
-             </div>
-          <div class="clearfix"> </div>
-        </div>
-    </div>
-   </div>
-</div>
-<!--contact end here-->
-<!--footer start here-->
-<div class="footer">
-    <div class="container">
-        <div class="footer-main">
-            <div class="footer-left">
-               <a href="#"><img src="{{ asset('images/logotipo_1.png')}}" alt=""/></a>
-            </div>
-            <div class="footer-right">
-                <p>&copy; 2017 La Contraloría. Todos los derechos reservados | <a href="#" target="_blank">Comunicaciones</a></p>
-            </div>
-        </div>
-        <script type="text/javascript">
-                                        $(document).ready(function() {
-                                            /*
-                                            var defaults = {
-                                                containerID: 'toTop', // fading element id
-                                                containerHoverID: 'toTopHover', // fading element hover id
-                                                scrollSpeed: 1200,
-                                                easingType: 'linear' 
-                                            };
-                                            */
-                                            
-                                            $().UItoTop({ easingType: 'easeOutQuart' });
-                                            
-                                        });
-                                    </script>
-                        <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-    </div>
-</div>
-<!--footer end here-->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{{ asset('layout/scripts/jquery.min.js')}}"></script>
+<script src="{{ asset('layout/scripts/jquery.backtotop.js')}}"></script>
+<script src="{{ asset('layout/scripts/jquery.mobilemenu.js')}}"></script>
 </body>
 </html>
