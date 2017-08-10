@@ -13,7 +13,7 @@ class AdminController extends Controller
     public function index(){
     	
     	if (Auth::check()) {
-    		$notificaciones = \App\ActividadModel::all();
+    		$notificaciones = \App\ActividadModel::orderBy('created_at','desc')->get();
     		$entidades = \App\EntidadModel::all();
 		    return view('admin.admin', compact('notificaciones','entidades'));
 		}

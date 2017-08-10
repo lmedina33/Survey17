@@ -31,11 +31,13 @@ Route::get('/admin/usuarios', 'UsuarioController@usuarios');
 Route::get('/admin/seccion/crear', 'SeccionController@crear');
 Route::get('/admin/secciones', 'SeccionController@getListaSecciones');
 Route::get('/admin/tipo_encuesta/crear', 'TipoEncuestaController@crear');
+Route::get('/admin/estadisticas','EstadisticaController@index');
 
 
 Route::get('/encuesta','EncuestaController@pre');
 Route::get('/encuesta/identificacion','IdentificacionController@validar');
 Route::get('/encuesta/{dni}','EncuestaController@index');
+
 
 
 Route::get('/ajax/obtener/orden','PreguntaController@obtenerOrden');
@@ -53,6 +55,14 @@ Route::post('/ajax/tipo_encuesta/guardar', 'TipoEncuestaController@guardar');
 Route::get('/ajax/buscar/pdte/{dni}', 'PdteFiltradosController@obtener');
 Route::post('/ajax/guardar/validar', 'PdteFiltradosController@guardarValidacion');
 Route::get('/ajax/buscar/validar', 'PdteFiltradosController@buscarValidacion');
+Route::get('/ajax/buscar/presidente/{dni}', 'PresidenteController@buscarPresidente');
+Route::get('/ajax/buscar/progreso/entidad/{id}', 'EncuestaController@buscarProgresoEntidad');
+Route::post('/ajax/guardar/avance', 'AvanceEncuestaController@guardar');
+Route::get('/ajax/mostrar/avance/{dni}', 'AvanceEncuestaController@mostrarAvance');
+Route::get('/ajax/buscar/avance/{id}', 'AvanceEncuestaController@buscarAvance');
+Route::post('/ajax/modificar/avance', 'AvanceEncuestaController@modificarAvance');
+//Route::get('/ajax/obtener/progreso/entidad/{id}', 'EncuestaController@buscarProgresoEntidad');
+
 
 Auth::routes();
 

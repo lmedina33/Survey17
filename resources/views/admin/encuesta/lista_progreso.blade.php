@@ -29,14 +29,14 @@
 						<td class="text-center">
 							@foreach($encuestas as $encuesta)
 								@if($encuesta->entidad_id==$entidad->id)
-									{{$encuesta->progreso*100}}%
+									<span style="color:blue">{{$encuesta->progreso*100}}%</span>
 								@endif
 							@endforeach
 						</td>
 						<td class="text-center">
 							@foreach($encuestas as $encuesta)
 								@if($encuesta->entidad_id==$entidad->id)
-									{{(1.0-$encuesta->progreso)*100}}%
+									<span style="color:red">{{(1.0-$encuesta->progreso)*100}}%</span>
 								@endif
 							@endforeach
 						</td>
@@ -44,9 +44,9 @@
 							@foreach($encuestas as $encuesta)
 								@if($encuesta->entidad_id==$entidad->id)
 									@if($encuesta->progreso<1.0)
-										Pendiente
+										<span style="color:red"><span class="glyphicon glyphicon-warning-sign"></span> &nbsp;Pendiente Completar</span>
 									@else
-										Completado
+										<span style="color:blue"><span class="glyphicon glyphicon-ok"></span> &nbsp;Completado</span>
 									@endif
 								@endif
 							@endforeach

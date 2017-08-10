@@ -38,8 +38,11 @@
 							    	<option value="" disabled>Escoger Tipo de Pregunta</option>
 							    	<option value="1">Pregunta Cerrada</option>
 							    	<option value="2">Pregunta Abierta</option>
-							    	<option value="3">Pregunta con Opciones/Priorización</option>
+							    	<option value="3">Pregunta con Opciones y Múltiple Elección/Prioridad</option>
 							    	<option value="4">Pregunta con Opciones</option>
+							    	<option value="5">Pregunta con Opciones y Múltiple Elección</option>
+							    	<option value="6">Pregunta con Opciones/Llenar</option>
+							    	<option value="7">Pregunta Contextual</option>
 							    </select>
 							    @else
 								<select name="" class="form-control" id="tipo-pregunta" disabled>
@@ -67,7 +70,7 @@
 							<div class="form-group" id="opc" style="display: none;">
 							    <label for="exampleInputPassword1">¿Cuántas Opciones?</label>
 							    <div class="input-group">
-								  <input type="number" class="form-control" placeholder="Nro. de Opciones" aria-describedby="basic-addon2" id="cuantas" max="5" min="0">
+								  <input type="number" class="form-control" placeholder="Nro. de Opciones" aria-describedby="basic-addon2" id="cuantas" max="6" min="0">
 								  <span class="input-group-addon" id="basic-addon2">Opciones</span>
 								</div>
 							  </div>
@@ -85,19 +88,27 @@
 					  	<div class="form-group" id="opc1">
 						    <label for="exampleInputEmail1">Opción 1</label>
 						    <input type="text" class="form-control" id="opcion1" placeholder="Ingresa Opción 1">
-						  </div><div class="form-group" id="opc2">
+						</div>
+						<div class="form-group" id="opc2">
 						    <label for="exampleInputEmail1">Opción 2</label>
 						    <input type="text" class="form-control" id="opcion2" placeholder="Ingresa Opción 2">
-						  </div><div class="form-group" id="opc3">
+						</div>
+						<div class="form-group" id="opc3">
 						    <label for="exampleInputEmail1">Opción 3</label>
 						    <input type="text" class="form-control" id="opcion3" placeholder="Ingresa Opción 3">
-						  </div><div class="form-group" id="opc4">
+						</div>
+						<div class="form-group" id="opc4">
 						    <label for="exampleInputEmail1">Opción 4</label>
 						    <input type="text" class="form-control" id="opcion4" placeholder="Ingresa Opción 4">
-						  </div><div class="form-group" id="opc5">
+						</div>
+						<div class="form-group" id="opc5">
 						    <label for="exampleInputEmail1">Opción 5</label>
 						    <input type="text" class="form-control" id="opcion5" placeholder="Ingresa Opción 5">
-						  </div>
+						</div>
+						<div class="form-group" id="opc6">
+						    <label for="exampleInputEmail1">Opción 6</label>
+						    <input type="text" class="form-control" id="opcion6" placeholder="Ingresa Opción 6">
+						</div>
 					  </div>
 					  
 					  
@@ -197,6 +208,10 @@
 					}
 					if($(this).val()=='5'){
 						$('#opc5').show();
+						$('#opc6').hide();
+					}
+					if($(this).val()=='6'){
+						$('#opc6').show();
 
 					}
 				});
@@ -209,14 +224,22 @@
 			if(valor==1){
 				$('#opc').hide();
 			}
-			if(valor==2){
-				$('#opc').hide();
-				console.log("sin opciones");
-			}
+			// if(valor==2){
+			// 	$('#opc').hide();
+			// 	console.log("sin opciones");
+			// }
 			if(valor==3){
 				opciones();
 			}
 			if(valor==4){
+				opciones();
+				
+			}
+			if(valor==5){
+				opciones();
+				
+			}
+			if(valor==6){
 				opciones();
 				
 			}
@@ -262,7 +285,8 @@
 						opcion2: 'No',
 						opcion3: '',
 						opcion4: '',
-						opcion5: ''
+						opcion5: '',
+						opcion6: ''
 					},
 					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
 					type: 'POST',
@@ -288,7 +312,8 @@
 						opcion2: $('#opcion2').val(),
 						opcion3: $('#opcion3').val(),
 						opcion4: $('#opcion4').val(),
-						opcion5: $('#opcion5').val()
+						opcion5: $('#opcion5').val(),
+						opcion6: $('#opcion6').val()
 					},
 					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
 					type: 'POST',
@@ -314,7 +339,89 @@
 						opcion2: $('#opcion2').val(),
 						opcion3: $('#opcion3').val(),
 						opcion4: $('#opcion4').val(),
-						opcion5: $('#opcion5').val()
+						opcion5: $('#opcion5').val(),
+						opcion6: $('#opcion6').val()
+					},
+					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
+					type: 'POST',
+					beforeSend: function(){
+						$('.msg-guardar').show();
+					},
+					success: function(data){
+						location.href = "/admin/preguntas";
+					}
+				});
+			}
+
+			if($('#tipo-pregunta').val()=="5"){
+				$.ajax({
+					url:'{{ url("admin/pregunta/guardar") }}',
+					data: {
+						modulo_id: $('#modulo-pregunta').val(),
+						titulo: $('#titulo').val(),
+						tipo: $('#tipo-pregunta').val(),
+						orden: $('#orden').val(),
+						ubicacion: $('#ubicacion').val(),
+						opcion1: $('#opcion1').val(),
+						opcion2: $('#opcion2').val(),
+						opcion3: $('#opcion3').val(),
+						opcion4: $('#opcion4').val(),
+						opcion5: $('#opcion5').val(),
+						opcion6: $('#opcion6').val()
+					},
+					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
+					type: 'POST',
+					beforeSend: function(){
+						$('.msg-guardar').show();
+					},
+					success: function(data){
+						location.href = "/admin/preguntas";
+					}
+				});
+			}
+
+			if($('#tipo-pregunta').val()=="6"){
+				$.ajax({
+					url:'{{ url("admin/pregunta/guardar") }}',
+					data: {
+						modulo_id: $('#modulo-pregunta').val(),
+						titulo: $('#titulo').val(),
+						tipo: $('#tipo-pregunta').val(),
+						orden: $('#orden').val(),
+						ubicacion: $('#ubicacion').val(),
+						opcion1: $('#opcion1').val(),
+						opcion2: $('#opcion2').val(),
+						opcion3: $('#opcion3').val(),
+						opcion4: $('#opcion4').val(),
+						opcion5: $('#opcion5').val(),
+						opcion6: $('#opcion6').val()
+					},
+					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
+					type: 'POST',
+					beforeSend: function(){
+						$('.msg-guardar').show();
+					},
+					success: function(data){
+						location.href = "/admin/preguntas";
+					}
+				});
+			}
+
+			if($('#tipo-pregunta').val()=="2"){
+				$.ajax({
+					url:'{{ url("admin/pregunta/guardar") }}',
+					data: {
+						modulo_id: $('#modulo-pregunta').val(),
+						titulo: $('#titulo').val(),
+						tipo: $('#tipo-pregunta').val(),
+						orden: $('#orden').val(),
+						ubicacion: $('#ubicacion').val(),
+						opcion1: '',
+						opcion2: '',
+						opcion3: '',
+						opcion4: '',
+						opcion5: '',
+						opcion6: ''
 					},
 					headers: {'X_CSRF_TOKEN': $('#token_pregunta').val()},
 					type: 'POST',

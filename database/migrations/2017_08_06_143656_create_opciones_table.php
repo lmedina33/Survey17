@@ -22,6 +22,7 @@ class CreateOpcionesTable extends Migration
             $table->string('opcion3',200)->nullable();
             $table->string('opcion4',200)->nullable();
             $table->string('opcion5',200)->nullable();
+            $table->string('opcion6',200)->nullable();
             $table->timestamps();
         });
     }

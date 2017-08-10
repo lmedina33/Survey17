@@ -14,7 +14,8 @@ class OpcionModel extends Model
     	'opcion2',
     	'opcion3',
     	'opcion4',
-    	'opcion5'
+    	'opcion5',
+    	'opcion6'
     ];
 }
 

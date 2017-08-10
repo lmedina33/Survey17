@@ -1,12 +1,23 @@
 @extends('../base')
 
+@section('head')
+	
+@endsection
+
 @section('contenedor')
+
+<div class="opa-content text-center">
+	<img src="{{asset('images/loading.gif')}}" alt="" width="50px">
+	<div style="margin-top: 2em">
+		Cargando...
+	</div>
+</div>
 	<br>
 		<div id="container"></div>
 
 		<!-- Nav tabs -->
 		  <ul class="nav nav-tabs" role="tablist" id="myTabs">
-		  	<li role="presentation" class="active"><a href="#datos" aria-controls="datos" ><b>Datos Generales</b></a></li>
+		  	<li role="presentation" ><a href="#datos" aria-controls="datos" ><b>Datos Generales</b></a></li>
 		  	@foreach($modulos as $modulo)
 		  		@if($modulo->id==1)
 		    		<li role="presentation" class=""><a href="#{{$modulo->tab}}" aria-controls="{{$modulo->tab}}" ><b>{{$modulo->modulo}}: {{$modulo->nombre_modulo}}</b></a></li>
@@ -103,6 +114,10 @@
 				  
 
 				  <input type="hidden" name="_token"  id="token_entidad" value="{{ csrf_token() }}">
+
+				  <input type="hidden" name="_token"  id="token_avance" value="{{ csrf_token() }}">
+
+				  
 				  
 				  <div class="col-md-12 text-center">
 				  	<div class="loading">
@@ -141,9 +156,108 @@
 		    
 		    
 		</div>
+
 @endsection
 
 @section('scripts')
+	
+	
+	<script src="{{asset('js/app/encuesta/avance.js')}}"></script>
+	<script src="{{asset('js/app/encuesta/opciones.js')}}"></script>
+
+	
+	<script>
+		// $('.opa-content').hide();
+		$('#myTabs a[href="#datos"]').tab('show');
+		//$('.tab-pane#modulo2').show();
+
+
+		$.ajax({
+			url:'{{url("ajax/mostrar/avance")}}/'+'{{$pdte_filtrado->nro_documento}}',
+			type: 'GET',
+			success: function(data){
+				$('.opa-content').hide();
+					var avanceMod = data['modulo_avance'];
+					//console.log(avanceMod);
+					$('#myTabs a[href="#'+avanceMod+'"]').tab('show');
+					$('.tab-pane#'+avanceMod).show();
+					
+					//$('.tab-content > .tab-pane#'+avanceMod).css({'display':'block !important'});
+				
+			}
+
+		});
+	</script>
+
+	<script>
+		// progressbar.js@1.0.0 version is used
+		// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+
+		var bar = new ProgressBar.Line(container, {
+		  strokeWidth: 4,
+		  easing: 'easeInOut',
+		  duration: 1400,
+		  color: '#f1c40f',
+		  trailColor: '#eee',
+		  trailWidth: 1,
+		  svgStyle: {width: '100%', height: '100%'},
+		  text: {
+		    style: {
+		      // Text color.
+		      // Default: same as stroke color (options.color)
+		      color: '#999',
+		      position: 'absolute',
+		      right: '0',
+		      top: '20px',
+		      padding: 0,
+		      margin: 0,
+		      transform: null
+		    },
+		    autoStyleContainer: false
+		  },
+		  from: {color: '#FFEA82'},
+		  to: {color: '#ED6A5A'},
+		  step: (state, bar) => {
+		    bar.setText('Progreso de Encuesta&nbsp;&nbsp; <b>' + Math.round(bar.value() * 100) + ' %</b>');
+		  }
+		});
+
+		//bar.animate(0.0);
+	</script>
+
+	<script>
+		/*=> Ajax que carga el progreso de la encuesta */
+		var valorDNI = '{{$pdte_filtrado->nro_documento}}';
+
+		$.ajax({
+			url:'{{url("ajax/buscar/presidente")}}/'+valorDNI,
+			type:'GET',
+			success: function(data){
+				if(data.length!=0){
+					$.ajax({
+						url:'{{url("ajax/buscar/progreso/entidad")}}/'+data['entidad_id'],
+						type:'GET',
+						success: function(data1){
+							console.log(data1['progreso']);
+
+							if(data1['progreso']<1.0){
+								bar.animate(parseFloat(data1['progreso']));
+							}
+							
+						}
+					});
+				}
+				else{
+					console.log('no paso nada');
+				}
+			}
+		})
+
+		
+	</script>
+
+
+
 	<script>
 		/* Ajax que carga automaticamente los departamentos, provincias y distritos */
 		/*$.ajax({
@@ -207,45 +321,54 @@
 		})
 	</script>
 
+
+
 	<script>
-		// progressbar.js@1.0.0 version is used
-		// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+		function siEsFinal(valorDOCUMENTO){
+			$.ajax({
+				url:'{{url("ajax/buscar/presidente")}}/'+valorDOCUMENTO,
+				type:'GET',
+				success: function(data){
+					if(data.length!=0){
+						$.ajax({
+							url:'{{url("ajax/buscar/progreso/entidad")}}/'+data['entidad_id'],
+							type:'GET',
+							success: function(data1){
+								console.log(data1['progreso']);
 
-		var bar = new ProgressBar.Line(container, {
-		  strokeWidth: 4,
-		  easing: 'easeInOut',
-		  duration: 1400,
-		  color: '#f1c40f',
-		  trailColor: '#eee',
-		  trailWidth: 1,
-		  svgStyle: {width: '100%', height: '100%'},
-		  text: {
-		    style: {
-		      // Text color.
-		      // Default: same as stroke color (options.color)
-		      color: '#999',
-		      position: 'absolute',
-		      right: '0',
-		      top: '20px',
-		      padding: 0,
-		      margin: 0,
-		      transform: null
-		    },
-		    autoStyleContainer: false
-		  },
-		  from: {color: '#FFEA82'},
-		  to: {color: '#ED6A5A'},
-		  step: (state, bar) => {
-		    bar.setText('Progreso de Encuesta&nbsp;&nbsp; <b>' + Math.round(bar.value() * 100) + ' %</b>');
-		  }
-		});
+								if(data1['progreso']==1.0){
+									$('.opa-content').show();
+									setTimeout(function(){
+										
+										
+										location.href="{{url('encuesta')}}/"+valorDOCUMENTO;
 
-		bar.animate(0.0);
+									}, 1000);
+
+
+									
+								}
+
+								
+							}
+						});
+					}
+					else{
+						console.log('no paso nada');
+					}
+				}
+			})
+		}
+		
 
 		var next = "0";
 		var ent;
 
+		
+
 		$('#guardar_datos').click(function(){
+
+			
 
 			var entidad = $('#entidad').val();
 			
@@ -261,6 +384,7 @@
 			var encuestado = $('#encuestado').val();
 			var dni = $('#dni').val();
 			var cnig = $('#cnig').val();
+			var presidenteDNI = "{{$pdte_filtrado->nro_documento}}";
 
 			var validate = "";
 
@@ -284,12 +408,13 @@
 						departamento: departamento,
 						provincia: provincia,
 						distrito: distrito,
-						titular: titular,
+						titular: titular.toUpperCase(),
 						presidente: presidente,
-						encuestado: encuestado,
+						encuestado: encuestado.toUpperCase(),
 						dni:dni,
 						cnig:cnig,
-						progreso:0.1
+						progreso:0.1,
+						presidenteDNI: presidenteDNI
 					},
 					headers: {'X_CSRF_TOKEN': $('#token_entidad').val()},
 					type: 'POST',
@@ -310,6 +435,7 @@
 						$('#provincia').attr('disabled','disabled');
 						$('#distrito').attr('disabled','disabled');
 
+						guardarAvance('{{$pdte_filtrado->nro_documento}}', 'modulo1');
 
 						$('.loading').css({'display':'none'});
 						$('.mensaje-enviado>b').html('<span class="glyphicon glyphicon-thumbs-up"></span> ¡Los Datos han sido Guardados Correctamente!');
@@ -337,6 +463,7 @@
 		$('#next').click(function(){
 			if(next=="1"){
 				$('#myTabs a[href="#modulo1"]').tab('show');
+				
 
 			}
 			if(next=="0"){
@@ -366,21 +493,53 @@
 			var rpta=[];
 			var i=0;
 			
+			if($(this).attr('data-tipe')=="checkbox"){
+				console.log('checkbox');
+				$('.checkbox.q'+modulo+ide).each( function(){
+					if($(this).children().children().first().is(':checked')){
+						rpta[i] = $(this).children().children().last().text();
+						evaluador[j]=1;
+						i=i+1;
+					}
+					else{
+						evaluador[j]=0;
+					}
+					j=j+1;
+				});
+			}
 
-			
-			$('.checkbox.q'+modulo+ide).each( function(){
-				if($(this).children().children().first().is(':checked')){
-					rpta[i] = $(this).children().children().last().text();
-					evaluador[j]=1;
-					i=i+1;
-				}
-				else{
-					evaluador[j]=0;
-				}
-				j=j+1;
-			});
+			if($(this).attr('data-tipe')=="input"){
+				console.log('input');
+				$('.input'+modulo+ide).each( function(){
+					if($(this).val()!=""){
+						rpta[i] = $(this).val();
+						evaluador[j]=1;
+						i=i+1;
+					}
+					else{
+						evaluador[j]=0;
+					}
+					j=j+1;
+				});
+			}
 
-
+			if($(this).attr('data-tipe')=="checkboxinput"){
+				console.log('checkboxinput');
+				$('.checkboxinput'+modulo+ide).each( function(){
+					var sumita = stringPrioridad.length;
+					console.log(sumita);
+					if($(this).val().length==sumita){
+						console.log($(this).val());
+						rpta[i] = $(this).val();
+						evaluador[j]=1;
+						i=i+1;
+					}
+					else{
+						evaluador[j]=0;
+					}
+					j=j+1;
+				});
+			}
 
 			for(var k=0; k<evaluador.length; k++){
 				sumaEvaluadora=sumaEvaluadora+evaluador[k];
@@ -461,11 +620,19 @@
 		$('.pregmodulo10').css({'display':'block'});
 
 		$('.next_pgta').click(function(){
+			/* -------------------------- */
+			$('.ordenprioridad').val('');
+			stringPrioridadShow="";
+			stringPrioridad="";
+			/*---------------------------*/
+
 			$('.msg>b').html('');
 			if(guardado==1){
 				var id = $(this).attr('data-ide');
 				var tab = $(this).attr('data-tab');
 				var ubi = $(this).attr('data-ubicacion');
+
+				
 
 				if(ubi=="ultima"){
 					
@@ -476,11 +643,16 @@
 					guardado=0;
 
 					$('.next_mod').click(function(){
+						siEsFinal("{{$pdte_filtrado->nro_documento}}");
+						
 						var id = $(this).attr('data-mod');
+						
+						guardarAvance('{{$pdte_filtrado->nro_documento}}', 'modulo'+String(parseInt(id)+1));
 						$('.preg'+tab+ubi).hide();
 						$('.preg'+"modulo"+String(parseInt(id)+1)+"0").show();
 						$('#myTabs a[href="#modulo'+String(parseInt(id)+1)+'"]').tab('show');
 						guardado=1;
+
 					});
 				}
 				else{

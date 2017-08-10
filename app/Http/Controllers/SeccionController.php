@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 class SeccionController extends Controller
 {
     public function crear(){
-    	$notificaciones = \App\ActividadModel::all();
+    	$notificaciones = \App\ActividadModel::orderBy('created_at','desc')->get();
+        $entidades = \App\EntidadModel::all();
         $tipoencuestas = \App\EncuestaModel::all();
-    	return view('admin.secciones.crear_seccion', compact('notificaciones','tipoencuestas'));
+    	return view('admin.secciones.crear_seccion', compact('notificaciones','tipoencuestas','entidades'));
     }
 
     public function guardar(Request $request){
@@ -23,8 +24,9 @@ class SeccionController extends Controller
     }
 
     public function getListaSecciones(){
-    	$notificaciones = \App\ActividadModel::all();
+    	$notificaciones = \App\ActividadModel::orderBy('created_at','desc')->get();
     	$secciones = \App\SeccionModel::all();
-    	return view('admin.secciones.lista_secciones', compact('secciones','notificaciones'));
+        $entidades = \App\EntidadModel::all();
+    	return view('admin.secciones.lista_secciones', compact('secciones','notificaciones','entidades'));
     }
 }

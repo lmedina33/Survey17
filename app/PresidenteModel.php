@@ -10,7 +10,7 @@ class PresidenteModel extends Model
     
     protected $fillable = [
     	'entidad_id',
-    	'nombre_presidente'
-    	
+    	'nombre_presidente',
+    	'dni'
     ];
 }

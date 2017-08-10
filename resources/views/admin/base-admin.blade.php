@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 	<link rel="stylesheet" href="{{asset('css/dataTables.bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/estilos.css')}}">
@@ -74,7 +75,7 @@
 					</ul>
 				</li>
 				
-				<li role="presentation"><a href="#" id="menu-estadistica"><span class="glyphicon glyphicon-stats"></span> &nbsp;<b>Estadística</b></a>
+				<li role="presentation"><a href="/admin/estadisticas" id="menu-estadistica"><span class="glyphicon glyphicon-stats"></span> &nbsp;<b>Estadísticas</b></a>
 					{{-- <ul class="nav nav-pills nav-stacked nav-custo nav-sub-custo" id="sub-usuarios">
 						<li role="presentation"><a href="{{url('admin/usuarios')}}">Lista de Usuarios</a></li>
 						
@@ -122,7 +123,7 @@
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 ">
 			      <ul class="nav navbar-nav">
-			        <li><a href="/admin"> Panel Principal</a></li>
+			        <li><a href="/admin"> <span class="glyphicon glyphicon-th"></span> Panel Principal</a></li>
 			        
 			      </ul> 
 			      
@@ -163,7 +164,7 @@
 																La Entidad: <b>{{$entidad->nombre_entidad}}</b> ha llenado sus datos.
 									      					</div>
 									      					<div>
-									      						<small>	{{$notificacion->created_at}}</small>
+									      						<small style="color:#95a5a6"><span class="glyphicon glyphicon-time"></span> {{$notificacion->created_at}}</small>
 									      					</div>
 							      						</div>
 							      					</div>
@@ -260,6 +261,12 @@
 	@yield('scripts')
 	
 	<script>
+			$.ajaxSetup({
+			   headers: {
+			       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			   }
+			});
+
 			bucle();
 			function bucle(){
 				setTimeout(function(){

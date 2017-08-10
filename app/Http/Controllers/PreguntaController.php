@@ -14,13 +14,13 @@ class PreguntaController extends Controller
     public function crearPregunta(){
     	$preguntas = \App\PreguntaModel::all();
         $modulos = \App\ModuloModel::all();
-        $notificaciones = \App\ActividadModel::all();
+        $notificaciones = \App\ActividadModel::orderBy('created_at','desc')->get();
         $entidades = \App\EntidadModel::all();
     	return view('admin.preguntas.crear_pregunta', compact('preguntas','modulos','notificaciones','entidades'));
     }
 
     public function guardarPregunta(Request $request){
-    	if($request['tipo']=='4'||$request['tipo']=='1'||$request['tipo']=='3'){
+    	if($request['tipo']=='4'||$request['tipo']=='1'||$request['tipo']=='3'||$request['tipo']=='5'||$request['tipo']=='6'||$request['tipo']=='2'){
     		\App\PreguntaModel::create([
                 'modulo_id'=>$request['modulo_id'],
 	    		'titulo_pregunta'=>$request['titulo'],
@@ -38,7 +38,8 @@ class PreguntaController extends Controller
     			'opcion2'=>$request['opcion2'],
     			'opcion3'=>$request['opcion3'],
     			'opcion4'=>$request['opcion4'],
-    			'opcion5'=>$request['opcion5']
+    			'opcion5'=>$request['opcion5'],
+                'opcion6'=>$request['opcion6']
     			]);
 
             //return view('admin.preguntas.lista_preguntas');
@@ -65,7 +66,7 @@ class PreguntaController extends Controller
     public function getListaPreguntas(){
     	$preguntas = \App\PreguntaModel::all();
         $modulos = \App\ModuloModel::all();
-        $notificaciones = \App\ActividadModel::all();
+        $notificaciones = \App\ActividadModel::orderBy('created_at','desc')->get();
         $entidades = \App\EntidadModel::all();
     	return view('admin.preguntas.lista_preguntas', compact('preguntas','modulos','notificaciones','entidades'));
     }
@@ -74,7 +75,7 @@ class PreguntaController extends Controller
     	$pregunta = \App\PreguntaModel::find($id);
     	$opciones = \App\OpcionModel::where('pregunta_id','=',$id)->get();
         $modulos = \App\ModuloModel::all();
-        $notificaciones = \App\ActividadModel::all(); 
+        $notificaciones = \App\ActividadModel::orderBy('created_at','desc')->get(); 
         $entidades = \App\EntidadModel::all();   	
         return view('admin.preguntas.pregunta_detalle', compact('pregunta','opciones','modulos','notificaciones','entidades'));
     }

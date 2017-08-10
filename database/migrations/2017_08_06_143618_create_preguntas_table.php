@@ -17,7 +17,7 @@ class CreatePreguntasTable extends Migration
             $table->increments('id');
             $table->integer('modulo_id')->unsigned();
             $table->foreign('modulo_id')->references('id')->on('modulos');
-            $table->string('titulo_pregunta',300);
+            $table->string('titulo_pregunta',400);
             $table->string('tipo_pregunta');
             $table->string('slug',400);
             $table->string('orden');

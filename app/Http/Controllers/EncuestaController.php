@@ -16,13 +16,35 @@ class EncuestaController extends Controller
         $validado = \App\ValidacionModel::where('presidente_dni','=',$dni)->first();
         //$pdte_filtrado = \App\PdtesFiltradosModel::where('nro_documento','=',$dni)->first(); 
 
-        if(isset($validado)){
-            $pdte_filtrado = \App\PdtesFiltradosModel::where('nro_documento','=',$dni)->first();
-            return view('encuesta.index', compact('preguntas','modulos','opciones','entidades','pdte_filtrado'));
+        $presidente = \App\PresidenteModel::where('dni','=',$dni)->first();
+
+        $pdte_filtrado = \App\PdtesFiltradosModel::where('nro_documento','=',$dni)->first();
+        
+        if(isset($presidente)){
+            
+            $progreso = \App\ProgresoEncuestaModel::where('entidad_id','=',$presidente['entidad_id'])->first();
+
+            if(isset($progreso)){
+                if($progreso['progreso']<1.0){
+                    return view('encuesta.index', compact('preguntas','modulos','opciones','entidades','pdte_filtrado'));
+                }
+                else{
+                    return view('encuesta.cien', compact('pdte_filtrado'));
+                }
+            }
+            
+
         }
         else{
-            return redirect('/encuesta/identificacion');
+            if(isset($validado)){
+                return view('encuesta.index', compact('preguntas','modulos','opciones','entidades','pdte_filtrado'));
+            }
+            else{
+                return redirect('/encuesta/identificacion');
+            }
         }
+
+        
 
               
     	
@@ -99,7 +121,8 @@ class EncuestaController extends Controller
 
         \App\PresidenteModel::create([
             'entidad_id'=>$entidad['id'],
-            'nombre_presidente'=>$request['presidente']
+            'nombre_presidente'=>$request['presidente'],
+            'dni'=>$request['presidenteDNI']
             ]);
 
         \App\EncuestadoModel::create([
@@ -116,4 +139,10 @@ class EncuestaController extends Controller
         return $entidad['id'];
 
     }
+
+    public function buscarProgresoEntidad($id){
+        $progreso = \App\ProgresoEncuestaModel::where('entidad_id','=',$id)->first();
+        return $progreso;
+    }
+
 }

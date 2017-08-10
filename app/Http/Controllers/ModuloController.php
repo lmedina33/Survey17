@@ -11,7 +11,7 @@ class ModuloController extends Controller
         $this->middleware('auth');
     }
     public function getListaModulos(){
-        $notificaciones = \App\ActividadModel::all();
+        $notificaciones = \App\ActividadModel::orderBy('created_at','desc')->get();
         $entidades = \App\EntidadModel::all();
     	$modulos = \App\ModuloModel::all();
     	$preguntas = \App\PreguntaModel::all();
@@ -45,7 +45,7 @@ class ModuloController extends Controller
     }
 
     public function indexModulo(){
-        $notificaciones = \App\ActividadModel::all();
+        $notificaciones = \App\ActividadModel::orderBy('created_at','desc')->get();
         $entidades = \App\EntidadModel::all();
         $secciones = \App\SeccionModel::all();
     	return view('admin.modulos.crear_modulo', compact('notificaciones','entidades','secciones'));
@@ -65,7 +65,7 @@ class ModuloController extends Controller
     public function verModulo($slug, $id){
         $modulo = \App\ModuloModel::find($id);
         $preguntas = \App\PreguntaModel::all();
-        $notificaciones = \App\ActividadModel::all();
+        $notificaciones = \App\ActividadModel::orderBy('created_at','desc')->get();
         $entidades = \App\EntidadModel::all();
         return view('admin.modulos.modulo_detalle', compact('modulo','preguntas','notificaciones','entidades'));
     }

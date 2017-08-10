@@ -18,6 +18,7 @@ class CreatePresidentesTable extends Migration
             $table->integer('entidad_id')->unsigned();
             $table->foreign('entidad_id')->references('id')->on('entidades');
             $table->string('nombre_presidente',200);
+            $table->string('dni');
             
             
             $table->timestamps();

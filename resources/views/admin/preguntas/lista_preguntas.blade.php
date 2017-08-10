@@ -51,9 +51,13 @@
 					@elseif($pregunta->tipo_pregunta==2)
 						Pregunta Abierta
 					@elseif($pregunta->tipo_pregunta==3)
-						Pregunta con Opciones/Prioridad
-					@else
+						Pregunta con Opciones y Múltiple Elección/Prioridad
+					@elseif($pregunta->tipo_pregunta==4)
 						Pregunta con Opciones
+					@elseif($pregunta->tipo_pregunta==5)
+						Pregunta con Opciones y Múltiple Elección
+					@elseif($pregunta->tipo_pregunta==6)
+						Pregunta con Opciones/Llenar
 					@endif
 					</td>
 					<td class="text-center">
