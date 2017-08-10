@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="{{ asset('layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
+
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -27,7 +28,7 @@
         <li class="active"><a href="index.html">Inicio</a></li>
         <li><a class="drop" href="#">GUÍA DE ENCUESTA</a>
           <ul>
-            <li><a href="pages/gallery.html">Manual Práctico</a></li>
+            <li><a href="manual.blade.php">Manual Práctico</a></li>
           </ul>
         </li>
       </ul>
@@ -43,12 +44,29 @@
     <!-- ################################################################################################ -->
     <article>
       <p style="color: #000; font-size: 25px; font-style: Roboto" class="heading">ENCUESTA CGR - SCI</p>
-      <h2  style="color: #FF5733; font-size: 45px" class="heading"><span class="block">COMUNICACIONES</span></h2>
-      <a style="color: #fff; font-size: 12px; background-color: #343; padding: 10px; border-color: #000;border-left-style: solid; border-left-width: 20px; border-bottom-width: 4px; border-bottom-style: solid" href={{ asset('encuesta')}}>Encuesta para instituciones con Sistema de Control Interno >></a><br><br><br>
-      <a style="color: #fff; font-size: 12px; background-color: #683209; padding: 10px; border-color: #000;border-left-style: solid; border-left-width: 20px; border-bottom-width: 4px; border-bottom-style: solid" href="#">Encuesta para instituciones sin Sistema de Control Interno >></a>     
+      <h2  style="color: #FF5733; font-size: 52px" class="heading"><span class="block">COMUNICACIONES</span></h2>
+      <a style="color: #fff; background-size: 25px;font-size: 12px; background-color: #313030;  padding: 15px;text-shadow: -0.5px -0.5px 0.5px #aaa; " href={{ asset('encuesta')}}   onmouseover="this.style.backgroundColor='#000';this.style.color='#fff'"
+   onmouseout="this.style.backgroundColor='#313030';this.style.color='inherit'" >Encuesta para instituciones con acceso al aplicativo SISECI Sistema de Seguimiento y Evaluación del Control Interno  >></a><br><br><br>
+      <a style="color: #fff; font-size: 12px; background-color: #683209;  padding: 15px;text-shadow: -0.5px -0.5px 0.5px #aaa;"  href={{ asset('encuesta')}} onmouseover="this.style.backgroundColor='#620707';this.style.color='#fff'"
+   onmouseout="this.style.backgroundColor='#683209';this.style.color='inherit'" >Encuesta para instituciones sin acceso al aplicativo SISECI Sistema de Seguimiento y Evaluación del Control Interno  >></a>     
     </article>
     <!-- ################################################################################################ -->
   </div>
+</div>
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="center btmspace-20">
+      <h3 class="heading" style-color="#8A0808;">Encuesta sobre la implementación del Sistema de Control Interno en las entidades del Estado- 2017 / Componente de comunicación</h3>
+      <p class="nospace" style="font-weight:bold; font-size:20px;">14, 15, 16 y 17 de Agosto</p><br>
+       <p class="nospace" style="font-weight:bold;">Su participación es importante. ¡Gracias!.</p>
+    </div>
+
+ 
+
+  </main>
+
 </div>
 <div class="wrapper row4">
   <footer id="footer" class="hoc clear"> 
